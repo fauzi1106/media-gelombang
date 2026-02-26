@@ -12,58 +12,92 @@
     
   <h1>Beda Fase Gelombang</h1>
 
-  <div class="box">
-    <p>
-      Karena gelombang adalah <b>rambatan getaran</b>, setiap titik pada gelombang tidak selalu berada pada posisi getar yang sama. 
-      Untuk menyatakan “posisi” suatu titik dalam satu siklus getaran, kita menggunakan konsep <b>fase (ϕ)</b>.
-    </p>
+<div class="box">
 
-    <p>
-      Secara umum, fase suatu titik pada gelombang berjalan dapat dituliskan sebagai:
-    </p>
+  <!-- ================= ATAS (FULL WIDTH) ================= -->
+  <h3>Apa Itu Fase?</h3>
 
-    <p style="text-align:center;">
-      <span class="rumus">
-        ϕ(x,t) = 2π ( t/T − x/λ )
-      </span>
-    </p>
+  <p>
+    Karena gelombang adalah <b>rambatan getaran</b>, maka setiap titik pada gelombang 
+    tidak selalu berada pada posisi yang sama dalam satu siklus getaran. 
+    Untuk menyatakan posisi tersebut, digunakan konsep <b>fase (dibaca: fi)</b>.
+  </p>
 
+  <p>
+    Fase menunjukkan keadaan suatu titik pada gelombang 
+    (misalnya sedang di puncak, di lembah, atau di posisi setimbang).
+  </p>
 
-    <p>
-      Di mana:
-    </p>
-    <ul>
-      <li><b>T</b> = periode gelombang (s)</li>
-      <li><b>λ</b> = panjang gelombang (m)</li>
-      <li><b>x</b> = posisi titik di sepanjang arah rambat (m)</li>
-      <li><b>t</b> = waktu (s)</li>
-    </ul>
+  <p style="text-align:center;">
+    <span class="rumus">
+      ϕ(x,t) = 2π ( t/T − x/λ )
+    </span>
+  </p>
 
-    <p>
-      Namun untuk tingkat SMP/SMA, kita sering langsung fokus pada <b>beda fase</b> antara dua titik pada <b>waktu yang sama</b>. 
-      Misalkan ada dua titik A dan B yang jaraknya <b>Δx</b> pada satu gelombang, maka:
-    </p>
+  <p><b>Cara membaca:</b></p>
+  <ul>
+    <li>ϕ dibaca <b>phi</b></li>
+    <li>λ dibaca <b>lambda</b></li>
+    <li>π dibaca <b>pi</b></li>
+  </ul>
 
-    <p style="text-align:center;">
-      <span class="rumus">Δϕ = 2π · (Δx / λ)</span>
-    </p>
+  <hr class="fase-divider">
 
-    <h3>Sefase dan Berlawanan Fase</h3>
-    <ul>
-      <li>
-        <b>Sefase</b>: dua titik dikatakan sefase jika <b>pola getarannya sama</b> (misalnya sama-sama di puncak atau sama-sama di lembah pada saat yang sama).  
-        Ini terjadi bila <b>Δϕ = kelipatan 2π</b> (0, 2π, 4π, …) atau <b>Δx = nλ</b> dengan n bilangan bulat.
-      </li>
-      <li>
-        <b>Berlawanan fase</b>: dua titik berlawanan fase jika ketika satu titik di puncak, titik lain berada di lembah (kebalikan).  
-        Ini terjadi bila <b>Δϕ = (2n+1)π</b> (π, 3π, 5π, …) atau <b>Δx = (2n+1) λ/2</b>.
-      </li>
-    </ul>
+  <!-- ================= BAWAH (KIRI – KANAN) ================= -->
+  <div class="fase-split">
 
-    <p>
-      Memahami beda fase sangat penting ketika nanti kamu mempelajari <b>interferensi</b> gelombang (misalnya pola terang–gelap pada cahaya atau bunyi yang saling menguatkan dan melemahkan).
-    </p>
+    <!-- KIRI -->
+    <div class="fase-left">
+      <h3>Beda Fase Dua Titik</h3>
+
+      <p>
+        Pada tingkat SMP/SMA, kita biasanya fokus pada beda fase antara dua titik 
+        pada waktu yang sama.
+      </p>
+
+      <p style="text-align:center;">
+        <span class="rumus">Δϕ = 2π (Δx / λ)</span>
+      </p>
+
+      <p><b>Cara membaca:</b></p>
+      <p>
+        "Delta phi sama dengan dua pi dikali delta x dibagi lambda."
+      </p>
+
+      <p>
+        Artinya, beda fase ditentukan oleh perbandingan jarak kedua titik terhadap panjang gelombang.
+      </p>
+    </div>
+
+    <!-- KANAN -->
+    <div class="fase-right">
+      <h3>Sefase dan Berlawanan Fase</h3>
+
+      <ul>
+        <li>
+          <b>Sefase</b>: dua titik berada pada keadaan getar yang sama 
+          (misalnya sama-sama di puncak).
+          <br>
+          Terjadi jika:
+          <p style="text-align: center">
+            <span class="rumus">Δx = nλ</span>
+          </p>
+        </li>
+
+        <li style="margin-top:10px;">
+          <b>Berlawanan fase</b>: saat satu titik di puncak, titik lain di lembah.
+          <br>
+          Terjadi jika:
+          <p style="text-align: center">
+            <span class="rumus">Δx = (2n+1) λ/2</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+
   </div>
+
+</div>
 
   <!-- FITUR INTERAKTIF -->
   <div class="interaktif-box">

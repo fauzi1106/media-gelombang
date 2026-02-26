@@ -166,10 +166,13 @@
     min-height: 100vh;
     /* background-color: #f5f6fa; */
     background: #eef2f7;
+    width: 100%;
 
   }
 
   .materi-gelombang .content {
+    width: 100%;
+    max-width: 100%;
     margin-left: 20px;
     padding: 40px 30px;
     min-height: calc(100vh - 60px);
@@ -330,6 +333,8 @@
     padding: 16px 20px;
     border-radius: 8px;
     margin-bottom: 24px;
+
+    width: 100%;
   }
 
   .box p,
@@ -428,6 +433,7 @@
     color: #555;
     margin-top: 8px;
     font-style: italic;
+    text-align: center;
   }
 
   /* =========================================================
@@ -962,9 +968,9 @@
 
   .example-row {
     display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-top: 12px;
+    gap: 24px;
+    align-items: stretch;
+    margin-top: 16px;
   }
 
   .example-text {
@@ -973,13 +979,79 @@
 
   .example-image {
     flex: 1;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .example-image img {
-    max-width: 80%;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .example-row {
+      flex-direction: column;
+    }
+  }
+
+  .media-box {
+    flex: 1 1 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .media-box img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+  }
+
+  .fase-divider {
+    margin: 22px 0;
+    border: none;
+    border-top: 2px solid #6c6e70;
+  }
+
+  .fase-split {
+    display: flex;
+    gap: 30px;
+  }
+
+  .fase-left,
+  .fase-right {
+    flex: 1;
+  }
+
+  .fase-right {
+    border-left: 2px solid #6c6e70;
+    /* GARIS VERTIKAL */
+    padding-left: 25px;
+  }
+
+  /* Responsive biar aman di HP */
+  @media (max-width: 768px) {
+    .fase-split {
+      flex-direction: column;
+    }
+
+    .fase-right {
+      border-left: none;
+      border-top: 2px solid #e5e7eb;
+      padding-left: 0;
+      padding-top: 20px;
+    }
   }
 
   /* ====================
@@ -1736,48 +1808,48 @@
   .modal-lg {
     width: 700px;
     max-width: 90%;
-}
+  }
 
-.modal-title {
+  .modal-title {
     text-align: center;
     margin-bottom: 20px;
     font-size: 22px;
     font-weight: bold;
-}
+  }
 
-.form-group {
+  .form-group {
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
-}
+  }
 
-.form-group label {
+  .form-group label {
     margin-bottom: 5px;
     font-weight: 600;
-}
+  }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
     padding: 8px;
     border-radius: 8px;
     border: 1px solid #ccc;
-}
+  }
 
-.form-group textarea {
+  .form-group textarea {
     min-height: 80px;
     resize: vertical;
-}
+  }
 
-.option-grid {
+  .option-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-}
+  }
 
-.modal-footer {
+  .modal-footer {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 15px;
-}
+  }
