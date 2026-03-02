@@ -4,45 +4,47 @@
 
 @section('guru-content')
 
-    <main class="guru-content">
+<main class="guru-content">
 
-        <h1>Analisis Butir Soal</h1>
+    <h1>Data Soal</h1>
 
-        <div class="table-wrapper">
-            <table>
-                <thead>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Pertanyaan</th>
+                    <th>Opsi A</th>
+                    <th>Opsi B</th>
+                    <th>Opsi C</th>
+                    <th>Opsi D</th>
+                    <th>Opsi E</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach($analysis as $i => $row)
                     <tr>
-                        <th>No</th>
-                        <th>Soal</th>
-                        <th>Benar</th>
-                        <th>Salah</th>
-                        <th>% Benar</th>
-                        <th>Kategori</th>
-                        <th>Aksi</th>
+                        <td>{{ $i + 1 }}</td>
+                        <td>{{ $row->question }}</td>
+                        <td>{{ $row->option_a }}</td>
+                        <td>{{ $row->option_b }}</td>
+                        <td>{{ $row->option_c }}</td>
+                        <td>{{ $row->option_d }}</td>
+                        <td>{{ $row->option_e }}</td>
+                        <td>
+                            <button class="btn" onclick='openEditModal(@json($row))'>
+                                Edit
+                            </button>
+                        </td>
                     </tr>
-                </thead>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
-                <tbody>
-                    @foreach($analysis as $i => $row)
-                        <tr>
-                            <td>{{ $i + 1 }}</td>
-                            <td>{{ $row->question }}</td>
-                            <td>{{ $row->correct }}</td>
-                            <td>{{ $row->wrong }}</td>
-                            <td>{{ $row->percentage }}%</td>
-                            <td>{{ $row->category }}</td>
-                            <td>
-                                <button class="btn" onclick='openEditModal(@json($row))'>
-                                    Edit
-                                </button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-    </main>
+</main>
 
     {{-- ================= MODAL EDIT ================= --}}
     <div id="editModal" class="modal-overlay" style="display:none;">

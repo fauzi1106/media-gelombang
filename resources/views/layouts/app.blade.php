@@ -3,15 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>@yield('title', 'Media Pembelajaran')</title>
 
     <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="{{ asset('css/style_gelombang.css') }}">
+
     <!-- JS GLOBAL -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-
 </head>
 
 <body>

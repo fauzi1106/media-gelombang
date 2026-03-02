@@ -6,64 +6,103 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeacherAnalysisController;
+use App\Http\Controllers\GelombangSubmissionController;
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+/*
+|--------------------------------------------------------------------------
+| PUBLIC ROUTES
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/login', function () {
+    return view('login'); })->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 
-// ===============================
-// SEMUA HALAMAN WAJIB LOGIN
-// ===============================
-Route::middleware(['auth'])->group(function () {
+/*
+|--------------------------------------------------------------------------
+| PROTECTED ROUTES (WAJIB LOGIN)
+|--------------------------------------------------------------------------
+*/
 
+Route::middleware('auth')->group(function () {
+
+    /* ================= HOME ================= */
     Route::get('/home', [HomeController::class, 'index']);
 
-    // ================= MATERI =================
-    Route::get('/pengantar_gelombang', [MateriController::class, 'pengantarGelombang']);
-    Route::get('/definisi_gelombang', [MateriController::class, 'definisiGelombang']);
-    Route::get('/jenis_gelombang', [MateriController::class, 'jenisGelombang']);
-    Route::get('/beda_fase_gelombang', [MateriController::class, 'bedafaseGelombang']);
-    Route::get('/prinsip_gelombang', [MateriController::class, 'prinsipGelombang']);
+    /* ================= MATERI ================= */
+    Route::controller(MateriController::class)->group(function () {
 
-    Route::get('/pengantar_bunyi', [MateriController::class, 'pengantarBunyi']);
-    Route::get('/konsep_perambatan_bunyi', [MateriController::class, 'konsepPerambatanBunyi']);
-    Route::get('/sumber_kar_bunyi', [MateriController::class, 'sumberKarBunyi']);
-    Route::get('/fenomena_apk_bunyi', [MateriController::class, 'fenomenaApkBunyi']);
+        // Gelombang
+        Route::get('/pengantar_gelombang', 'pengantarGelombang');
+        Route::get('/definisi_gelombang', 'definisiGelombang');
+        Route::get('/jenis_gelombang', 'jenisGelombang');
+        Route::get('/beda_fase_gelombang', 'bedafaseGelombang');
+        Route::get('/prinsip_gelombang', 'prinsipGelombang');
 
-    Route::get('/pengantar_cahaya', [MateriController::class, 'pengantarCahaya']);
-    Route::get('/sifat_cahaya', [MateriController::class, 'sifatCahaya']);
-    Route::get('/spektrum_cahaya', [MateriController::class, 'spektrumCahaya']);
-    Route::get('/fenomena_apk_cahaya', [MateriController::class, 'fenomenaApkCahaya']);
+        // Bunyi
+        Route::get('/pengantar_bunyi', 'pengantarBunyi');
+        Route::get('/konsep_perambatan_bunyi', 'konsepPerambatanBunyi');
+        Route::get('/sumber_kar_bunyi', 'sumberKarBunyi');
+        Route::get('/fenomena_apk_bunyi', 'fenomenaApkBunyi');
 
-    Route::get('/kuis_gelombang', [MateriController::class, 'kuisGelombang']);
-    Route::get('/kuis_bunyi', [MateriController::class, 'kuisBunyi']);
-    Route::get('/kuis_cahaya', [MateriController::class, 'kuisCahaya']);
+        // Cahaya
+        Route::get('/pengantar_cahaya', 'pengantarCahaya');
+        Route::get('/sifat_cahaya', 'sifatCahaya');
+        Route::get('/spektrum_cahaya', 'spektrumCahaya');
+        Route::get('/fenomena_apk_cahaya', 'fenomenaApkCahaya');
 
-    Route::post('/simpan-nilai', [MateriController::class, 'simpanNilai']);
+        // Kuis
+        Route::get('/kuis_gelombang', 'kuisGelombang');
+        Route::get('/kuis_bunyi', 'kuisBunyi');
+        Route::get('/kuis_cahaya', 'kuisCahaya');
 
-    // ================= GURU =================
-    Route::get('/guru-nilai', [GuruController::class, 'nilai']);
-    Route::delete('/nilai/{id}', [GuruController::class, 'deleteAttempt']);
-    Route::delete('/nilai/{user}/{quiz}', [GuruController::class, 'deleteAll']);
-    Route::get('/export-nilai', [GuruController::class, 'exportNilai']);
+        // Evaluasi
+        Route::get('/evaluasi', 'evaluasi');
 
-    Route::get('/guru-siswa', [GuruController::class, 'siswa']);
-    Route::post('/guru-siswa/store', [GuruController::class, 'storeSiswa']);
-    Route::put('/guru-siswa/update/{id}', [GuruController::class, 'updateSiswa']);
-    Route::delete('/guru-siswa/delete/{id}', [GuruController::class, 'deleteSiswa']);
+        // Simpan nilai
+        Route::post('/simpan-nilai', 'simpanNilai');
+    });
 
-    // ================= ANALISIS =================
-    Route::get('/guru/analysis/{quiz_id}', [TeacherAnalysisController::class, 'index']);
 
-    // ================= QUESTIONS =================
-    Route::put('/guru/question/{id}',[TeacherAnalysisController::class, 'updateQuestion'])->name('guru.question.update');
+    /* ================= GURU ================= */
+    Route::controller(GuruController::class)->group(function () {
+
+        Route::get('/guru-nilai', 'nilai');
+        Route::get('/export-nilai', 'exportNilai');
+
+        Route::delete('/nilai/{id}', 'deleteAttempt');
+        Route::delete('/nilai/{user}/{quiz}', 'deleteAll');
+
+        Route::get('/guru-siswa', 'siswa');
+        Route::post('/guru-siswa/store', 'storeSiswa');
+        Route::put('/guru-siswa/update/{id}', 'updateSiswa');
+        Route::delete('/guru-siswa/delete/{id}', 'deleteSiswa');
+
+        Route::post('/guru/update-kkm', 'updateKKM')
+            ->name('guru.updateKKM');
+    });
+
+
+    /* ================= ANALISIS ================= */
+    Route::controller(TeacherAnalysisController::class)->group(function () {
+
+        Route::get('/guru/analysis/{quiz_id}', 'index');
+        Route::put('/guru/question/{id}', 'updateQuestion')
+            ->name('guru.question.update');
+    });
+
+    /* ================= PENGUMPULAN GELOMBANG ================= */
+
+    Route::get('/pengumpulan-gelombang', [GelombangSubmissionController::class, 'index']);
+
+    Route::post('/pengumpulan-gelombang', [GelombangSubmissionController::class, 'store']);
+
+    Route::get('/guru/pengumpulan-gelombang',[GelombangSubmissionController::class, 'daftar']);
 
 });

@@ -102,7 +102,7 @@
                         </div>
 
                         <br><br>
-                        <button type="submit" class="btn">Update</button>
+                        <button type="button" class="btn" onclick="confirmUpdate()">Update</button>
                         <button type="button" class="btn-delete" onclick="closeEditModal()">Batal</button>
                     </form>
 
@@ -123,7 +123,9 @@
         </div>
 
         <div id="deleteModal" class="modal-overlay" style="display:none;">
-            <div class="modal alert-box">
+            <div class="modal alert-box warning-box">
+
+                <div class="warning-icon">⚠️</div>
 
                 <h3>Konfirmasi Hapus</h3>
 
@@ -136,6 +138,21 @@
                     <button type="submit" class="btn-delete">Ya, Hapus</button>
                     <button type="button" class="btn" onclick="closeDeleteModal()">Batal</button>
                 </form>
+
+            </div>
+        </div>
+
+        <div id="updateConfirmModal" class="modal-overlay" style="display:none;">
+            <div class="modal alert-box warning-box">
+
+                <div class="warning-icon">⚠️</div>
+
+                <h3>Konfirmasi Update</h3>
+
+                <p>Apakah yakin ingin memperbarui data siswa ini?</p>
+
+                <button class="btn" onclick="submitUpdate()">Ya, Update</button>
+                <button class="btn-delete" onclick="closeUpdateConfirm()">Batal</button>
 
             </div>
         </div>
@@ -178,7 +195,7 @@
             const input = document.getElementById('editPassword');
             input.type = input.type === 'password' ? 'text' : 'password';
         }
-        
+
         function closeEditModal() {
             document.getElementById('editModal').style.display = 'none';
         }
@@ -214,5 +231,17 @@
             });
         @endif
 
+
+        function confirmUpdate() {
+            document.getElementById('updateConfirmModal').style.display = 'flex';
+        }
+
+        function closeUpdateConfirm() {
+            document.getElementById('updateConfirmModal').style.display = 'none';
+        }
+
+        function submitUpdate() {
+            document.getElementById('editForm').submit();
+        }
     </script>
 @endsection

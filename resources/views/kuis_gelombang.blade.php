@@ -152,10 +152,10 @@
       q.options.forEach((opt, idx) => {
         const li = document.createElement("li");
         li.innerHTML = `
-                        <label>
-                          <input type="radio" name="soal" value="${idx}" ${userAnswers[currentIndex] === idx ? "checked" : ""}>
-                          <span>${opt}</span>
-                        </label>`;
+                          <label>
+                            <input type="radio" name="soal" value="${idx}" ${userAnswers[currentIndex] === idx ? "checked" : ""}>
+                            <span>${opt}</span>
+                          </label>`;
         optionsList.appendChild(li);
       });
       renderNav();
@@ -250,23 +250,27 @@
         return;
       }
 
-      let score = 0;
+      let benar = 0;
       questions.forEach((q, i) => {
-        if (userAnswers[i] === q.answer) score++;
+        if (userAnswers[i] === q.answer) benar++;
       });
 
-      const tuntas = score >= 7; // batas kelulusan
+      // 🔥 KONVERSI KE PERSEN
+      const nilaiPersen = Math.round((benar / questions.length) * 100);
+
+      // batas lulus 70
+      const tuntas = nilaiPersen >= 70;
 
       if (tuntas) {
         resultIcon.textContent = "🎉";
         resultTitle.textContent = "Tuntas!";
-        resultMessage.innerHTML = `Nilai kamu: <b>${score}/10</b><br>Kamu boleh lanjut.`;
+        resultMessage.innerHTML = `Nilai kamu: <b>${nilaiPersen}</b><br>Kamu boleh lanjut.`;
         resultOkBtn.textContent = "Lanjut Materi";
         resultOkBtn.onclick = () => window.location.href = NEXT_PAGE;
       } else {
         resultIcon.textContent = "📚";
         resultTitle.textContent = "Belum Tuntas";
-        resultMessage.innerHTML = `Nilai kamu: <b>${score}/10</b><br>Pelajari ulang materi.`;
+        resultMessage.innerHTML = `Nilai kamu: <b>${nilaiPersen}</b><br>Pelajari ulang materi.`;
         resultOkBtn.textContent = "Kembali Belajar";
         resultOkBtn.onclick = () => window.location.href = REVIEW_PAGE;
       }

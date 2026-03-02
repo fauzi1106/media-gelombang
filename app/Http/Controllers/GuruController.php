@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Exports\NilaiExport;
 use Maatwebsite\Excel\Facades\Excel;
-
+use App\Models\Quiz;
 
 class GuruController extends Controller
 {
@@ -27,46 +27,63 @@ class GuruController extends Controller
 
     public function deleteAttempt($id)
     {
-        Nilai::findOrFail($id)->delete();
+        $attempt = \App\Models\QuizAttempt::find($id);
+
+        if (!$attempt) {
+            return response()->json(['error' => 'Data tidak ditemukan'], 404);
+        }
+
+        // Hapus relasi dulu kalau ada
+        $attempt->answers()->delete(); // kalau ada relasi answers
+
+        $attempt->delete();
 
         return response()->json(['success' => true]);
     }
     public function deleteAll($user, $quiz)
     {
-        Nilai::where('user_id', $user)
+        $attempts = \App\Models\QuizAttempt::where('user_id', $user)
             ->where('quiz_id', $quiz)
-            ->delete();
+            ->get();
+
+        foreach ($attempts as $attempt) {
+            $attempt->answers()->delete(); // kalau ada relasi
+            $attempt->delete();
+        }
 
         return response()->json(['success' => true]);
     }
 
     public function nilai()
     {
-        // ============================
-        // KKM (UBAH DI SINI JIKA PERLU)
-        // ============================
-        $kkm = 70;
-
-        // ambil nilai tertinggi per siswa & kuis
-        $nilai = Nilai::select(
-            'user_id',
-            'quiz_id',
-            \DB::raw('MAX(score) as score'),
-            \DB::raw('COUNT(*) as total_attempt')
-        )
-            ->groupBy('user_id', 'quiz_id')
-            ->with(['user', 'quiz'])
+        $attempts = \App\Models\QuizAttempt::with(['user', 'quiz', 'answers'])
             ->get();
 
-        // ambil detail percobaan
-        foreach ($nilai as $n) {
-            $n->detail = Nilai::where('user_id', $n->user_id)
-                ->where('quiz_id', $n->quiz_id)
-                ->orderBy('created_at')
-                ->get();
+        $grouped = $attempts
+            ->groupBy(function ($item) {
+                return $item->user_id . '-' . $item->quiz_id;
+            });
+
+        $nilai = collect();
+
+        foreach ($grouped as $group) {
+
+            $first = $group->first();
+
+            $nilai->push((object) [
+                'user_id' => $first->user_id,
+                'quiz_id' => $first->quiz_id,
+                'user' => $first->user,
+                'quiz' => $first->quiz,
+                'score' => $group->max('score'),
+                'total_attempt' => $group->count(),
+                'detail' => $group->sortBy('created_at')->values()
+            ]);
         }
 
-        return view('guru.nilai', compact('nilai', 'kkm'));
+        $quizzes = \App\Models\Quiz::all();
+
+        return view('guru.nilai', compact('nilai', 'quizzes'));
     }
 
     public function siswa()
@@ -132,4 +149,19 @@ class GuruController extends Controller
         return back()->with('success', 'Siswa berhasil dihapus');
     }
 
+    public function updateKKM(Request $request)
+    {
+        $request->validate([
+            'quiz_id' => 'required|exists:quizzes,id',
+            'kkm' => 'required|integer|min:0|max:100'
+        ]);
+    
+        \DB::table('quizzes')
+            ->where('id', $request->quiz_id)
+            ->update([
+                'kkm' => $request->kkm
+            ]);
+
+        return back()->with('success', 'KKM berhasil diperbarui!');
+    }
 }

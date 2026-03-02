@@ -516,6 +516,8 @@
     display: none;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    /* biar tidak mentok atas */
     z-index: 999;
   }
 
@@ -527,6 +529,9 @@
     width: 90%;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.4);
     text-align: center;
+    max-height: 90vh; /* 🔥 BATAS TINGGI */
+    overflow-y: auto; /* 🔥 AKTIFKAN SCROLL */
+    /* margin: auto; */
   }
 
   /* =========================================================
@@ -565,6 +570,7 @@
 
   table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     margin-top: 10px;
     font-size: 0.95rem;
@@ -579,6 +585,9 @@
   }
 
   table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     padding: 8px;
     border: 1px solid #e5e7eb;
   }
@@ -994,7 +1003,7 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
 
-  
+
   /* Responsive */
   @media (max-width: 768px) {
     .example-row {
@@ -1853,3 +1862,136 @@
     justify-content: center;
     gap: 15px;
   }
+
+
+  .answer-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .answer-box {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+  }
+
+  .answer-box.correct {
+    background-color: #22c55e;
+  }
+
+  .answer-box.wrong {
+    background-color: #ef4444;
+  }
+
+  /* =========================
+   KKM UPDATE BOX
+========================= */
+
+.kkm-box {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  border: 1px solid #bfdbfe;
+  display: flex;
+  justify-content: center;
+}
+
+.kkm-form {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.kkm-form select,
+.kkm-form input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #93c5fd;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.kkm-form select:focus,
+.kkm-form input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.kkm-form input {
+  width: 90px;
+  text-align: center;
+}
+
+.kkm-form .btn {
+  background: #2563eb;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.kkm-form .btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* label kecil di depan */
+.kkm-form::before {
+  content: "Atur KKM:";
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-right: 5px;
+}
+
+.kkm-info {
+  font-size: 13px;
+  color: #374151;
+  opacity: 0.8;
+}
+
+.warning-box {
+    text-align: center;
+    border-top: 5px solid #f59e0b;
+}
+
+.warning-icon {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+.warning-icon {
+    font-size: 60px;
+    color: #f59e0b;
+    margin-bottom: 15px;
+}
+
+.alert-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.success-icon { color: #16a34a; }
+.warning-icon { color: #f59e0b; }
+.danger-icon  { color: #dc2626; }
+
+.alert-box {
+    text-align: center;
+}
+
+.modal-overlay {
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

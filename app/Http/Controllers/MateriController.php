@@ -158,47 +158,84 @@ class MateriController extends Controller
         ]);
     }
 
-
-
-
-
-    public function simpanNilai(Request $request)
+    public function evaluasi()
     {
-        // simpan nilai seperti sekarang
-        Nilai::create([
-            'user_id' => auth()->id(),
-            'quiz_id' => $request->quiz_id,
-            'score' => $request->score,
-            'total_soal' => $request->total_soal,
-            'benar' => $request->benar,
-            'duration' => $request->duration
+        $quizId = 4; // id evaluasi (sesuaikan dengan database)
+
+        $questions = Question::where('quiz_id', $quizId)
+            ->orderBy('id', 'asc')
+            ->limit(20) // evaluasi 20 soal
+            ->get()
+            ->map(function ($q) {
+                return [
+                    'id' => $q->id,
+                    'q' => $q->question,
+                    'options' => [
+                        $q->option_a,
+                        $q->option_b,
+                        $q->option_c,
+                        $q->option_d,
+                        $q->option_e
+                    ],
+                    'answer' => $q->answer
+                ];
+            });
+
+        // ambil KKM dari tabel quizzes
+        $quiz = \App\Models\Quiz::find($quizId);
+
+        return view('evaluasi', [
+            'questions' => $questions,
+            'quiz_id' => $quizId,
+            'kkm' => $quiz->kkm
         ]);
-
-        // buat attempt
-        $attempt = QuizAttempt::create([
-            'quiz_id' => $request->quiz_id,
-            'user_id' => auth()->id(),
-            'score' => $request->score
-        ]);
-
-        $answers = $request->answers;
-        $questions = $request->questions;
-
-        foreach ($questions as $index => $q) {
-
-            $selected = $answers[$index] ?? null;
-            $isCorrect = ($selected == $q['answer']);
-
-            StudentAnswer::create([
-                'attempt_id' => $attempt->id,
-                'question_id' => $q['id'],
-                'selected_answer' => $selected,
-                'is_correct' => $isCorrect
-            ]);
-        }
-
-        return response()->json(['success' => true]);
     }
 
+
+
+
+public function simpanNilai(Request $request)
+{
+    $totalSoal = $request->total_soal;
+    $benar = $request->benar;
+
+    // 🔥 HITUNG PERSENTASE
+    $score = round(($benar / $totalSoal) * 100);
+
+    // Simpan ke tabel nilai (kalau masih dipakai)
+    Nilai::create([
+        'user_id' => auth()->id(),
+        'quiz_id' => $request->quiz_id,
+        'score' => $score,
+        'total_soal' => $totalSoal,
+        'benar' => $benar,
+        'duration' => $request->duration
+    ]);
+
+    // Simpan attempt
+    $attempt = QuizAttempt::create([
+        'quiz_id' => $request->quiz_id,
+        'user_id' => auth()->id(),
+        'score' => $score
+    ]);
+
+    $answers = $request->answers;
+    $questions = $request->questions;
+
+    foreach ($questions as $index => $q) {
+
+        $selected = $answers[$index] ?? null;
+        $isCorrect = ($selected == $q['answer']);
+
+        StudentAnswer::create([
+            'attempt_id' => $attempt->id,
+            'question_id' => $q['id'],
+            'selected_answer' => $selected,
+            'is_correct' => $isCorrect
+        ]);
+    }
+
+    return response()->json(['success' => true]);
+}
 
 }

@@ -183,23 +183,31 @@
         alert("Masih ada soal yang belum dijawab.");
         return;
       }
-      let score = 0;
-      questions.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
-      const tuntas = score >= 7;
+
+      let benar = 0;
+      questions.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) benar++;
+      });
+
+      // 🔥 KONVERSI KE 0–100
+      const nilaiPersen = Math.round((benar / questions.length) * 100);
+
+      const tuntas = nilaiPersen >= 70;
 
       if (tuntas) {
         resultIcon.textContent = "🎉";
         resultTitle.textContent = "Tuntas!";
-        resultMessage.innerHTML = `Nilai kamu: <b>${score}/10</b><br>Kamu boleh lanjut.`;
+        resultMessage.innerHTML = `Nilai kamu: <b>${nilaiPersen}</b><br>Kamu boleh lanjut.`;
         resultOkBtn.textContent = "Lanjut Materi";
         resultOkBtn.onclick = () => window.location.href = NEXT_PAGE;
       } else {
         resultIcon.textContent = "📚";
         resultTitle.textContent = "Belum Tuntas";
-        resultMessage.innerHTML = `Nilai kamu: <b>${score}/10</b><br>Pelajari ulang materi.`;
+        resultMessage.innerHTML = `Nilai kamu: <b>${nilaiPersen}</b><br>Pelajari ulang materi.`;
         resultOkBtn.textContent = "Kembali Belajar";
         resultOkBtn.onclick = () => window.location.href = REVIEW_PAGE;
       }
+
       modal.style.display = "flex";
 
       fetch("/simpan-nilai", {
@@ -212,12 +220,11 @@
           quiz_id: QUIZ_ID,
           answers: userAnswers,
           questions: questions,
-          score: score,
+          score: benar,          // kirim jumlah benar saja
           total_soal: questions.length,
-          benar: score,
+          benar: benar,
           duration: duration
         })
-
       })
         .then(response => response.json())
         .then(data => {
@@ -226,7 +233,6 @@
         .catch(error => {
           console.error("Gagal simpan nilai:", error);
         });
-
     }
 
     document.getElementById("finishBtn").onclick = finishQuiz;

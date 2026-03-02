@@ -180,7 +180,7 @@
     const resultOkBtn = document.getElementById("resultOkBtn");
 
     function finishQuiz() {
-      
+
       const endTime = Date.now();
       const duration = Math.floor((endTime - startTime) / 1000);
 
@@ -190,18 +190,19 @@
       }
       let score = 0;
       questions.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
-      const tuntas = score >= 7;
+      const nilaiPersen = Math.round((score / questions.length) * 100);
+      const tuntas = nilaiPersen >= 70;
 
       if (tuntas) {
         resultIcon.textContent = "🎉";
         resultTitle.textContent = "Tuntas!";
-        resultMessage.innerHTML = `Nilai kamu: <b>${score}/10</b><br>Kamu boleh lanjut.`;
+        resultMessage.innerHTML = `Nilai kamu: <b>${nilaiPersen}</b>`;
         resultOkBtn.textContent = "Lanjut Materi";
         resultOkBtn.onclick = () => window.location.href = NEXT_PAGE;
       } else {
         resultIcon.textContent = "📚";
         resultTitle.textContent = "Belum Tuntas";
-        resultMessage.innerHTML = `Nilai kamu: <b>${score}/10</b><br>Pelajari ulang materi.`;
+        resultMessage.innerHTML = `Nilai kamu: <b>${nilaiPersen}</b><br>Pelajari ulang materi.`;
         resultOkBtn.textContent = "Kembali Belajar";
         resultOkBtn.onclick = () => window.location.href = REVIEW_PAGE;
       }
