@@ -8,7 +8,8 @@ class GelombangSubmission extends Model
 {
     protected $fillable = [
         'user_id',
-        'file_path'
+        'file_path',
+        'latihan_code'
     ];
 
     public function user()

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Exports\NilaiExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Quiz;
+use App\Models\GelombangSubmission;
+use App\Models\QuizAttempt;
 
 class GuruController extends Controller
 {
@@ -56,8 +58,11 @@ class GuruController extends Controller
 
     public function nilai()
     {
-        $attempts = \App\Models\QuizAttempt::with(['user', 'quiz', 'answers'])
-            ->get();
+        $attempts = \App\Models\QuizAttempt::with([
+            'user',
+            'quiz',
+            'answers.question'
+        ])->get();
 
         $grouped = $attempts
             ->groupBy(function ($item) {
@@ -77,7 +82,35 @@ class GuruController extends Controller
                 'quiz' => $first->quiz,
                 'score' => $group->max('score'),
                 'total_attempt' => $group->count(),
-                'detail' => $group->sortBy('created_at')->values()
+                'detail' => $group->sortBy('created_at')->values()->map(function ($attempt) {
+
+                    return [
+                        'id' => $attempt->id,
+                        'quiz_id' => $attempt->quiz_id,
+                        'user_id' => $attempt->user_id,
+                        'score' => $attempt->score,
+                        'duration' => $attempt->duration,
+                        'created_at' => $attempt->created_at,
+
+                        'answers' => $attempt->answers->map(function ($a) {
+
+                            return [
+                                'question' => $a->question->question,
+
+                                'option_a' => $a->question->option_a,
+                                'option_b' => $a->question->option_b,
+                                'option_c' => $a->question->option_c,
+                                'option_d' => $a->question->option_d,
+                                'option_e' => $a->question->option_e,
+
+                                'answer' => $a->selected_answer,
+                                'correct_answer' => $a->question->answer,
+
+                                'is_correct' => $a->is_correct
+                            ];
+                        })
+                    ];
+                })
             ]);
         }
 
@@ -155,7 +188,7 @@ class GuruController extends Controller
             'quiz_id' => 'required|exists:quizzes,id',
             'kkm' => 'required|integer|min:0|max:100'
         ]);
-    
+
         \DB::table('quizzes')
             ->where('id', $request->quiz_id)
             ->update([
@@ -163,5 +196,48 @@ class GuruController extends Controller
             ]);
 
         return back()->with('success', 'KKM berhasil diperbarui!');
+    }
+    public function progres()
+    {
+        $students = User::where('role', 'murid')->get();
+
+        foreach ($students as $s) {
+
+            // =========================
+            // LATIHAN
+            // =========================
+            $latihan = GelombangSubmission::where('user_id', $s->id)
+                ->pluck('latihan_code')
+                ->toArray();
+
+            $s->L11 = in_array('L11', $latihan);
+            $s->L12 = in_array('L12', $latihan);
+            $s->L21 = in_array('L21', $latihan);
+            $s->L22 = in_array('L22', $latihan);
+            $s->L23 = in_array('L23', $latihan);
+            $s->L24 = in_array('L24', $latihan);
+            $s->L31 = in_array('L31', $latihan);
+            
+            // =========================
+            // QUIZ
+            // =========================
+            $quiz = QuizAttempt::where('user_id', $s->id)
+                ->pluck('quiz_id')
+                ->toArray();
+
+            $s->K1 = in_array(1, $quiz);
+            $s->K2 = in_array(2, $quiz);
+            $s->K3 = in_array(3, $quiz);
+            $s->evaluasi = in_array(4, $quiz);
+
+            // =========================
+            // FILE PDF TERBARU
+            // =========================
+            $s->submissions = GelombangSubmission::where('user_id', $s->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }
+
+        return view('guru.progres', compact('students'));
     }
 }

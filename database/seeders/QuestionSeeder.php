@@ -402,229 +402,247 @@ class QuestionSeeder extends Seeder
 // quiz_id = 4
 // ======================
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Gelombang memiliki frekuensi 5 Hz dan panjang gelombang 2 m. Jika frekuensi menjadi dua kali lipat dan medium tetap, maka cepat rambat gelombang…',
-                'option_a' => 'Tetap',
-                'option_b' => 'Setengahnya',
-                'option_c' => 'Dua kali lipat',
-                'option_d' => 'Empat kali lipat',
-                'option_e' => 'Nol',
-                'answer' => 0
-            ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Dua gelombang memiliki frekuensi sama tetapi amplitudo berbeda. Gelombang dengan amplitudo lebih besar akan…',
-                'option_a' => 'Memiliki frekuensi lebih besar',
-                'option_b' => 'Memiliki energi lebih besar',
-                'option_c' => 'Memiliki cepat rambat lebih besar',
-                'option_d' => 'Memiliki panjang gelombang lebih kecil',
-                'option_e' => 'Tidak membawa energi',
-                'answer' => 1
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'gelombang',
+        'question' => 'Gelombang memiliki frekuensi 5 Hz dan panjang gelombang 2 m. Jika frekuensi menjadi dua kali lipat dan medium tetap, maka cepat rambat gelombang…',
+        'option_a' => 'Tetap',
+        'option_b' => 'Setengahnya',
+        'option_c' => 'Dua kali lipat',
+        'option_d' => 'Empat kali lipat',
+        'option_e' => 'Nol',
+        'answer' => 0
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Jika panjang gelombang diperbesar dua kali sedangkan cepat rambat tetap, maka frekuensi gelombang menjadi…',
-                'option_a' => 'Tetap',
-                'option_b' => 'Dua kali lipat',
-                'option_c' => 'Setengahnya',
-                'option_d' => 'Empat kali lipat',
-                'option_e' => 'Nol',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'gelombang',
+        'question' => 'Dua gelombang memiliki frekuensi sama tetapi amplitudo berbeda. Gelombang dengan amplitudo lebih besar akan…',
+        'option_a' => 'Memiliki frekuensi lebih besar',
+        'option_b' => 'Memiliki energi lebih besar',
+        'option_c' => 'Memiliki cepat rambat lebih besar',
+        'option_d' => 'Memiliki panjang gelombang lebih kecil',
+        'option_e' => 'Tidak membawa energi',
+        'answer' => 1
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Gelombang air yang melewati celah sempit kemudian menyebar menunjukkan sifat…',
-                'option_a' => 'Refleksi',
-                'option_b' => 'Refraksi',
-                'option_c' => 'Difraksi',
-                'option_d' => 'Interferensi',
-                'option_e' => 'Resonansi',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'gelombang',
+        'question' => 'Jika panjang gelombang diperbesar dua kali sedangkan cepat rambat tetap, maka frekuensi gelombang menjadi…',
+        'option_a' => 'Tetap',
+        'option_b' => 'Dua kali lipat',
+        'option_c' => 'Setengahnya',
+        'option_d' => 'Empat kali lipat',
+        'option_e' => 'Nol',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Seorang siswa menyatakan gelombang memindahkan materi karena air bergerak maju. Analisis yang benar adalah…',
-                'option_a' => 'Benar karena partikel berpindah',
-                'option_b' => 'Benar jika amplitudo besar',
-                'option_c' => 'Salah karena yang berpindah energi, bukan materi',
-                'option_d' => 'Salah karena gelombang tidak membawa energi',
-                'option_e' => 'Benar hanya pada gelombang bunyi',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'gelombang',
+        'question' => 'Gelombang air yang melewati celah sempit kemudian menyebar menunjukkan sifat…',
+        'option_a' => 'Refleksi',
+        'option_b' => 'Refraksi',
+        'option_c' => 'Difraksi',
+        'option_d' => 'Interferensi',
+        'option_e' => 'Resonansi',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Seorang penyelam mendengar bunyi lebih cepat di air dibanding udara karena…',
-                'option_a' => 'Frekuensi lebih besar',
-                'option_b' => 'Amplitudo lebih besar',
-                'option_c' => 'Partikel medium lebih rapat',
-                'option_d' => 'Suhu lebih tinggi',
-                'option_e' => 'Tekanan lebih kecil',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'gelombang',
+        'question' => 'Seorang siswa menyatakan gelombang memindahkan materi karena air bergerak maju. Analisis yang benar adalah…',
+        'option_a' => 'Benar karena partikel berpindah',
+        'option_b' => 'Benar jika amplitudo besar',
+        'option_c' => 'Salah karena yang berpindah energi, bukan materi',
+        'option_d' => 'Salah karena gelombang tidak membawa energi',
+        'option_e' => 'Benar hanya pada gelombang bunyi',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Jika suhu udara meningkat maka cepat rambat bunyi akan…',
-                'option_a' => 'Menurun',
-                'option_b' => 'Tetap',
-                'option_c' => 'Meningkat',
-                'option_d' => 'Nol',
-                'option_e' => 'Berubah acak',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'bunyi',
+        'question' => 'Seorang penyelam mendengar bunyi lebih cepat di air dibanding udara karena…',
+        'option_a' => 'Frekuensi lebih besar',
+        'option_b' => 'Amplitudo lebih besar',
+        'option_c' => 'Partikel medium lebih rapat',
+        'option_d' => 'Suhu lebih tinggi',
+        'option_e' => 'Tekanan lebih kecil',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Nada sirene ambulans terdengar lebih tinggi saat mendekat karena…',
-                'option_a' => 'Amplitudo meningkat',
-                'option_b' => 'Panjang gelombang bertambah',
-                'option_c' => 'Frekuensi yang diterima meningkat',
-                'option_d' => 'Cepat rambat meningkat',
-                'option_e' => 'Energi berkurang',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'bunyi',
+        'question' => 'Jika suhu udara meningkat maka cepat rambat bunyi akan…',
+        'option_a' => 'Menurun',
+        'option_b' => 'Tetap',
+        'option_c' => 'Meningkat',
+        'option_d' => 'Nol',
+        'option_e' => 'Berubah acak',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Suara di aula kosong terdengar tidak jelas. Solusi terbaik adalah…',
-                'option_a' => 'Memperbesar speaker',
-                'option_b' => 'Meninggikan atap',
-                'option_c' => 'Menambahkan bahan penyerap bunyi',
-                'option_d' => 'Membuka jendela',
-                'option_e' => 'Menambah sumber bunyi',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'bunyi',
+        'question' => 'Nada sirene ambulans terdengar lebih tinggi saat mendekat karena…',
+        'option_a' => 'Amplitudo meningkat',
+        'option_b' => 'Panjang gelombang bertambah',
+        'option_c' => 'Frekuensi yang diterima meningkat',
+        'option_d' => 'Cepat rambat meningkat',
+        'option_e' => 'Energi berkurang',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Kotak resonansi pada gitar berfungsi untuk…',
-                'option_a' => 'Mempercepat bunyi',
-                'option_b' => 'Memperkuat bunyi',
-                'option_c' => 'Menghilangkan bunyi',
-                'option_d' => 'Mengubah frekuensi',
-                'option_e' => 'Menahan getaran',
-                'answer' => 1
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'bunyi',
+        'question' => 'Suara di aula kosong terdengar tidak jelas. Solusi terbaik adalah…',
+        'option_a' => 'Memperbesar speaker',
+        'option_b' => 'Meninggikan atap',
+        'option_c' => 'Menambahkan bahan penyerap bunyi',
+        'option_d' => 'Membuka jendela',
+        'option_e' => 'Menambah sumber bunyi',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Pensil terlihat bengkok di dalam air karena cahaya mengalami…',
-                'option_a' => 'Pemantulan',
-                'option_b' => 'Interferensi',
-                'option_c' => 'Pembiasan',
-                'option_d' => 'Difraksi',
-                'option_e' => 'Dispersi',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'bunyi',
+        'question' => 'Kotak resonansi pada gitar berfungsi untuk…',
+        'option_a' => 'Mempercepat bunyi',
+        'option_b' => 'Memperkuat bunyi',
+        'option_c' => 'Menghilangkan bunyi',
+        'option_d' => 'Mengubah frekuensi',
+        'option_e' => 'Menahan getaran',
+        'answer' => 1
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Cahaya dari udara ke kaca akan dibiaskan dengan arah…',
-                'option_a' => 'Menjauhi normal',
-                'option_b' => 'Mendekati normal',
-                'option_c' => 'Sejajar normal',
-                'option_d' => 'Berbalik arah',
-                'option_e' => 'Tidak berubah',
-                'answer' => 1
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'cahaya',
+        'question' => 'Pensil terlihat bengkok di dalam air karena cahaya mengalami…',
+        'option_a' => 'Pemantulan',
+        'option_b' => 'Interferensi',
+        'option_c' => 'Pembiasan',
+        'option_d' => 'Difraksi',
+        'option_e' => 'Dispersi',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Pelangi terbentuk karena kombinasi peristiwa…',
-                'option_a' => 'Pemantulan saja',
-                'option_b' => 'Pembiasan saja',
-                'option_c' => 'Pembiasan dan penguraian cahaya',
-                'option_d' => 'Interferensi',
-                'option_e' => 'Penyerapan cahaya',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'cahaya',
+        'question' => 'Cahaya dari udara ke kaca akan dibiaskan dengan arah…',
+        'option_a' => 'Menjauhi normal',
+        'option_b' => 'Mendekati normal',
+        'option_c' => 'Sejajar normal',
+        'option_d' => 'Berbalik arah',
+        'option_e' => 'Tidak berubah',
+        'answer' => 1
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Cahaya ungu memiliki energi lebih besar dibanding merah karena…',
-                'option_a' => 'Amplitudo lebih besar',
-                'option_b' => 'Frekuensi lebih kecil',
-                'option_c' => 'Frekuensi lebih besar',
-                'option_d' => 'Cepat rambat lebih besar',
-                'option_e' => 'Panjang gelombang lebih besar',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'cahaya',
+        'question' => 'Pelangi terbentuk karena kombinasi peristiwa…',
+        'option_a' => 'Pemantulan saja',
+        'option_b' => 'Pembiasan saja',
+        'option_c' => 'Pembiasan dan penguraian cahaya',
+        'option_d' => 'Interferensi',
+        'option_e' => 'Penyerapan cahaya',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Serat optik dapat mengirim data jarak jauh karena terjadi…',
-                'option_a' => 'Difraksi total',
-                'option_b' => 'Pemantulan total internal',
-                'option_c' => 'Interferensi',
-                'option_d' => 'Resonansi',
-                'option_e' => 'Absorpsi',
-                'answer' => 1
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'cahaya',
+        'question' => 'Cahaya ungu memiliki energi lebih besar dibanding merah karena…',
+        'option_a' => 'Amplitudo lebih besar',
+        'option_b' => 'Frekuensi lebih kecil',
+        'option_c' => 'Frekuensi lebih besar',
+        'option_d' => 'Cepat rambat lebih besar',
+        'option_e' => 'Panjang gelombang lebih besar',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Laser digunakan dalam operasi medis karena…',
-                'option_a' => 'Lebih terang',
-                'option_b' => 'Energi terfokus dan presisi tinggi',
-                'option_c' => 'Panjang gelombang besar',
-                'option_d' => 'Tidak menghasilkan panas',
-                'option_e' => 'Murah digunakan',
-                'answer' => 1
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'cahaya',
+        'question' => 'Serat optik dapat mengirim data jarak jauh karena terjadi…',
+        'option_a' => 'Difraksi total',
+        'option_b' => 'Pemantulan total internal',
+        'option_c' => 'Interferensi',
+        'option_d' => 'Resonansi',
+        'option_e' => 'Absorpsi',
+        'answer' => 1
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Gelombang bunyi berbeda dengan cahaya karena bunyi…',
-                'option_a' => 'Memiliki energi',
-                'option_b' => 'Memerlukan medium untuk merambat',
-                'option_c' => 'Memiliki frekuensi',
-                'option_d' => 'Memiliki amplitudo',
-                'option_e' => 'Memiliki panjang gelombang',
-                'answer' => 1
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'cahaya',
+        'question' => 'Laser digunakan dalam operasi medis karena…',
+        'option_a' => 'Lebih terang',
+        'option_b' => 'Energi terfokus dan presisi tinggi',
+        'option_c' => 'Panjang gelombang besar',
+        'option_d' => 'Tidak menghasilkan panas',
+        'option_e' => 'Murah digunakan',
+        'answer' => 1
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Jika jarak sumber bunyi menjadi dua kali, maka intensitas bunyi menjadi…',
-                'option_a' => 'Dua kali',
-                'option_b' => 'Setengahnya',
-                'option_c' => 'Seperempatnya',
-                'option_d' => 'Empat kali',
-                'option_e' => 'Tetap',
-                'answer' => 2
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'bunyi',
+        'question' => 'Gelombang bunyi berbeda dengan cahaya karena bunyi…',
+        'option_a' => 'Memiliki energi',
+        'option_b' => 'Memerlukan medium untuk merambat',
+        'option_c' => 'Memiliki frekuensi',
+        'option_d' => 'Memiliki amplitudo',
+        'option_e' => 'Memiliki panjang gelombang',
+        'answer' => 1
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Gelombang elektromagnetik dapat merambat di ruang hampa karena…',
-                'option_a' => 'Memiliki amplitudo besar',
-                'option_b' => 'Tidak memerlukan medium',
-                'option_c' => 'Frekuensinya tinggi',
-                'option_d' => 'Panjang gelombangnya kecil',
-                'option_e' => 'Energinya kecil',
-                'answer' => 1
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'bunyi',
+        'question' => 'Jika jarak sumber bunyi menjadi dua kali, maka intensitas bunyi menjadi…',
+        'option_a' => 'Dua kali',
+        'option_b' => 'Setengahnya',
+        'option_c' => 'Seperempatnya',
+        'option_d' => 'Empat kali',
+        'option_e' => 'Tetap',
+        'answer' => 2
+    ],
 
-            [
-                'quiz_id' => 4,
-                'question' => 'Seorang teknisi memilih bahan peredam bunyi untuk studio rekaman. Keputusan ini bertujuan untuk…',
-                'option_a' => 'Mempercepat rambatan bunyi',
-                'option_b' => 'Mengurangi pemantulan bunyi',
-                'option_c' => 'Meningkatkan frekuensi',
-                'option_d' => 'Menambah energi bunyi',
-                'option_e' => 'Mengubah panjang gelombang',
-                'answer' => 1
-            ],
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'cahaya',
+        'question' => 'Gelombang elektromagnetik dapat merambat di ruang hampa karena…',
+        'option_a' => 'Memiliki amplitudo besar',
+        'option_b' => 'Tidak memerlukan medium',
+        'option_c' => 'Frekuensinya tinggi',
+        'option_d' => 'Panjang gelombangnya kecil',
+        'option_e' => 'Energinya kecil',
+        'answer' => 1
+    ],
 
-
-
-        ];
+    [
+        'quiz_id' => 4,
+        'sub_topik' => 'bunyi',
+        'question' => 'Seorang teknisi memilih bahan peredam bunyi untuk studio rekaman. Keputusan ini bertujuan untuk…',
+        'option_a' => 'Mempercepat rambatan bunyi',
+        'option_b' => 'Mengurangi pemantulan bunyi',
+        'option_c' => 'Meningkatkan frekuensi',
+        'option_d' => 'Menambah energi bunyi',
+        'option_e' => 'Mengubah panjang gelombang',
+        'answer' => 1
+    ]
+];
 
         foreach ($questions as $q) {
             Question::create($q);

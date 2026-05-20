@@ -17,7 +17,7 @@ class AuthController extends Controller
 
             // cek role
             if(auth()->user()->role == 'guru'){
-                return redirect('/guru-nilai');
+                return redirect('/guru-siswa');
             }
 
             return redirect('/home');

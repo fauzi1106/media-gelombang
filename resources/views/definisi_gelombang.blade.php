@@ -8,8 +8,8 @@
 
 
     <!-- ====================
-                       KONTEN UTAMA
-                       ==================== -->
+                             KONTEN UTAMA
+                             ==================== -->
     <main class="content">
 
       <h2>Definisi dan Konsep Dasar: Getaran dan Gelombang</h2>
@@ -63,7 +63,7 @@
 
         <!-- ===== HALAMAN 2 ===== -->
         <section id="page-dari-getaran" class="subpage" style="display:none;">
-          <h3>Dari Getaran ke Gelombang</h3>
+          <h3>Getaran & Gelombang</h3>
           <p>
             Jika hanya <b>satu benda</b> yang bergetar (misalnya ujung pegas), kita hanya memiliki <b>getaran</b>.
             Namun, jika getaran itu <b>menyebabkan titik-titik lain di sekitarnya juga ikut bergetar</b>
@@ -187,7 +187,7 @@
               <img src="{{ asset('images/besaran_gelombang.png') }}" style="width: 500px; height: 260px;"
                 alt="Ilustrasi besaran gelombang">
 
-              <p class="image-caption">
+              <p class="caption">
                 Ilustrasi amplitudo (A), panjang gelombang (λ), dan arah rambat gelombang.
               </p>
             </div>
@@ -228,7 +228,7 @@
 
         <!-- ===== HALAMAN 5 ===== -->
         <section id="page-latihan" class="subpage" style="display: none;">
-          <h3>Latihan : Besaran-Besaran Gelombang</h3>
+          <h3>Latihan 1.1 : Besaran-Besaran Gelombang</h3>
           <p>
             Kerjakan soal berikut menggunakan rumus <b>f = 1/T</b> dan <b>v = λ f</b>.
             Pilih tab <b>Frekuensi dari Periode</b>, <b>Cepat Rambat Gelombang</b>,
@@ -237,8 +237,8 @@
           </p>
 
           <!-- ========================
-                            TAB LATIHAN (3 HALAMAN)
-                            ======================== -->
+                                  TAB LATIHAN (3 HALAMAN)
+                                  ======================== -->
           <div class="latihan-tabs-wrapper">
 
             <!-- HEADER TAB -->
@@ -257,8 +257,8 @@
             </div>
 
             <!-- ========================
-                              HALAMAN LATIHAN 1
-                              ======================== -->
+                                    HALAMAN LATIHAN 1
+                                    ======================== -->
             <div id="latihan-1" class="latihan-tab-page latihan-tab-page-active">
 
               <div class="box-diff" style="margin-top:12px;">
@@ -315,8 +315,8 @@
             </div>
 
             <!-- ========================
-                              HALAMAN LATIHAN 2
-                              ======================== -->
+                                    HALAMAN LATIHAN 2
+                                    ======================== -->
             <div id="latihan-2" class="latihan-tab-page">
 
               <div class="box-diff" style="margin-top:12px;">
@@ -379,8 +379,8 @@
             </div>
 
             <!-- ========================
-                              HALAMAN LATIHAN 3
-                              ======================== -->
+                                    HALAMAN LATIHAN 3
+                                    ======================== -->
             <div id="latihan-3" class="latihan-tab-page">
 
               <div class="box-diff" style="margin-top:12px;">
@@ -456,19 +456,14 @@
             <button id="kumpulkan-btn" class="next-btn" style="display:none;">
               📤 Kumpulkan PDF
             </button>
-            <form id="upload-form" action="{{ url('/pengumpulan-gelombang') }}" method="POST"
-              enctype="multipart/form-data" style="display:none; margin-top:15px;">
-
+            <form action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data">
               @csrf
 
-              <input type="file" name="file" accept="application/pdf" required style="margin-bottom:10px;">
+              <input type="hidden" name="latihan_code" value="L11">
 
-              <br>
+              <input type="file" name="file" accept="application/pdf" required>
 
-              <button type="submit" class="next-btn">
-                ✅ Upload Sekarang
-              </button>
-
+              <button type="submit">Upload Jawaban</button>
             </form>
 
           </div>
@@ -820,6 +815,20 @@
         ctx.fillStyle = waterColor;
         ctx.fillRect(0, waterY, W, H - waterY);
 
+        // label AIR berulang
+        ctx.fillStyle = "#374151";
+        ctx.font = "18px Segoe UI";
+        ctx.textAlign = "center";
+
+        const jumlahLabel = 3; // jumlah tulisan air
+        const jarak = W / (jumlahLabel + 1);
+
+        for (let i = 1; i <= jumlahLabel; i++) {
+          ctx.fillText("air", jarak * i, waterY + 40);
+        }
+
+        ctx.textAlign = "left";
+
         ctx.fillStyle = '#334155';
         ctx.font = '13px "Segoe UI", sans-serif';
         ctx.fillText('Klik di area air untuk menjatuhkan batu.', 20, 26);
@@ -1167,6 +1176,13 @@
       });
 
 
+    });
+  </script>
+
+
+  <script>
+    window.addEventListener("beforeunload", function () {
+      kirimProgress("definisi_gelombang", 2);
     });
   </script>
 

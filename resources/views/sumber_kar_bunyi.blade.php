@@ -14,8 +14,8 @@
       <div class="box">
 
         <!-- ====================
-                           HALAMAN 1 – KONSEP DASAR BUNYI
-                           ==================== -->
+                                           HALAMAN 1 – KONSEP DASAR BUNYI
+                                           ==================== -->
         <section id="page-sumber" class="subpage">
           <h3>Sumber Bunyi</h3>
 
@@ -40,8 +40,8 @@
           </div>
 
           <!-- ====================
-                            CONTOH SUMBER BUNYI
-                            ==================== -->
+                                            CONTOH SUMBER BUNYI
+                                            ==================== -->
           <div class="example-row">
 
             <!-- KIRI: TEKS -->
@@ -73,8 +73,8 @@
           </div>
         </section>
         <!-- ====================
-                         HALAMAN 2 – GELOMBANG LONGITUDINAL
-                         ==================== -->
+                                         HALAMAN 2 – GELOMBANG LONGITUDINAL
+                                         ==================== -->
         <section id="page-frekuensi" class="subpage" style="display:none;">
           <h3>Frekuensi dan Tinggi Rendah Bunyi</h3>
 
@@ -240,12 +240,43 @@
 
 
           </div>
+          <div style="margin-top:20px; text-align:center;">
+            <button id="download-pdf-freq" class="next-btn" style="display:none;">
+              📄 Download Hasil Latihan Frekuensi (PDF)
+            </button>
+          </div>
+
+          {{-- ================= UPLOAD PDF JAWABAN ================= --}}
+          <div style="margin-top:25px; text-align:center;">
+
+            @if(session('success'))
+              <div style="color:#059669; font-weight:600; margin-bottom:10px;">
+                {{ session('success') }}
+              </div>
+            @endif
+
+            <form id="upload-form-freq" action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data" style="display:none;">
+              @csrf
+
+              <input type="hidden" name="latihan_code" value="L22">
+
+              <div style="margin-bottom:10px;">
+                <input type="file" name="file" accept="application/pdf" required style="padding:6px;">
+              </div>
+
+              <button type="submit" class="next-btn">
+                Upload Jawaban (PDF)
+              </button>
+
+            </form>
+
+          </div>
         </section>
 
 
         <!-- ====================
-                         HALAMAN 3 – 
-                         ==================== -->
+                                         HALAMAN 3 – 
+                                         ==================== -->
         <section id="page-amplitudo" class="subpage" style="display:none;">
           <h3>Amplitudo dan Kuat Lemah Bunyi</h3>
 
@@ -269,8 +300,8 @@
           </div>
 
           <!-- ====================
-                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
-                            ==================== -->
+                                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
+                                            ==================== -->
           <div class="example-row">
 
             <!-- KIRI: TEKS -->
@@ -296,8 +327,8 @@
           </div>
 
           <!-- ====================
-                            PENEGASAN KONSEP
-                            ==================== -->
+                                            PENEGASAN KONSEP
+                                            ==================== -->
           <div class="box-diff" style="margin-top:12px;">
             <b>Perlu diingat:</b><br>
             Kuat–lemah bunyi <b>tidak mempengaruhi</b> tinggi–rendah bunyi.<br>
@@ -305,8 +336,8 @@
           </div>
         </section>
         <!-- ====================
-                         HALAMAN 4 – 
-                         ==================== -->
+                                         HALAMAN 4 – 
+                                         ==================== -->
         <section id="page-warna" class="subpage" style="display:none;">
           <h3>Warna Bunyi (Timbre)</h3>
 
@@ -331,8 +362,8 @@
           </div>
 
           <!-- ====================
-                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
-                            ==================== -->
+                                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
+                                            ==================== -->
           <div class="example-row">
 
             <!-- KIRI: TEKS -->
@@ -357,8 +388,8 @@
           </div>
 
           <!-- ====================
-                            PENJELASAN TAMBAHAN
-                            ==================== -->
+                                            PENJELASAN TAMBAHAN
+                                            ==================== -->
           <div class="box-diff" style="margin-top:12px;">
             <p><b>Apa yang Menyebabkan Perbedaan Warna Bunyi?</b></p>
             <ul>
@@ -402,6 +433,8 @@
 @endsection
 
   @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
 
@@ -419,6 +452,21 @@
         const pages = $$$(".subpage");
         const navBtns = $$$(".inner-nav-btn");
         let index = 0;
+
+
+        const hasilFreq = {
+          latihan1: null,
+          latihan2: null
+        };
+
+        const downloadFreqBtn = $("download-pdf-freq");
+
+        function cekFreqSelesai() {
+          document.getElementById("upload-form-freq").style.display = "block";
+          if (hasilFreq.latihan1 && hasilFreq.latihan2) {
+            downloadFreqBtn.style.display = "inline-block";
+          }
+        }
 
         /* ====================
            PAGE SWITCH
@@ -515,6 +563,144 @@
            ==================== */
         if (pages.length) showPage(pages[0].id);
 
+
+        $("freq1-btn")?.addEventListener("click", () => {
+
+          const n = $("freq1-n").value.trim();
+          const t = $("freq1-t").value.trim();
+          const jawaban = parseFloat($("freq1-jawaban").value);
+
+          const feedback = $("freq1-feedback");
+
+          const nBenar = 240;
+          const tBenar = 2;
+          const fBenar = 120;
+
+          let pesan = [];
+
+          if (n != nBenar) {
+            pesan.push("Nilai n (jumlah getaran) masih salah.");
+          }
+
+          if (t != tBenar) {
+            pesan.push("Nilai t (waktu) masih salah.");
+          }
+
+          if (isNaN(jawaban)) {
+            pesan.push("Masukkan jawaban frekuensi terlebih dahulu.");
+          } else if (Math.abs(jawaban - fBenar) > 1) {
+            pesan.push("Perhitungan frekuensi masih salah.");
+          }
+
+          if (pesan.length === 0) {
+            feedback.textContent = "Benar! Semua bagian sudah tepat.";
+            feedback.style.color = "#059669";
+          } else {
+            feedback.innerHTML = pesan.join("<br>");
+            feedback.style.color = "#b91c1c";
+          }
+
+          hasilFreq.latihan1 = {
+            judul: "Latihan 1 – Frekuensi Bunyi",
+            soal: "Sumber bunyi bergetar 240 kali dalam 2 detik.",
+            diketahui: `n = ${n} getaran, t = ${t} s`,
+            ditanyakan: "f = ... Hz",
+            jawabanSiswa: jawaban + " Hz",
+            jawabanBenar: "120 Hz"
+          };
+
+          cekFreqSelesai();
+
+        });
+
+
+        $("freq2-btn")?.addEventListener("click", () => {
+
+          const n = $("freq2-n").value.trim();
+          const t = $("freq2-t").value.trim();
+          const jawaban = parseFloat($("freq2-jawaban").value);
+
+          const feedback = $("freq2-feedback");
+
+          const nBenar = 500;
+          const tBenar = 4;
+          const fBenar = 125;
+
+          let pesan = [];
+
+          if (n != nBenar) {
+            pesan.push("Nilai n (jumlah getaran) masih salah.");
+          }
+
+          if (t != tBenar) {
+            pesan.push("Nilai t (waktu) masih salah.");
+          }
+
+          if (isNaN(jawaban)) {
+            pesan.push("Masukkan jawaban frekuensi terlebih dahulu.");
+          } else if (Math.abs(jawaban - fBenar) > 1) {
+            pesan.push("Perhitungan frekuensi masih salah.");
+          }
+
+          if (pesan.length === 0) {
+            feedback.textContent = "Benar! Semua bagian sudah tepat.";
+            feedback.style.color = "#059669";
+          } else {
+            feedback.innerHTML = pesan.join("<br>");
+            feedback.style.color = "#b91c1c";
+          }
+
+          hasilFreq.latihan2 = {
+            judul: "Latihan 2 – Frekuensi Bunyi",
+            soal: "Alat musik bergetar 500 kali dalam 4 detik.",
+            diketahui: `n = ${n} getaran, t = ${t} s`,
+            ditanyakan: "f = ... Hz",
+            jawabanSiswa: jawaban + " Hz",
+            jawabanBenar: "125 Hz"
+          };
+
+          cekFreqSelesai();
+
+        });
+
+
+        downloadFreqBtn?.addEventListener("click", () => {
+
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF();
+
+          let y = 20;
+
+          pdf.setFontSize(16);
+          pdf.text("HASIL LATIHAN FREKUENSI BUNYI", 14, y);
+          y += 10;
+
+          Object.values(hasilFreq).forEach((item) => {
+
+            pdf.text(item.judul, 14, y);
+            y += 8;
+
+            pdf.text("Diketahui: " + item.diketahui, 14, y);
+            y += 8;
+
+            pdf.text("Jawaban Siswa: " + item.jawabanSiswa, 14, y);
+            y += 8;
+
+            pdf.text("Jawaban Benar: " + item.jawabanBenar, 14, y);
+            y += 12;
+
+          });
+
+          pdf.save("hasil_latihan_frekuensi.pdf");
+
+        });
+
+      });
+    </script>
+
+    <script>
+      window.addEventListener("beforeunload", function () {
+        kirimProgress("sumber_kar_bunyi", 9);
       });
     </script>
   @endsection

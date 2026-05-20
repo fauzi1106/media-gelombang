@@ -7,6 +7,8 @@ use App\Http\Controllers\MateriController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeacherAnalysisController;
 use App\Http\Controllers\GelombangSubmissionController;
+use App\Http\Controllers\Guru\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,8 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return view('login'); })->name('login');
+    return view('login');
+})->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
@@ -38,34 +41,42 @@ Route::middleware('auth')->group(function () {
     /* ================= MATERI ================= */
     Route::controller(MateriController::class)->group(function () {
 
-        // Gelombang
-        Route::get('/pengantar_gelombang', 'pengantarGelombang');
-        Route::get('/definisi_gelombang', 'definisiGelombang');
-        Route::get('/jenis_gelombang', 'jenisGelombang');
-        Route::get('/beda_fase_gelombang', 'bedafaseGelombang');
-        Route::get('/prinsip_gelombang', 'prinsipGelombang');
+        /* ==================== GELOMBANG ==================== */
 
-        // Bunyi
-        Route::get('/pengantar_bunyi', 'pengantarBunyi');
-        Route::get('/konsep_perambatan_bunyi', 'konsepPerambatanBunyi');
-        Route::get('/sumber_kar_bunyi', 'sumberKarBunyi');
-        Route::get('/fenomena_apk_bunyi', 'fenomenaApkBunyi');
+        Route::get('/pengantar_gelombang', 'pengantarGelombang')->middleware('cek.urutan');
 
-        // Cahaya
-        Route::get('/pengantar_cahaya', 'pengantarCahaya');
-        Route::get('/sifat_cahaya', 'sifatCahaya');
-        Route::get('/spektrum_cahaya', 'spektrumCahaya');
-        Route::get('/fenomena_apk_cahaya', 'fenomenaApkCahaya');
+        Route::get('/definisi_gelombang', 'definisiGelombang')->middleware('cek.urutan');
+        Route::get('/jenis_gelombang', 'jenisGelombang')->middleware('cek.urutan');
+        Route::get('/beda_fase_gelombang', 'bedafaseGelombang')->middleware('cek.urutan');
+        Route::get('/prinsip_gelombang', 'prinsipGelombang')->middleware('cek.urutan');
 
-        // Kuis
+
+        /* ==================== BUNYI ==================== */
+
+        Route::get('/pengantar_bunyi', 'pengantarBunyi')->middleware('cek.urutan');
+
+        Route::get('/konsep_perambatan_bunyi', 'konsepPerambatanBunyi')->middleware('cek.urutan');
+        Route::get('/sumber_kar_bunyi', 'sumberKarBunyi')->middleware('cek.urutan');
+        Route::get('/fenomena_apk_bunyi', 'fenomenaApkBunyi')->middleware('cek.urutan');
+
+
+        /* ==================== CAHAYA ==================== */
+
+        Route::get('/pengantar_cahaya', 'pengantarCahaya')->middleware('cek.urutan');
+
+        Route::get('/sifat_cahaya', 'sifatCahaya')->middleware('cek.urutan');
+        Route::get('/spektrum_cahaya', 'spektrumCahaya')->middleware('cek.urutan');
+        Route::get('/fenomena_apk_cahaya', 'fenomenaApkCahaya')->middleware('cek.urutan');
+
+
+        /* ==================== KUIS & EVALUASI ==================== */
+
         Route::get('/kuis_gelombang', 'kuisGelombang');
         Route::get('/kuis_bunyi', 'kuisBunyi');
         Route::get('/kuis_cahaya', 'kuisCahaya');
 
-        // Evaluasi
         Route::get('/evaluasi', 'evaluasi');
 
-        // Simpan nilai
         Route::post('/simpan-nilai', 'simpanNilai');
     });
 
@@ -83,6 +94,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/guru-siswa/store', 'storeSiswa');
         Route::put('/guru-siswa/update/{id}', 'updateSiswa');
         Route::delete('/guru-siswa/delete/{id}', 'deleteSiswa');
+
+        Route::get('/guru-progres', 'progres'); // 
 
         Route::post('/guru/update-kkm', 'updateKKM')
             ->name('guru.updateKKM');
@@ -103,6 +116,11 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/pengumpulan-gelombang', [GelombangSubmissionController::class, 'store']);
 
-    Route::get('/guru/pengumpulan-gelombang',[GelombangSubmissionController::class, 'daftar']);
+    Route::get('/guru/pengumpulan-gelombang', [GelombangSubmissionController::class, 'daftar']);
 
+    Route::post('/simpan-progress', [MateriController::class, 'simpanProgress']);
+
+
+    Route::get('/dashboard-guru', [DashboardController::class, 'index'])
+        ->name('guru.dashboard');
 });

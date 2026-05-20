@@ -262,4 +262,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+  <script>
+    window.addEventListener("beforeunload", function () {
+      kirimProgress("beda_fase_gelombang", 4);
+    });
+  </script>
 @endsection

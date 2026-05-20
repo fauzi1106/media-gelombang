@@ -6,6 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Nilai;
+use App\Models\DurasiBelajar;
+use App\Models\MateriLog; // kalau kamu pakai
 
 class User extends Authenticatable
 {
@@ -49,5 +52,28 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function progress()
+    {
+        return $this->hasMany(UserProgress::class);
+    }
+
+    // ================= NILAI =================
+    public function nilais()
+    {
+        return $this->hasMany(Nilai::class);
+    }
+
+    // ================= DURASI =================
+    public function durasiBelajar()
+    {
+        return $this->hasMany(DurasiBelajar::class);
+    }
+
+    // ================= PROGRESS =================
+    public function materiLogs()
+    {
+        return $this->hasMany(MateriLog::class);
     }
 }

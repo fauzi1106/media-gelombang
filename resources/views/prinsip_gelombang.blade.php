@@ -131,103 +131,103 @@
         </section>
 
         {{-- PAGE 3 --}}
-<section id="page-intensitas" class="subpage" style="display:none;">
+        <section id="page-intensitas" class="subpage" style="display:none;">
 
-  <h3>c. Intensitas Gelombang</h3>
+          <h3>c. Intensitas Gelombang</h3>
 
-  <div class="intensitas-split">
+          <div class="intensitas-split">
 
-<div class="example-row">
+            <div class="example-row">
 
-  <!-- KOLOM 1 -->
-  <div class="example-text">
-    <h4>1) Energi & Amplitudo</h4>
+              <!-- KOLOM 1 -->
+              <div class="example-text">
+                <h4>1) Energi & Amplitudo</h4>
 
-    <p>
-      Energi gelombang bergantung pada besar amplitudonya.
-      Semakin besar amplitudo, semakin besar energi yang dibawa.
-    </p>
+                <p>
+                  Energi gelombang bergantung pada besar amplitudonya.
+                  Semakin besar amplitudo, semakin besar energi yang dibawa.
+                </p>
 
-    <p class="rumus-wrapper">
-      <span class="rumus">E ∝ A²</span>
-    </p>
+                <p class="rumus-wrapper">
+                  <span class="rumus">E ∝ A²</span>
+                </p>
 
-    <p><b>Keterangan:</b></p>
-    <ul>
-      <li><b>E</b> = Energi</li>
-      <li><b>A</b> = Amplitudo</li>
-      <li><b>∝</b> dibaca "berbanding lurus dengan"</li>
-    </ul>
+                <p><b>Keterangan:</b></p>
+                <ul>
+                  <li><b>E</b> = Energi</li>
+                  <li><b>A</b> = Amplitudo</li>
+                  <li><b>∝</b> dibaca "berbanding lurus dengan"</li>
+                </ul>
 
-    <p><i>Dibaca:</i>  
-    "Energi berbanding lurus dengan amplitudo kuadrat."</p>
-  </div>
-
-
-  <!-- KOLOM 2 -->
-  <div class="example-text"
-       style="border-left:2px solid #6c6e70; border-right:2px solid #6c6e70; padding:0 20px;">
-
-    <h4>2) Intensitas</h4>
-
-    <p>
-      Intensitas adalah banyaknya energi gelombang
-      yang melewati setiap satuan luas tiap satuan waktu.
-    </p>
-
-    <p class="rumus-wrapper">
-      <span class="rumus">I = P / A</span>
-    </p>
-
-    <p><b>Keterangan:</b></p>
-    <ul>
-      <li><b>I</b> = Intensitas</li>
-      <li><b>P</b> = Daya (energi per detik)</li>
-      <li><b>A</b> = Luas permukaan</li>
-    </ul>
-
-    <p><i>Dibaca:</i>  
-    "Intensitas sama dengan daya dibagi luas."</p>
-  </div>
+                <p><i>Dibaca:</i>
+                  "Energi berbanding lurus dengan amplitudo kuadrat."</p>
+              </div>
 
 
-  <!-- KOLOM 3 -->
-  <div class="example-text">
-    <h4>3) Hukum 1/r²</h4>
+              <!-- KOLOM 2 -->
+              <div class="example-text"
+                style="border-left:2px solid #6c6e70; border-right:2px solid #6c6e70; padding:0 20px;">
 
-    <p>
-      Jika gelombang menyebar ke segala arah,
-      intensitasnya akan berkurang saat menjauh dari sumber.
-    </p>
+                <h4>2) Intensitas</h4>
 
-    <p class="rumus-wrapper">
-      <span class="rumus">I ∝ 1 / r²</span>
-    </p>
+                <p>
+                  Intensitas adalah banyaknya energi gelombang
+                  yang melewati setiap satuan luas tiap satuan waktu.
+                </p>
 
-    <p><b>Keterangan:</b></p>
-    <ul>
-      <li><b>r</b> = Jarak dari sumber</li>
-      <li><b>∝</b> = berbanding lurus dengan</li>
-    </ul>
+                <p class="rumus-wrapper">
+                  <span class="rumus">I = P / A</span>
+                </p>
 
-    <p><i>Dibaca:</i>  
-    "Intensitas berbanding terbalik dengan kuadrat jarak."</p>
+                <p><b>Keterangan:</b></p>
+                <ul>
+                  <li><b>I</b> = Intensitas</li>
+                  <li><b>P</b> = Daya (energi per detik)</li>
+                  <li><b>A</b> = Luas permukaan</li>
+                </ul>
 
-    <p>
-      Jika jarak menjadi 2 kali, maka intensitas menjadi 1/4 kali.
-    </p>
-  </div>
+                <p><i>Dibaca:</i>
+                  "Intensitas sama dengan daya dibagi luas."</p>
+              </div>
 
-</div>
 
-  </div>
+              <!-- KOLOM 3 -->
+              <div class="example-text">
+                <h4>3) Hukum 1/r²</h4>
 
-</section>
+                <p>
+                  Jika gelombang menyebar ke segala arah,
+                  intensitasnya akan berkurang saat menjauh dari sumber.
+                </p>
+
+                <p class="rumus-wrapper">
+                  <span class="rumus">I ∝ 1 / r²</span>
+                </p>
+
+                <p><b>Keterangan:</b></p>
+                <ul>
+                  <li><b>r</b> = Jarak dari sumber</li>
+                  <li><b>∝</b> = berbanding lurus dengan</li>
+                </ul>
+
+                <p><i>Dibaca:</i>
+                  "Intensitas berbanding terbalik dengan kuadrat jarak."</p>
+
+                <p>
+                  Jika jarak menjadi 2 kali, maka intensitas menjadi 1/4 kali.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
 
         {{-- PAGE 4 --}}
         <section id="page-latihan" class="subpage" style="display:none;">
 
-          <h3>Latihan: Prinsip Intensitas Gelombang</h3>
+          <h3>Latihan 1.3: Prinsip Intensitas Gelombang</h3>
 
           <p>
             Kerjakan latihan berikut. Pilih tab soal,
@@ -418,6 +418,20 @@
             </button>
           </div>
 
+          <div style="margin-top:20px; text-align:center;">
+            <form action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+
+              <input type="hidden" name="latihan_code" value="L12">
+
+              <input type="file" name="file" accept="application/pdf" required>
+
+              <button type="submit" class="next-btn">
+                Upload Jawaban (PDF)
+              </button>
+
+            </form>
+          </div>
         </section>
 
 
@@ -892,5 +906,10 @@
     });
   </script>
 
+  <script>
+    window.addEventListener("beforeunload", function () {
+      kirimProgress("prinsip_gelombang", 5);
+    });
+  </script>
 
 @endsection

@@ -14,7 +14,7 @@
         </button>
 
         <div class="table-wrapper">
-            <table>
+            <table id="tabelSiswa" class="display">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -232,9 +232,9 @@
         @endif
 
 
-        function confirmUpdate() {
-            document.getElementById('updateConfirmModal').style.display = 'flex';
-        }
+            function confirmUpdate() {
+                document.getElementById('updateConfirmModal').style.display = 'flex';
+            }
 
         function closeUpdateConfirm() {
             document.getElementById('updateConfirmModal').style.display = 'none';
@@ -243,5 +243,27 @@
         function submitUpdate() {
             document.getElementById('editForm').submit();
         }
+
+        $(document).ready(function () {
+
+            $('#tabelSiswa').DataTable({
+                pageLength: 10,
+                lengthMenu: [10, 25, 50],
+                ordering: true,
+                autoWidth: false,
+
+                language: {
+                    search: "Cari siswa:",
+                    lengthMenu: "Tampilkan _MENU_ data",
+                    info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ siswa",
+                    paginate: {
+                        next: "Next",
+                        previous: "Prev"
+                    }
+                }
+
+            });
+
+        });
     </script>
 @endsection

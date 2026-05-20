@@ -322,4 +322,11 @@ document.addEventListener("DOMContentLoaded", () => {
   showPage(order[0]);
 });
 </script>
+
+  <script>
+    window.addEventListener("beforeunload", function () {
+      kirimProgress("spektrum_cahaya", 14);
+    });
+  </script>
+
 @endsection

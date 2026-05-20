@@ -2,6 +2,152 @@
 
 @section('title', 'Data Nilai Siswa')
 
+@section('style')
+    <style>
+        .soal-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 40px);
+            gap: 8px;
+            justify-content: center;
+            overflow: visible;
+        }
+
+        .detail-modal table {
+            overflow: visible;
+        }
+
+        .soal-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .soal-box.correct {
+            background: #22c55e;
+        }
+
+        .soal-box.wrong {
+            background: #ef4444;
+        }
+
+        .detail-modal table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .detail-modal table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .detail-modal th,
+        .detail-modal td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+            overflow: visible;
+        }
+
+        .detail-modal th:nth-child(5),
+        .detail-modal td:nth-child(5) {
+            width: 420px;
+        }
+
+        .soal-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 34px);
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .soal-box {
+            width: 34px;
+            height: 34px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .detail-modal {
+            width: 95%;
+            max-width: 1200px;
+            overflow: visible !important;
+        }
+
+        .detail-modal tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .detail-modal td:nth-child(6) {
+            white-space: nowrap;
+            font-size: 13px;
+        }
+
+        .kkm-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .kkm-box input {
+            width: 80px;
+        }
+
+        .soal-box {
+            position: relative;
+            cursor: pointer;
+            overflow: visible;
+        }
+
+        .tooltip-jawaban {
+            position: absolute;
+            top: 50%;
+            left: 110%;
+            transform: translateY(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            width: 320px;
+            max-width: 320px;
+            line-height: 1.4;
+            text-align: left;
+            display: none;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity .2s ease;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .tooltip-jawaban b {
+            color: #38bdf8;
+        }
+
+        .soal-box:hover .tooltip-jawaban {
+            display: block;
+            opacity: 1;
+        }
+
+        .table-wrapper {
+            overflow: visible !important;
+        }
+    </style>
+@endsection
+
 @section('guru-content')
 
 
@@ -21,18 +167,14 @@
             <form method="POST" action="{{ route('guru.updateKKM') }}" class="kkm-form">
                 @csrf
 
-                <select name="quiz_id" id="quizSelect" required>
-                    @foreach($quizzes as $quiz)
-                        <option value="{{ $quiz->id }}">
-                            {{ $quiz->title }}
-                        </option>
-                    @endforeach
-                </select>
-                <label style="font-size:13px; font-weight:600;">
-                    KKM Saat Ini
+                <input type="hidden" name="quiz_id" id="quizIdInput" value="1">
+
+                <label id="kkmLabel" style="font-size:13px;font-weight:600;">
+                    KKM Kuis Gelombang
                 </label>
-                <input type="number" id="kkmInput" name="kkm" min="0" max="10" required
-                    value="{{ $nilai->first()->quiz->kkm }}">
+
+                <input type="number" id="kkmInput" name="kkm" min="0" max="100" required
+                    value="{{ $quizzes->first()->kkm ?? 70 }}">
 
                 <button type="button" class="btn" onclick="confirmKKM()">
                     Update KKM
@@ -76,7 +218,7 @@
         {{-- TABEL --}}
         <div class="table-wrapper">
 
-            <table>
+            <table id="tabelNilai" class="display">
                 <thead>
                     <tr>
                         <th>Nama Siswa</th>
@@ -102,7 +244,7 @@
                                         @if($n->score >= $n->quiz->kkm)
                                             <span class="status-tuntas">Tuntas</span>
                                         @else
-                                            <span class="status-belum">Belum Tuntas</span>
+                                            <span class="status-belum"><b>Belum Tuntas</b></span>
                                         @endif
                                     </td>
 
@@ -125,7 +267,7 @@
 
             {{-- MODAL DETAIL --}}
             <div id="detailModal" class="modal-overlay" style="display:none;">
-                <div class="modal" style="max-width:700px;">
+                <div class="modal detail-modal">
 
                     <h3>Detail Percobaan</h3>
 
@@ -139,8 +281,8 @@
                                 <th>Percobaan</th>
                                 <th>Nilai</th>
                                 <th>Benar</th>
-                                <th>Total Soal</th>
                                 <th>Waktu</th>
+                                <th>Soal</th>
                                 <th>Tanggal</th>
                                 <th>Aksi</th>
                             </tr>
@@ -196,8 +338,25 @@
                 .forEach(btn => btn.classList.remove('active'));
 
             el.classList.add('active');
-        }
 
+            // update hidden quiz_id
+            document.getElementById('quizIdInput').value = id;
+
+            // update KKM value
+            if (kkmData[id] !== undefined) {
+                document.getElementById('kkmInput').value = kkmData[id];
+            }
+
+            const labelMap = {
+                1: "KKM Kuis Gelombang",
+                2: "KKM Kuis Bunyi",
+                3: "KKM Kuis Cahaya",
+                4: "KKM Evaluasi"
+            };
+
+            document.getElementById('kkmLabel').innerText = labelMap[id];
+
+        }
 
 
 
@@ -220,35 +379,67 @@
                 const menit = Math.floor(durasi / 60);
                 const detik = durasi % 60;
 
-                tbody.innerHTML += `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${d.score}</td>
-                        <td>${d.benar ?? '-'}</td>
-                        <td>${d.total_soal ?? '-'}</td>
-                        <td>${menit}m ${detik}s</td>
-                        <td>${d.created_at}</td>
-                        <td>
-                            <button class="btn-delete" onclick="deleteAttempt(${d.id})">
-                                X
-                            </button>
-                        </td>
-                    </tr>
-                `;
+                const answers = d.answers || [];
 
-                let answerHtml = `<tr><td colspan="7"><div class="answer-detail">`;
+                // hitung jumlah benar
+                const benar = answers.filter(a => a.is_correct).length;
 
-                (d.answers || []).forEach((a, i) => {
-                    answerHtml += `
-                        <div class="answer-box ${a.is_correct ? 'correct' : 'wrong'}">
-                            ${i + 1}
-                        </div>
-                    `;
+                let soalHtml = `<div class="soal-grid">`;
+
+                answers.forEach((a, i) => {
+
+                    const soal = a.question ?? '-';
+
+                    const A = a.option_a ?? '-';
+                    const B = a.option_b ?? '-';
+                    const C = a.option_c ?? '-';
+                    const D = a.option_d ?? '-';
+                    const E = a.option_e ?? '-';
+
+                    const jawaban = optionToLetter(a.answer);
+                    const kunci = optionToLetter(a.correct_answer);
+
+                    soalHtml += `
+                                        <div class="soal-box ${a.is_correct ? 'correct' : 'wrong'}">
+                                            ${i + 1}
+
+                                    <div class="tooltip-jawaban">
+
+                                    <b>Soal ${i + 1}</b><br>
+                                    ${soal}<br><br>
+
+                                    A. ${A}<br>
+                                    B. ${B}<br>
+                                    C. ${C}<br>
+                                    D. ${D}<br>
+                                    E. ${E}<br><br>
+
+                                    <b>Jawaban siswa :</b> ${jawaban}<br>
+                                    <b>Kunci :</b> ${kunci}
+
+                                    </div>
+
+                                        </div>
+                                    `;
                 });
 
-                answerHtml += `</div></td></tr>`;
+                soalHtml += `</div>`;
 
-                tbody.innerHTML += answerHtml;
+                tbody.innerHTML += `
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td>${d.score}</td>
+                                    <td><b>${benar}</b></td>
+                                    <td>${menit}m ${detik}s</td>
+                                    <td>${soalHtml}</td>
+                                    <td>${new Date(d.created_at).toLocaleString('id-ID')}</td>
+                                    <td>
+                                        <button class="btn-delete" onclick="deleteAttempt(${d.id})">
+                                            X
+                                        </button>
+                                    </td>
+                                </tr>
+                            `;
             });
 
             document.getElementById('detailModal').style.display = 'flex';
@@ -272,11 +463,11 @@
                 'Konfirmasi Hapus',
                 'Apakah yakin ingin menghapus percobaan ini?',
                 `
-                            <button class="btn-delete" onclick="processDeleteAttempt(${id})">
-                                Ya, Hapus
-                            </button>
-                            <button class="btn" onclick="closeActionModal()">Batal</button>
-                            `
+                                <button class="btn-delete" onclick="processDeleteAttempt(${id})">
+                                    Ya, Hapus
+                                </button>
+                                <button class="btn" onclick="closeActionModal()">Batal</button>
+                                `
             );
         }
 
@@ -306,11 +497,11 @@
                 'Konfirmasi Hapus Semua',
                 'Apakah yakin ingin menghapus SEMUA percobaan siswa ini?',
                 `
-                            <button class="btn-delete" onclick="processDeleteAll(${user}, ${quiz})">
-                                Ya, Hapus Semua
-                            </button>
-                            <button class="btn" onclick="closeActionModal()">Batal</button>
-                            `
+                                <button class="btn-delete" onclick="processDeleteAll(${user}, ${quiz})">
+                                    Ya, Hapus Semua
+                                </button>
+                                <button class="btn" onclick="closeActionModal()">Batal</button>
+                                 `
             );
         }
 
@@ -352,15 +543,7 @@
             @foreach($quizzes as $quiz)
                 {{ $quiz->id }}: {{ $quiz->kkm }},
             @endforeach
-                                };
-
-        document.getElementById('quizSelect').addEventListener('change', function () {
-            const selectedQuiz = this.value;
-
-            if (kkmData[selectedQuiz] !== undefined) {
-                document.getElementById('kkmInput').value = kkmData[selectedQuiz];
-            }
-        });
+                                                  };
 
         function showModal(type, title, message, buttonsHtml) {
 
@@ -400,9 +583,9 @@
                 'Konfirmasi Perubahan',
                 'Apakah yakin ingin mengubah nilai KKM?',
                 `
-                            <button class="btn" onclick="submitKKM()">Ya, Update</button>
-                            <button class="btn-delete" onclick="closeActionModal()">Batal</button>
-                            `
+                                <button class="btn" onclick="submitKKM()">Ya, Update</button>
+                                <button class="btn-delete" onclick="closeActionModal()">Batal</button>
+                                `
             );
         }
 
@@ -410,5 +593,31 @@
             document.querySelector('.kkm-form').submit();
         }
     </script>
+    <script>
+        $(document).ready(function () {
 
+            $('#tabelNilai').DataTable({
+                pageLength: 10,
+                lengthMenu: [10, 25, 50],
+                order: [[2, 'desc']], // sort berdasarkan nilai tertinggi
+
+                language: {
+                    search: "Cari siswa:",
+                    lengthMenu: "Tampilkan _MENU_ data",
+                    info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    paginate: {
+                        next: "Next",
+                        previous: "Prev"
+                    }
+                }
+
+            });
+
+        });
+
+        function optionToLetter(index) {
+            const map = ['A', 'B', 'C', 'D', 'E'];
+            return map[index] ?? '-';
+        }
+    </script>
 @endsection

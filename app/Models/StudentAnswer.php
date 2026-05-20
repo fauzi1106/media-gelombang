@@ -17,4 +17,10 @@ class StudentAnswer extends Model
     {
         return $this->belongsTo(QuizAttempt::class, 'attempt_id');
     }
+
+    // 🔥 TAMBAHKAN INI
+    public function question()
+    {
+        return $this->belongsTo(Question::class, 'question_id');
+    }
 }

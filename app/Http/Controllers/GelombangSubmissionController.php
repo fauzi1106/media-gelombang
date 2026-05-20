@@ -23,17 +23,23 @@ class GelombangSubmissionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:pdf|max:2048'
+            'file' => 'required|mimes:pdf|max:2048',
+            'latihan_code' => 'required'
+        ], [
+            'file.required' => 'Silakan pilih file PDF terlebih dahulu.',
+            'file.mimes' => 'File harus berformat PDF.',
+            'file.max' => 'Ukuran file maksimal 2 MB.'
         ]);
 
         $file = $request->file('file');
 
-        $fileName = 'gelombang_' . Auth::id() . '_' . time() . '.pdf';
+        $fileName = $request->latihan_code . '_' . Auth::id() . '_' . time() . '.pdf';
 
         $path = $file->storeAs('submissions', $fileName, 'public');
 
         GelombangSubmission::create([
             'user_id' => Auth::id(),
+            'latihan_code' => $request->latihan_code,
             'file_path' => $path
         ]);
 

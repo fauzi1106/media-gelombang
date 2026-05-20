@@ -113,4 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
 );
 </script>
 
+<script>
+window.addEventListener("beforeunload", function () {
+    kirimProgress("pengantar_gelombang", 1);
+});
+</script>
+
 @endsection

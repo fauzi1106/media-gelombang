@@ -142,5 +142,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+
+  <script>
+    window.addEventListener("beforeunload", function () {
+      kirimProgress("pengantar_cahaya", 12);
+    });
+  </script>
 @endsection
  

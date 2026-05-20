@@ -7,20 +7,11 @@
   <div class="materi-gelombang">
 
 
-    <!-- ====================
-                 KONTEN UTAMA
-                 ==================== -->
+
     <main class="content">
-
       <h1>Jenis-Jenis Gelombang</h1>
-
       <div class="box">
-
-        <!-- =========================
-                     HALAMAN 1 – ARAH GETAR vs RAMBAT
-                     ========================= -->
         <section id="page-jenis-dasar" class="subpage">
-
           <p>
             Gelombang dapat diklasifikasikan berdasarkan <b>arah getar partikel</b>
             terhadap <b>arah rambat gelombang</b>.
@@ -63,7 +54,7 @@
               </p>
 
               <ul>
-                <li>Memiliki <b>puncak</b> dan <b>lembah</b>.</li>
+                <li>Memiliki <b>Bukit</b> dan <b>lembah</b>.</li>
                 <li>Contoh: gelombang pada tali dan gelombang cahaya.</li>
               </ul>
 
@@ -164,7 +155,7 @@
                      ========================= -->
         <section id="page-latihan" class="subpage" style="display:none;">
           <div class="latihan" id="latihan">
-            <h2>Latihan Klasifikasi Gelombang</h2>
+            <h2>Latihan 1.2 Klasifikasi Gelombang</h2>
             <p>
               Pada halaman ini ada <b>dua tabel latihan</b>:
             </p>
@@ -484,6 +475,12 @@
         "hasilMediumArea"
       );
 
+    });
+  </script>
+
+    <script>
+    window.addEventListener("beforeunload", function () {
+      kirimProgress("jenis_gelombang", 3);
     });
   </script>
 

@@ -2,22 +2,89 @@
 
 @section('content')
 
+    @php
+        $userId = auth()->id();
+
+        $kkmGelombang = \App\Models\Quiz::find(1)->kkm ?? 70;
+        $kkmBunyi = \App\Models\Quiz::find(2)->kkm ?? 70;
+        $kkmCahaya = \App\Models\Quiz::find(3)->kkm ?? 70;
+
+        $lulusGelombang = \App\Models\Nilai::where('user_id', $userId)
+            ->where('quiz_id', 1)
+            ->where('score', '>=', $kkmGelombang)
+            ->exists();
+
+        $lulusBunyi = \App\Models\Nilai::where('user_id', $userId)
+            ->where('quiz_id', 2)
+            ->where('score', '>=', $kkmBunyi)
+            ->exists();
+
+
+        $lulusCahaya = \App\Models\Nilai::where('user_id', $userId)
+            ->where('quiz_id', 3)
+            ->where('score', '>=', $kkmCahaya)
+            ->exists();
+
+        $urutan = [
+            'pengantar_gelombang',
+            'definisi_gelombang',
+            'jenis_gelombang',
+            'beda_fase_gelombang',
+            'prinsip_gelombang',
+            'kuis_gelombang',
+            'pengantar_bunyi',
+            'konsep_perambatan_bunyi',
+            'sumber_kar_bunyi',
+            'fenomena_apk_bunyi',
+            'kuis_bunyi',
+            'pengantar_cahaya',
+            'sifat_cahaya',
+            'spektrum_cahaya',
+            'fenomena_apk_cahaya',
+            'kuis_cahaya',
+            'evaluasi',
+        ];
+
+        $progressIndex = 5;
+
+        if ($lulusGelombang) {
+            $progressIndex = 10;
+        }
+
+        if ($lulusBunyi) {
+            $progressIndex = 15;
+        }
+
+        if ($lulusCahaya) {
+            $progressIndex = 16;
+        }
+
+        function menuLink($route, $label, $urutan, $progressIndex)
+        {
+            $i = array_search($route, $urutan);
+            $locked = $i > $progressIndex;
+
+            $url = $locked ? '#' : url($route);
+            $active = request()->is($route) ? 'active-link' : '';
+            $lockedClass = $locked ? 'locked' : '';
+
+            $icon = $locked ? ' 🔒' : '';
+
+            $onclick = $locked ? 'onclick="return false;"' : '';
+
+            return "<a href='{$url}' class='{$active} {$lockedClass}' {$onclick} title='" . ($locked ? "Selesaikan materi sebelumnya dulu" : "") . "'>{$label}{$icon}</a>";
+        }
+    @endphp
+
     <div class="layout-wrapper">
 
-        {{-- ======================
-        SIDEBAR SISWA
-        ======================= --}}
+        {{-- SIDEBAR --}}
         <aside class="sidebar">
 
-            <div class="sidebar-header">
-                📘 Gelombang, Bunyi, dan Cahaya
-            </div>
 
             <div class="menu">
 
-                {{-- ======================
-                GELOMBANG
-                ======================= --}}
+                {{-- GELOMBANG --}}
                 <div class="menu-section">
 
                     <div class="menu-item has-toggle" data-target="sub-gelombang">
@@ -27,40 +94,17 @@
 
                     <div class="submenu" id="sub-gelombang">
 
-                        <a href="/pengantar_gelombang"
-                            class="{{ request()->is('pengantar_gelombang') ? 'active-link' : '' }}">
-                            Pengantar
-                        </a>
-
-                        <a href="/definisi_gelombang"
-                            class="{{ request()->is('definisi_gelombang') ? 'active-link' : '' }}">
-                            Definisi
-                        </a>
-
-                        <a href="/jenis_gelombang" class="{{ request()->is('jenis_gelombang') ? 'active-link' : '' }}">
-                            Jenis Gelombang
-                        </a>
-
-                        <a href="/beda_fase_gelombang"
-                            class="{{ request()->is('beda_fase_gelombang') ? 'active-link' : '' }}">
-                            Beda Fase
-                        </a>
-
-                        <a href="/prinsip_gelombang" class="{{ request()->is('prinsip_gelombang') ? 'active-link' : '' }}">
-                            Prinsip Gelombang
-                        </a>
-
-                        <a href="/kuis_gelombang" class="{{ request()->is('kuis_gelombang') ? 'active-link' : '' }}">
-                            Kuis 1
-                        </a>
+                        {!! menuLink('pengantar_gelombang', 'Pengantar', $urutan, $progressIndex) !!}
+                        {!! menuLink('definisi_gelombang', 'Definisi', $urutan, $progressIndex) !!}
+                        {!! menuLink('jenis_gelombang', 'Jenis Gelombang', $urutan, $progressIndex) !!}
+                        {!! menuLink('beda_fase_gelombang', 'Beda Fase', $urutan, $progressIndex) !!}
+                        {!! menuLink('prinsip_gelombang', 'Prinsip Gelombang', $urutan, $progressIndex) !!}
+                        {!! menuLink('kuis_gelombang', 'Kuis 1', $urutan, $progressIndex) !!}
 
                     </div>
                 </div>
 
-
-                {{-- ======================
-                GELOMBANG BUNYI
-                ======================= --}}
+                {{-- BUNYI --}}
                 <div class="menu-section">
 
                     <div class="menu-item has-toggle" data-target="sub-bunyi">
@@ -70,35 +114,16 @@
 
                     <div class="submenu" id="sub-bunyi">
 
-                        <a href="/pengantar_bunyi" class="{{ request()->is('pengantar_bunyi') ? 'active-link' : '' }}">
-                            Pengantar
-                        </a>
-
-                        <a href="/konsep_perambatan_bunyi"
-                            class="{{ request()->is('konsep_perambatan_bunyi') ? 'active-link' : '' }}">
-                            Konsep Dasar
-                        </a>
-
-                        <a href="/sumber_kar_bunyi" class="{{ request()->is('sumber_kar_bunyi') ? 'active-link' : '' }}">
-                            Sumber & Karakteristik
-                        </a>
-
-                        <a href="/fenomena_apk_bunyi"
-                            class="{{ request()->is('fenomena_apk_bunyi') ? 'active-link' : '' }}">
-                            Fenomena & Aplikasi
-                        </a>
-
-                        <a href="/kuis_bunyi" class="{{ request()->is('kuis_bunyi') ? 'active-link' : '' }}">
-                            Kuis 2
-                        </a>
+                        {!! menuLink('pengantar_bunyi', 'Pengantar', $urutan, $progressIndex) !!}
+                        {!! menuLink('konsep_perambatan_bunyi', 'Konsep Dasar', $urutan, $progressIndex) !!}
+                        {!! menuLink('sumber_kar_bunyi', 'Sumber & Karakteristik', $urutan, $progressIndex) !!}
+                        {!! menuLink('fenomena_apk_bunyi', 'Fenomena & Aplikasi', $urutan, $progressIndex) !!}
+                        {!! menuLink('kuis_bunyi', 'Kuis 2', $urutan, $progressIndex) !!}
 
                     </div>
                 </div>
 
-
-                {{-- ======================
-                GELOMBANG CAHAYA
-                ======================= --}}
+                {{-- CAHAYA --}}
                 <div class="menu-section">
 
                     <div class="menu-item has-toggle" data-target="sub-cahaya">
@@ -108,48 +133,26 @@
 
                     <div class="submenu" id="sub-cahaya">
 
-                        <a href="/pengantar_cahaya" class="{{ request()->is('pengantar_cahaya') ? 'active-link' : '' }}">
-                            Pengantar
-                        </a>
-
-                        <a href="/sifat_cahaya" class="{{ request()->is('sifat_cahaya') ? 'active-link' : '' }}">
-                            Sifat Cahaya
-                        </a>
-
-                        <a href="/spektrum_cahaya" class="{{ request()->is('spektrum_cahaya') ? 'active-link' : '' }}">
-                            Spektrum Cahaya
-                        </a>
-
-                        <a href="/fenomena_apk_cahaya"
-                            class="{{ request()->is('fenomena_apk_cahaya') ? 'active-link' : '' }}">
-                            Fenomena & Aplikasi
-                        </a>
-
-                        <a href="/kuis_cahaya" class="{{ request()->is('kuis_cahaya') ? 'active-link' : '' }}">
-                            Kuis 3
-                        </a>
+                        {!! menuLink('pengantar_cahaya', 'Pengantar', $urutan, $progressIndex) !!}
+                        {!! menuLink('sifat_cahaya', 'Sifat Cahaya', $urutan, $progressIndex) !!}
+                        {!! menuLink('spektrum_cahaya', 'Spektrum Cahaya', $urutan, $progressIndex) !!}
+                        {!! menuLink('fenomena_apk_cahaya', 'Fenomena & Aplikasi', $urutan, $progressIndex) !!}
+                        {!! menuLink('kuis_cahaya', 'Kuis 3', $urutan, $progressIndex) !!}
 
                     </div>
                 </div>
 
-                {{-- ======================
-                EVALUASI AKHIR
-                ====================== --}}
+                {{-- EVALUASI --}}
                 <div class="menu-section">
+                    <div class="menu-item">
+                        {!! menuLink('evaluasi', 'Evaluasi Akhir', $urutan, $progressIndex) !!}
+                    </div>
+                </div>
 
-                    <a href="/evaluasi" class="menu-item {{ request()->is('evaluasi') ? 'active' : '' }}"
-                        style="display:block;">
-                        📝 Evaluasi Akhir
-                    </a>
-
-                </div>      
             </div>
         </aside>
 
-
-        {{-- ======================
-        CONTENT
-        ======================= --}}
+        {{-- CONTENT --}}
         <main class="main-content">
             @yield('siswa-content')
         </main>

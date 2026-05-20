@@ -7,16 +7,11 @@
   <div class="materi-gelombang">
 
 
-    <!-- ====================
-               KONTEN UTAMA
-               ==================== -->
     <main class="content">
       <h2>Konsep Dasar & Perambatan Bunyi</h2>
 
       <div class="box">
-        <!-- ====================
-                HALAMAN 1 – KONSEP DASAR BUNYI
-                ==================== -->
+
         <section id="page-konsep" class="subpage">
           <h3>Konsep Dasar Bunyi</h3>
 
@@ -51,13 +46,6 @@
             </div>
 
           </div>
-        </section>
-
-
-        <!-- ====================
-                HALAMAN 2 – GELOMBANG LONGITUDINAL
-                ==================== -->
-        <section id="page-longitudinal" class="subpage" style="display:none;">
           <h3>Bunyi sebagai Gelombang Longitudinal</h3>
 
           <p>
@@ -81,12 +69,11 @@
           <p style="margin-top:10px;">
             (Opsional untuk Anda tambahkan nanti: gambar/skema rapatan-regangan atau grafik tekanan vs posisi).
           </p>
+
         </section>
 
 
-        <!-- ====================
-                HALAMAN 3 – PERAMBATAN BUNYI DALAM MEDIUM
-                ==================== -->
+
         <section id="page-medium" class="subpage" style="display:none;">
           <h3>Perambatan Bunyi dalam Medium</h3>
 
@@ -101,16 +88,13 @@
             Perbedaan yang terlihat hanya disebabkan oleh <b>jenis medium</b>.
           </div>
 
-          <!-- ====================
-                  TABEL PERBANDINGAN
-                  ==================== -->
           <div style="overflow-x:auto; margin-top:12px;">
             <table style="
-                  width:100%;
-                  border-collapse:collapse;
-                  min-width:720px;
-                  font-size:0.95rem;
-                ">
+                width:100%;
+                border-collapse:collapse;
+                min-width:720px;
+                font-size:0.95rem;
+              ">
               <thead>
                 <tr style="background:#0f766e; color:#ffffff;">
                   <th style="padding:10px; border:1px solid #0f766e;">Medium</th>
@@ -150,9 +134,9 @@
                     lebih cepat daripada gas.
                   </td>
                   <td style="padding:10px; border:1px solid #cbd5e1; text-align:center;">
-                    <video src="{{ asset('video/cair.mp4') }}" controls muted loop
+                    <img src="{{ asset('video/cair.gif') }}" controls muted loop
                       style="max-width:220px; border-radius:6px;">
-                    </video>
+                    </img>
                   </td>
                 </tr>
 
@@ -167,9 +151,9 @@
                     bunyi merambat <b>paling lambat</b>.
                   </td>
                   <td style="padding:10px; border:1px solid #cbd5e1; text-align:center;">
-                    <video src="{{ asset('video/gas.mp4') }}" controls muted loop
+                    <img src="{{ asset('video/gas.gif') }}" controls muted loop
                       style="max-width:220px; border-radius:6px;">
-                    </video>
+                    </img>
                   </td>
                 </tr>
               </tbody>
@@ -183,57 +167,9 @@
         </section>
 
         <!-- ====================
-             HALAMAN 4 – LATIHAN PEMAHAMAN KONSEP BUNYI
-             ==================== -->
-        <section id="page-latihan-konsep-bunyi" class="subpage" style="display:none;">
-
-          <h3>Latihan Pemahaman Konsep Bunyi</h3>
-
-          <p>
-            Jawablah pertanyaan berikut untuk menguji pemahaman konsep dasar bunyi
-            sebelum melanjutkan ke perhitungan cepat rambat bunyi.
-          </p>
-
-          <div class="box-diff">
-            <p><b>Soal 1</b></p>
-            <p>Mengapa bunyi tidak dapat merambat di ruang hampa?</p>
-
-            <textarea id="jawaban-konsep-1" placeholder="Tuliskan jawabanmu di sini..."
-              style="width:100%; min-height:80px;"></textarea>
-
-            <button class="next-btn" onclick="cekKonsep(1)">Cek Jawaban</button>
-            <p id="feedback-konsep-1"></p>
-          </div>
-
-          <div class="box-diff" style="margin-top:16px;">
-            <p><b>Soal 2</b></p>
-            <p>Mengapa bunyi merambat lebih cepat pada zat padat dibandingkan gas?</p>
-
-            <textarea id="jawaban-konsep-2" placeholder="Tuliskan jawabanmu di sini..."
-              style="width:100%; min-height:80px;"></textarea>
-
-            <button class="next-btn" onclick="cekKonsep(2)">Cek Jawaban</button>
-            <p id="feedback-konsep-2"></p>
-          </div>
-
-          <div class="box-diff" style="margin-top:16px;">
-            <p><b>Soal 3</b></p>
-            <p>Pada perambatan bunyi, apa yang sebenarnya berpindah?</p>
-
-            <textarea id="jawaban-konsep-3" placeholder="Tuliskan jawabanmu di sini..."
-              style="width:100%; min-height:80px;"></textarea>
-
-            <button class="next-btn" onclick="cekKonsep(3)">Cek Jawaban</button>
-            <p id="feedback-konsep-3"></p>
-          </div>
-
-        </section>
-
-
-        <!-- ====================
-                HALAMAN 5 – CEPAT RAMBAT BUNYI
-                ==================== -->
-        <section id="page-cepat" class="subpage" style="display:none;">
+                                                     HALAMAN 4 – LATIHAN PEMAHAMAN KONSEP BUNYI
+                                                     ==================== -->
+        <section id="page-rumus" class="subpage" style="display:none;">
 
           <h3>Cepat Rambat Bunyi</h3>
 
@@ -379,262 +315,292 @@
 
           <hr style="margin:30px 0;">
 
-          <h3>Latihan Cepat Rambat Bunyi</h3>
-
-          <p>
-            Kerjakan latihan berikut setelah memahami rumus cepat rambat bunyi.
-            Tuliskan besaran yang diketahui dan yang ditanyakan sebelum menghitung.
-          </p>
-
-          <div class="latihan-tabs-wrapper">
-
-            <!-- ================= TAB HEADER ================= -->
-            <div class="latihan-tabs-header">
-              <button class="latihan-tab-btn latihan-tab-active" data-target="latihan-1">
-                Zat Padat
-              </button>
-              <button class="latihan-tab-btn" data-target="latihan-2">
-                Zat Cair
-              </button>
-              <button class="latihan-tab-btn" data-target="latihan-3">
-                Gas
-              </button>
-            </div>
-
-            <!-- =================================================
-                    TAB 1 — ZAT PADAT
-                    ================================================= -->
-            <div id="latihan-1" class="latihan-tab-page latihan-tab-page-active">
-
-              <!-- CONTOH -->
-              <div class="box-diff">
-                <p><b>Contoh Soal – Cepat Rambat Bunyi pada Zat Padat</b></p>
-
-                <!-- SOAL CONTOH -->
-                <p>
-                  Sebuah batang logam memiliki modulus elastisitas
-                  <b>E = 2 × 10¹¹ N/m²</b> dan massa jenis
-                  <b>ρ = 8.000 kg/m³</b>.
-                  Tentukan cepat rambat bunyi pada batang logam tersebut.
-                </p>
-
-                <p><b>Diketahui:</b></p>
-                <ul>
-                  <li>E = 2 × 10¹¹ N/m²</li>
-                  <li>ρ = 8.000 kg/m³</li>
-                </ul>
-
-                <p><b>Ditanyakan:</b></p>
-                <p>v = ... ?</p>
-
-                <p><b>Penyelesaian:</b></p>
-                <p>
-                  Rumus cepat rambat bunyi pada zat padat:
-                  <br><b>v = √(E / ρ)</b>
-                </p>
-                <p>
-                  v = √(2 × 10¹¹ / 8000)
-                  <br>v ≈ <b>5000 m/s</b>
-                </p>
-              </div>
-
-
-              <!-- LATIHAN -->
-              <div class="box-diff" style="margin-top:16px;">
-                <p><b>Soal 1 – Zat Padat</b></p>
-
-                <!-- BLOK SOAL -->
-                <p>
-                  Sebuah bahan padat memiliki modulus elastisitas
-                  <b>E = 9 × 10¹⁰ N/m²</b> dan massa jenis
-                  <b>ρ = 9000 kg/m³</b>.
-                  Tentukan cepat rambat bunyi pada bahan tersebut.
-                </p>
-
-                <p><b>Diketahui:</b></p>
-                <p>
-                  E =
-                  <input type="text" id="padat-E" style="width:120px;">
-                  N/m²
-                </p>
-                <p>
-                  ρ =
-                  <input type="text" id="padat-rho" style="width:120px;">
-                  kg/m³
-                </p>
-
-                <p><b>Ditanyakan:</b></p>
-                <p>v = ... ?</p>
-
-                <p><b>Jawaban:</b></p>
-                <p>
-                  v =
-                  <input type="number" id="padat-jawaban" style="width:100px;"> m/s
-                  <button class="next-btn" id="padat-btn">Cek Jawaban</button>
-                </p>
-
-                <p id="padat-feedback"></p>
-              </div>
-
-            </div>
-
-            <!-- =================================================
-                    TAB 2 — ZAT CAIR
-                    ================================================= -->
-            <div id="latihan-2" class="latihan-tab-page">
-
-              <!-- CONTOH -->
-              <div class="box-diff">
-                <p><b>Contoh Soal – Cepat Rambat Bunyi pada Zat Cair</b></p>
-                <p>
-                  Sebuah zat cair memiliki modulus bulk
-                  <b>B = 2,2 × 10⁹ N/m²</b> dan massa jenis
-                  <b>ρ = 1000 kg/m³</b>.
-                  Hitung cepat rambat bunyi pada zat cair tersebut.
-                </p>
-
-                <p><b>Diketahui:</b></p>
-                <ul>
-                  <li>B = 2,2 × 10⁹ N/m²</li>
-                  <li>ρ = 1000 kg/m³</li>
-                </ul>
-
-                <p><b>Ditanyakan:</b></p>
-                <p>v = ... ?</p>
-
-                <p><b>Penyelesaian:</b></p>
-                <p>
-                  v = √(B / ρ)<br>
-                  v ≈ <b>1480 m/s</b>
-                </p>
-              </div>
-
-              <!-- LATIHAN -->
-              <div class="box-diff" style="margin-top:16px;">
-                <p><b>Soal 2 – Zat Cair</b></p>
-
-                <!-- KALIMAT SOAL -->
-                <p>
-                  Sebuah zat cair memiliki modulus bulk
-                  <b>B = 1,6 × 10⁹ N/m²</b>
-                  dan massa jenis
-                  <b>ρ = 1000 kg/m³</b>.
-                  Tentukan cepat rambat bunyi pada zat cair tersebut.
-                </p>
-
-                <p><b>Diketahui:</b></p>
-                <ul>
-                  <li>B = 1,6 × 10⁹ N/m²</li>
-                  <li>ρ = 1000 kg/m³</li>
-                </ul>
-
-                <p><b>Ditanyakan:</b></p>
-                <p>v = … ?</p>
-
-                <p><b>Jawaban:</b></p>
-                <p>
-                  v =
-                  <input type="number" id="cair-jawaban" style="width:100px;"> m/s
-                  <button class="next-btn" id="cair-btn">Cek Jawaban</button>
-                </p>
-
-                <p id="cair-feedback"></p>
-              </div>
-
-
-            </div>
-
-
-            <!-- =================================================
-                    TAB 3 — GAS
-                    ================================================= -->
-            <div id="latihan-3" class="latihan-tab-page">
-
-              <!-- CONTOH -->
-              <div class="box-diff">
-                <p><b>Contoh Soal – Cepat Rambat Bunyi di Udara</b></p>
-                <p>
-                  Suhu udara di suatu tempat adalah
-                  <b>20°C</b>.
-                  Tentukan cepat rambat bunyi di udara pada suhu tersebut.
-                </p>
-
-                <p><b>Diketahui:</b></p>
-                <ul>
-                  <li>T = 20°C</li>
-                </ul>
-
-                <p><b>Ditanyakan:</b></p>
-                <p>v = ... ?</p>
-
-                <p><b>Penyelesaian:</b></p>
-                <p>
-                  v ≈ 331 + 0,6T<br>
-                  v = 331 + (0,6 × 20)<br>
-                  v = <b>343 m/s</b>
-                </p>
-              </div>
-
-              <!-- LATIHAN -->
-              <div class="box-diff" style="margin-top:16px;">
-                <p><b>Soal 3 – Gas</b></p>
-
-                <!-- KALIMAT SOAL -->
-                <p>
-                  Suhu udara di suatu tempat adalah
-                  <b>30°C</b>.
-                  Tentukan cepat rambat bunyi di udara pada suhu tersebut.
-                </p>
-
-                <p><b>Diketahui:</b></p>
-                <ul>
-                  <li>T = 30°C</li>
-                </ul>
-
-                <p><b>Ditanyakan:</b></p>
-                <p>v = … ?</p>
-
-                <p><b>Jawaban:</b></p>
-                <p>
-                  v =
-                  <input type="number" id="gas-jawaban" style="width:100px;"> m/s
-                  <button class="next-btn" id="gas-btn">Cek Jawaban</button>
-                </p>
-
-                <p id="gas-feedback"></p>
-              </div>
-            </div>
-
-          </div>
-          <div style="margin-top:20px; text-align:center;">
-            <button id="download-pdf-btn" class="next-btn" style="display:none;">
-              📄 Download Hasil Latihan Bunyi (PDF)
-            </button>
-          </div>
         </section>
 
+
         <!-- ====================
-                HALAMAN 6 – LATIHAN CEPAT RAMBAT BUNYI
-                ==================== -->
-        {{-- <section id="page-latihan-bunyi" class="subpage" style="display:none;">
+                                             HALAMAN 4 – CEPAT RAMBAT BUNYI
+                                            ==================== -->
+        <section id="page-latihan" class="subpage" style="display:none;">
+          <div id="area-pdf">
+            <h3>Latihan Cepat Rambat Bunyi</h3>
+
+            <p>
+              Kerjakan latihan berikut setelah memahami rumus cepat rambat bunyi.
+              Tuliskan besaran yang diketahui dan yang ditanyakan sebelum menghitung.
+            </p>
+
+            <div class="latihan-tabs-wrapper">
+
+              <!-- ================= TAB HEADER ================= -->
+              <div class="latihan-tabs-header">
+                <button class="latihan-tab-btn latihan-tab-active" data-target="latihan-1">
+                  Zat Padat
+                </button>
+                <button class="latihan-tab-btn" data-target="latihan-2">
+                  Zat Cair
+                </button>
+                <button class="latihan-tab-btn" data-target="latihan-3">
+                  Gas
+                </button>
+              </div>
+
+              <!-- =================================================
+                                                            TAB 1 — ZAT PADAT
+                                                            ================================================= -->
+              <div id="latihan-1" class="latihan-tab-page latihan-tab-page-active">
+
+                <!-- CONTOH -->
+                <div class="box-diff">
+                  <p><b>Contoh Soal – Cepat Rambat Bunyi pada Zat Padat</b></p>
+
+                  <!-- SOAL CONTOH -->
+                  <p>
+                    Sebuah batang logam memiliki modulus elastisitas
+                    <b>E = 2 × 10¹¹ N/m²</b> dan massa jenis
+                    <b>ρ = 8.000 kg/m³</b>.
+                    Tentukan cepat rambat bunyi pada batang logam tersebut.
+                  </p>
+
+                  <p><b>Diketahui:</b></p>
+                  <ul>
+                    <li>E = 2 × 10¹¹ N/m²</li>
+                    <li>ρ = 8.000 kg/m³</li>
+                  </ul>
+
+                  <p><b>Ditanyakan:</b></p>
+                  <p>v = ... ?</p>
+
+                  <p><b>Penyelesaian:</b></p>
+                  <p>
+                    Rumus cepat rambat bunyi pada zat padat:
+                    <br><b>v = √(E / ρ)</b>
+                  </p>
+                  <p>
+                    v = √(2 × 10¹¹ / 8000)
+                    <br>v ≈ <b>5000 m/s</b>
+                  </p>
+                </div>
 
 
+                <!-- LATIHAN -->
+                <div class="box-diff" style="margin-top:16px;">
+                  <p><b>Soal 1 – Zat Padat</b></p>
 
-        </section> --}}
+                  <!-- BLOK SOAL -->
+                  <p>
+                    Sebuah bahan padat memiliki modulus elastisitas
+                    <b>E = 9 × 10¹⁰ N/m²</b> dan massa jenis
+                    <b>ρ = 9000 kg/m³</b>.
+                    Tentukan cepat rambat bunyi pada bahan tersebut.
+                  </p>
+
+                  <p><b>Diketahui:</b></p>
+                  <p>
+                    E =
+                    <input type="text" id="padat-E" style="width:120px;">
+                    N/m²
+                  </p>
+                  <p>
+                    ρ =
+                    <input type="text" id="padat-rho" style="width:120px;">
+                    kg/m³
+                  </p>
+
+                  <p><b>Ditanyakan:</b></p>
+                  <p>v = ... ?</p>
+
+                  <p><b>Jawaban:</b></p>
+                  <p>
+                    v =
+                    <input type="number" id="padat-jawaban" style="width:100px;"> m/s
+                    <button class="next-btn" id="padat-btn">Cek Jawaban</button>
+                  </p>
+
+                  <p id="padat-feedback"></p>
+                </div>
+
+              </div>
+
+              <!-- =================================================
+                                                            TAB 2 — ZAT CAIR
+                                                            ================================================= -->
+              <div id="latihan-2" class="latihan-tab-page">
+
+                <!-- CONTOH -->
+                <div class="box-diff">
+                  <p><b>Contoh Soal – Cepat Rambat Bunyi pada Zat Cair</b></p>
+                  <p>
+                    Sebuah zat cair memiliki modulus bulk
+                    <b>B = 2,2 × 10⁹ N/m²</b> dan massa jenis
+                    <b>ρ = 1000 kg/m³</b>.
+                    Hitung cepat rambat bunyi pada zat cair tersebut.
+                  </p>
+
+                  <p><b>Diketahui:</b></p>
+                  <ul>
+                    <li>B = 2,2 × 10⁹ N/m²</li>
+                    <li>ρ = 1000 kg/m³</li>
+                  </ul>
+
+                  <p><b>Ditanyakan:</b></p>
+                  <p>v = ... ?</p>
+
+                  <p><b>Penyelesaian:</b></p>
+                  <p>
+                    v = √(B / ρ)<br>
+                    v ≈ <b>1480 m/s</b>
+                  </p>
+                </div>
+
+                <!-- LATIHAN -->
+                <div class="box-diff" style="margin-top:16px;">
+                  <p><b>Soal 2 – Zat Cair</b></p>
+
+                  <!-- KALIMAT SOAL -->
+                  <p>
+                    Sebuah zat cair memiliki modulus bulk
+                    <b>B = 1,6 × 10⁹ N/m²</b>
+                    dan massa jenis
+                    <b>ρ = 1000 kg/m³</b>.
+                    Tentukan cepat rambat bunyi pada zat cair tersebut.
+                  </p>
+
+                  <p><b>Diketahui:</b></p>
+
+                  <p>
+                    B =
+                    <input type="text" id="cair-B" style="width:120px;">
+                    N/m²
+                  </p>
+
+                  <p>
+                    ρ =
+                    <input type="text" id="cair-rho" style="width:120px;">
+                    kg/m³
+                  </p>
+
+                  <p><b>Ditanyakan:</b></p>
+                  <p>v = … ?</p>
+
+                  <p><b>Jawaban:</b></p>
+                  <p>
+                    v =
+                    <input type="number" id="cair-jawaban" style="width:100px;"> m/s
+                    <button class="next-btn" id="cair-btn">Cek Jawaban</button>
+                  </p>
+
+                  <p id="cair-feedback"></p>
+                </div>
 
 
+              </div>
+
+
+              <!-- =================================================
+                                                            TAB 3 — GAS
+                                                            ================================================= -->
+              <div id="latihan-3" class="latihan-tab-page">
+
+                <!-- CONTOH -->
+                <div class="box-diff">
+                  <p><b>Contoh Soal – Cepat Rambat Bunyi di Udara</b></p>
+                  <p>
+                    Suhu udara di suatu tempat adalah
+                    <b>20°C</b>.
+                    Tentukan cepat rambat bunyi di udara pada suhu tersebut.
+                  </p>
+
+                  <p><b>Diketahui:</b></p>
+                  <ul>
+                    <li>T = 20°C</li>
+                  </ul>
+
+                  <p><b>Ditanyakan:</b></p>
+                  <p>v = ... ?</p>
+
+                  <p><b>Penyelesaian:</b></p>
+                  <p>
+                    v ≈ 331 + 0,6T<br>
+                    v = 331 + (0,6 × 20)<br>
+                    v = <b>343 m/s</b>
+                  </p>
+                </div>
+
+                <!-- LATIHAN -->
+                <div class="box-diff" style="margin-top:16px;">
+                  <p><b>Soal 3 – Gas</b></p>
+
+                  <!-- KALIMAT SOAL -->
+                  <p>
+                    Suhu udara di suatu tempat adalah
+                    <b>30°C</b>.
+                    Tentukan cepat rambat bunyi di udara pada suhu tersebut.
+                  </p>
+
+                  <p><b>Diketahui:</b></p>
+
+                  <p>
+                    T =
+                    <input type="text" id="gas-T" style="width:120px;">
+                    °C
+                  </p>
+
+                  <p><b>Ditanyakan:</b></p>
+                  <p>v = … ?</p>
+
+                  <p><b>Jawaban:</b></p>
+                  <p>
+                    v =
+                    <input type="number" id="gas-jawaban" style="width:100px;"> m/s
+                    <button class="next-btn" id="gas-btn">Cek Jawaban</button>
+                  </p>
+
+                  <p id="gas-feedback"></p>
+                </div>
+              </div>
+
+            </div>
+            <div style="margin-top:20px; text-align:center;">
+              <button id="download-pdf-btn" class="next-btn" style="display:none;">
+                📄 Download Hasil Latihan Bunyi (PDF)
+              </button>
+            </div>
+            <div style="margin-top:25px; text-align:center;">
+              @if(session('success'))
+                <div style="color:#059669; font-weight:600; margin-bottom:10px;">
+                  {{ session('success') }}
+                </div>
+              @endif
+              <form id="upload-form" action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data" style="display:none;">
+                @csrf
+
+                <input type="hidden" name="latihan_code" value="L21">
+
+                <div style="margin-bottom:10px;">
+                  <input type="file" name="file" accept="application/pdf" required style="padding:6px;">
+                </div>
+
+                <button type="submit" class="next-btn">
+                  Upload Jawaban (PDF)
+                </button>
+
+              </form>
+
+            </div>
+          </div>
+        </section>
       </div>
       <!-- =========================
-             NAVIGASI HALAMAN INTERNAL
-             ========================= -->
+                                                     NAVIGASI HALAMAN INTERNAL
+                                                     ========================= -->
       <div class="inner-navigation">
         <button id="inner-prev" class="next-btn">Previous</button>
 
         <button class="next-btn inner-nav-btn" data-target="page-konsep">1</button>
-        <button class="next-btn inner-nav-btn" data-target="page-longitudinal">2</button>
-        <button class="next-btn inner-nav-btn" data-target="page-medium">3</button>
-        <button class="next-btn inner-nav-btn" data-target="page-latihan-konsep-bunyi">4</button>
-        <button class="next-btn inner-nav-btn" data-target="page-cepat">5</button>
+        <button class="next-btn inner-nav-btn" data-target="page-medium">2</button>
+        <button class="next-btn inner-nav-btn" data-target="page-rumus">3</button>
+        <button class="next-btn inner-nav-btn" data-target="page-latihan">4</button>
 
         <button id="inner-next" class="next-btn">Next</button>
       </div>
@@ -666,28 +632,31 @@
       const downloadBtn = document.getElementById("download-pdf-btn");
 
       function cekSelesai() {
+        document.getElementById("upload-form").style.display = "block";
         if (hasil.padat && hasil.cair && hasil.gas) {
           downloadBtn.style.display = "inline-block";
         }
       }
 
+
       /* =============================
          SIMPAN HASIL ZAT PADAT
          ============================= */
       document.getElementById("padat-btn")?.addEventListener("click", () => {
+        const E = document.getElementById("padat-E").value;
+        const rho = document.getElementById("padat-rho").value;
         const jawaban = document.getElementById("padat-jawaban").value;
 
-        if (!jawaban) return;
+        if (!E || !rho || !jawaban) return;
 
         hasil.padat = {
           judul: "Soal 1 – Cepat Rambat Bunyi pada Zat Padat",
-          soal: "Bahan padat memiliki E = 9 × 10¹⁰ N/m² dan ρ = 9000 kg/m³. Tentukan cepat rambat bunyi.",
-          diketahui: "E = 9 × 10¹⁰ N/m², ρ = 9000 kg/m³",
+          soal: "Bahan padat memiliki E = 9 × 10¹⁰ N/m² dan ρ = 9000 kg/m³.",
+          diketahui: `E = ${E} N/m², ρ = ${rho} kg/m³`,
           ditanyakan: "v = ... ?",
           jawabanSiswa: jawaban + " m/s",
           jawabanBenar: "≈ 3160 m/s"
         };
-
         cekSelesai();
       });
 
@@ -734,52 +703,64 @@
       /* =============================
          GENERATE PDF
          ============================= */
-      downloadBtn?.addEventListener("click", () => {
+      downloadBtn.addEventListener("click", () => {
 
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF();
 
         let y = 15;
 
-        pdf.setFontSize(15);
+        pdf.setFontSize(16);
         pdf.text("HASIL LATIHAN CEPAT RAMBAT BUNYI", 14, y);
         y += 10;
 
-        pdf.setFontSize(11);
+        pdf.setFontSize(12);
         pdf.text("Materi: Konsep Dasar & Perambatan Bunyi", 14, y);
-        y += 10;
+        y += 12;
 
-        Object.values(hasil).forEach((item, i) => {
+        Object.values(hasil).forEach((item) => {
 
           pdf.setFont(undefined, "bold");
-          pdf.text(`${i + 1}. ${item.judul}`, 14, y);
-          y += 7;
+          pdf.text(item.judul, 14, y);
+          y += 8;
 
           pdf.setFont(undefined, "normal");
-          pdf.text("Soal:", 14, y); y += 5;
-          pdf.text(item.soal, 18, y, { maxWidth: 170 }); y += 8;
 
-          pdf.text("Diketahui:", 14, y); y += 5;
-          pdf.text(item.diketahui, 18, y); y += 6;
+          pdf.text("Soal:", 14, y);
+          y += 6;
+          pdf.text(item.soal, 18, y, { maxWidth: 170 });
+          y += 10;
 
-          pdf.text("Ditanyakan:", 14, y); y += 5;
-          pdf.text(item.ditanyakan, 18, y); y += 6;
+          pdf.text("Diketahui:", 14, y);
+          y += 6;
+          pdf.text(item.diketahui, 18, y);
+          y += 8;
 
-          pdf.text("Jawaban Siswa:", 14, y); y += 5;
-          pdf.text(item.jawabanSiswa, 18, y); y += 6;
+          pdf.text("Ditanyakan:", 14, y);
+          y += 6;
+          pdf.text(item.ditanyakan, 18, y);
+          y += 8;
 
-          pdf.text("Jawaban Benar:", 14, y); y += 5;
-          pdf.text(item.jawabanBenar, 18, y); y += 10;
+          pdf.text("Jawaban Siswa:", 14, y);
+          y += 6;
+          pdf.text(item.jawabanSiswa, 18, y);
+          y += 8;
+
+          pdf.text("Jawaban Benar:", 14, y);
+          y += 6;
+          pdf.text(item.jawabanBenar, 18, y);
+
+          y += 12;
 
           if (y > 260) {
             pdf.addPage();
-            y = 15;
+            y = 20;
           }
+
         });
 
         pdf.save("hasil_latihan_cepat_rambat_bunyi.pdf");
       });
-
     });
   </script>
 
@@ -810,50 +791,62 @@
 
     // zat padat
     document.getElementById("padat-btn")?.addEventListener("click", () => {
-      const v = parseFloat(document.getElementById("padat-jawaban").value);
-      const kunci = 3162; // √(9×10^10 / 9000)
 
-      if (isNaN(v)) {
-        feedback("padat-feedback", false, "Lengkapi jawaban terlebih dahulu.");
+      const E = document.getElementById("padat-E").value;
+      const rho = document.getElementById("padat-rho").value;
+      const v = parseFloat(document.getElementById("padat-jawaban").value);
+
+      const kunci = 3162;
+
+      if (!E || !rho || isNaN(v)) {
+        feedback("padat-feedback", false, "Lengkapi semua nilai terlebih dahulu.");
         return;
       }
 
       Math.abs(v - kunci) < 50
         ? feedback("padat-feedback", true, "Benar! v ≈ 3162 m/s.")
         : feedback("padat-feedback", false, "Periksa kembali rumus v = √(E / ρ).");
+
     });
 
     // zat cair
     document.getElementById("cair-btn")?.addEventListener("click", () => {
-      const v = parseFloat(document.getElementById("cair-jawaban").value);
-      const kunci = 1265; // √(1,6×10^9 / 1000)
 
-      if (isNaN(v)) {
-        feedback("cair-feedback", false, "Lengkapi jawaban terlebih dahulu.");
+      const B = document.getElementById("cair-B").value;
+      const rho = document.getElementById("cair-rho").value;
+      const v = parseFloat(document.getElementById("cair-jawaban").value);
+
+      const kunci = 1265;
+
+      if (!B || !rho || isNaN(v)) {
+        feedback("cair-feedback", false, "Lengkapi semua nilai terlebih dahulu.");
         return;
       }
 
       Math.abs(v - kunci) < 30
         ? feedback("cair-feedback", true, "Benar! v ≈ 1265 m/s.")
         : feedback("cair-feedback", false, "Gunakan rumus v = √(B / ρ).");
+
     });
 
     // GAS
     document.getElementById("gas-btn")?.addEventListener("click", () => {
-      const T = parseFloat(document.getElementById("gas-T").value);
-      const v = parseFloat(document.getElementById("gas-jawaban").value);
-      const kunci = 349; // 331 + 0,6 × 30
 
-      if (isNaN(T) || isNaN(v)) {
-        feedback("gas-feedback", false, "Lengkapi suhu dan jawaban.");
+      const T = document.getElementById("gas-T").value;
+      const v = parseFloat(document.getElementById("gas-jawaban").value);
+
+      const kunci = 349;
+
+      if (!T || isNaN(v)) {
+        feedback("gas-feedback", false, "Lengkapi semua nilai terlebih dahulu.");
         return;
       }
 
       Math.abs(v - kunci) < 1
         ? feedback("gas-feedback", true, "Benar! v = 331 + 0,6 × 30 = 349 m/s.")
         : feedback("gas-feedback", false, "Gunakan rumus v ≈ 331 + 0,6T.");
-    });
 
+    });
 
 
     const pages = document.querySelectorAll(".subpage");
@@ -863,10 +856,9 @@
 
     const order = [
       "page-konsep",
-      "page-longitudinal",
       "page-medium",
-      "page-latihan-konsep-bunyi",
-      "page-cepat"
+      "page-rumus",
+      "page-latihan"
     ];
 
 
@@ -902,30 +894,13 @@
     // awal
     showPage(order[0]);
 
-    function cekKonsep(no) {
 
-      const feedback = document.getElementById(`feedback-konsep-${no}`);
+  </script>
 
-      let pesan = "";
-
-      if (no === 1) {
-        pesan = "Benar jika jawabanmu menyebutkan bahwa bunyi memerlukan medium untuk merambat, sedangkan ruang hampa tidak memiliki partikel yang dapat bergetar.";
-      }
-
-      if (no === 2) {
-        pesan = "Benar jika jawabanmu menjelaskan bahwa partikel zat padat lebih rapat sehingga getaran dapat diteruskan lebih cepat.";
-      }
-
-      if (no === 3) {
-        pesan = "Benar jika jawabanmu menyebutkan bahwa yang berpindah adalah energi getaran, bukan partikel mediumnya.";
-      }
-
-      feedback.textContent = pesan;
-      feedback.style.color = "#059669";
-      feedback.style.fontWeight = "600";
-    }
-
-
+  <script>
+    window.addEventListener("beforeunload", function () {
+      kirimProgress("konsep_perambatan_bunyi", 8);
+    });
   </script>
 
 @endsection
