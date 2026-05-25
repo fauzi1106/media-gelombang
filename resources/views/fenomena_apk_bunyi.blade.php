@@ -610,8 +610,8 @@
                     </p>
 
                     <div style="text-align:center; margin-top:20px;">
-                        <video id="videoResonansi" width="900" controls preload="auto">
-                            <source src="{{ asset('video/resonansi_fix.mp4') }}" type="video/mp4">
+                        <video id="videoResonansi" width="900" controls>
+                            <source src="{{ asset('media/resonansi_fix.mp4') }}" type="video/mp4">
                             Browser tidak mendukung video.
                         </video>
                     </div>

@@ -338,13 +338,12 @@
 
           <p>
             Video berikut menunjukkan percobaan difraksi cahaya menggunakan laser.
-            Perhatikan bagaimana cahaya menyebar setelah melewati celah sempit
-            dan membentuk pola terang dan gelap.
+            Perhatikan dengan seksama agar kamu dapat mengerjakan lembar kerja setelah video selesai.
           </p>
 
           <div style="text-align:center; margin-top:20px;">
             <video id="videoDifraksi" width="900" controls preload="auto">
-              <source src="{{ asset('video/difraksi_cahaya.mp4') }}" type="video/mp4">
+              <source src="{{ asset('media/difraksi_cahaya.mp4') }}" type="video/mp4">
               Browser tidak mendukung video.
             </video>
           </div>
