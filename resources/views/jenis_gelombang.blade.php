@@ -38,7 +38,7 @@
             </div>
 
             <div class="media-box">
-              <img src="{{ asset('video/longitudinal.gif') }}" alt="Ilustrasi Gelombang Longitudinal" class="media-gif">
+              <img src="{{ asset('media/longitudinal.gif') }}" alt="Ilustrasi Gelombang Longitudinal" class="media-gif">
             </div>
 
           </div>
@@ -62,7 +62,7 @@
             </div>
 
             <div class="media-box">
-              <img src="{{ asset('video/transversal.gif') }}" alt="Ilustrasi Gelombang Transversal" class="media-gif">
+              <img src="{{ asset('media/transversal.gif') }}" alt="Ilustrasi Gelombang Transversal" class="media-gif">
             </div>
 
           </div>

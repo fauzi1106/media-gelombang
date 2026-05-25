@@ -116,7 +116,7 @@
                   </td>
                   <td style="padding:10px; border:1px solid #cbd5e1; text-align:center;">
                     <!-- GANTI SRC DENGAN VIDEO / GIF CANVA -->
-                    <img src="{{ asset('video/padat.gif') }}" controls muted loop
+                    <img src="{{ asset('media/padat.gif') }}" controls muted loop
                       style="max-width:220px; border-radius:6px;">
                     </img>
                     <!-- atau <img src="padat.gif" style="max-width:220px;"> -->
@@ -134,7 +134,7 @@
                     lebih cepat daripada gas.
                   </td>
                   <td style="padding:10px; border:1px solid #cbd5e1; text-align:center;">
-                    <img src="{{ asset('video/cair.gif') }}" controls muted loop
+                    <img src="{{ asset('media/cair.gif') }}" controls muted loop
                       style="max-width:220px; border-radius:6px;">
                     </img>
                   </td>
@@ -151,7 +151,7 @@
                     bunyi merambat <b>paling lambat</b>.
                   </td>
                   <td style="padding:10px; border:1px solid #cbd5e1; text-align:center;">
-                    <img src="{{ asset('video/gas.gif') }}" controls muted loop
+                    <img src="{{ asset('media/gas.gif') }}" controls muted loop
                       style="max-width:220px; border-radius:6px;">
                     </img>
                   </td>
@@ -498,8 +498,8 @@
 
 
               <!-- =================================================
-                                                            TAB 3 — GAS
-                                                            ================================================= -->
+                TAB 3 — GAS
+                ================================================= -->
               <div id="latihan-3" class="latihan-tab-page">
 
                 <!-- CONTOH -->
