@@ -117,8 +117,8 @@
         }
 
         /* =========================
-                                                                                                                           AREA PDF (LKS CETAK)
-                                                                                                                        ========================= */
+                                                                                                                                       AREA PDF (LKS CETAK)
+                                                                                                                                    ========================= */
         #area-pdf {
             background: white;
             padding: 30px;
@@ -132,8 +132,8 @@
 
 
         /* =========================
-                                                                           LKS ACTION LAYOUT
-                                                                        ========================= */
+                                                                                       LKS ACTION LAYOUT
+                                                                                    ========================= */
 
         .lks-actions {
             margin-top: 30px;
@@ -232,8 +232,8 @@
         }
 
         /* =========================
-                               PETUNJUK LKS
-                            ========================= */
+                                           PETUNJUK LKS
+                                        ========================= */
 
         .petunjuk-lks {
             background: #eff6ff;
@@ -254,8 +254,8 @@
         }
 
         /* =========================
-                               MODAL RESPONSIVE
-                            ========================= */
+                                           MODAL RESPONSIVE
+                                        ========================= */
 
         .modal-lks-content {
             width: 95%;
@@ -610,10 +610,7 @@
                     </p>
 
                     <div style="text-align:center; margin-top:20px;">
-                        <video id="videoResonansi" width="900" controls>
-                            <source src="{{ asset('media/resonansi_fix.mp4') }}" type="video/mp4">
-                            Browser tidak mendukung video.
-                        </video>
+                        <div id="player"></div>
                     </div>
 
                     <!-- Navigasi Video -->
@@ -853,11 +850,11 @@
                         <td>
                             <select id="jawab1">
                                 <option value="">--pilih jawaban--</option>
-<option>Tidak Menghasilkan Bunyi</option>
-<option>Bunyi Lemah</option>
-<option>Bunyi Nyaring</option>
-<option>Nada Lebih Rendah</option>
-<option>Bunyi Singkat</option>
+                                <option>Tidak Menghasilkan Bunyi</option>
+                                <option>Bunyi Lemah</option>
+                                <option>Bunyi Nyaring</option>
+                                <option>Nada Lebih Rendah</option>
+                                <option>Bunyi Singkat</option>
                             </select>
                         </td>
                     </tr>
@@ -868,11 +865,11 @@
                         <td>
                             <select id="jawab2">
                                 <option value="">--pilih jawaban--</option>
-<option>Tidak Menghasilkan Bunyi</option>
-<option>Bunyi Lemah</option>
-<option>Bunyi Nyaring</option>
-<option>Nada Lebih Rendah</option>
-<option>Bunyi Singkat</option>
+                                <option>Tidak Menghasilkan Bunyi</option>
+                                <option>Bunyi Lemah</option>
+                                <option>Bunyi Nyaring</option>
+                                <option>Nada Lebih Rendah</option>
+                                <option>Bunyi Singkat</option>
                             </select>
                         </td>
                     </tr>
@@ -883,11 +880,11 @@
                         <td>
                             <select id="jawab3">
                                 <option value="">--pilih jawaban--</option>
-<option>Tidak Menghasilkan Bunyi</option>
-<option>Bunyi Lemah</option>
-<option>Bunyi Nyaring</option>
-<option>Nada Lebih Rendah</option>
-<option>Bunyi Singkat</option>
+                                <option>Tidak Menghasilkan Bunyi</option>
+                                <option>Bunyi Lemah</option>
+                                <option>Bunyi Nyaring</option>
+                                <option>Nada Lebih Rendah</option>
+                                <option>Bunyi Singkat</option>
                             </select>
                         </td>
                     </tr>
@@ -898,11 +895,11 @@
                         <td>
                             <select id="jawab4">
                                 <option value="">--pilih jawaban--</option>
-<option>Tidak Menghasilkan Bunyi</option>
-<option>Bunyi Lemah</option>
-<option>Bunyi Nyaring</option>
-<option>Nada Lebih Rendah</option>
-<option>Bunyi Singkat</option>
+                                <option>Tidak Menghasilkan Bunyi</option>
+                                <option>Bunyi Lemah</option>
+                                <option>Bunyi Nyaring</option>
+                                <option>Nada Lebih Rendah</option>
+                                <option>Bunyi Singkat</option>
                             </select>
                         </td>
                     </tr>
@@ -913,11 +910,11 @@
                         <td>
                             <select id="jawab5">
                                 <option value="">--pilih jawaban--</option>
-<option>Tidak Menghasilkan Bunyi</option>
-<option>Bunyi Lemah</option>
-<option>Bunyi Nyaring</option>
-<option>Nada Lebih Rendah</option>
-<option>Bunyi Singkat</option>
+                                <option>Tidak Menghasilkan Bunyi</option>
+                                <option>Bunyi Lemah</option>
+                                <option>Bunyi Nyaring</option>
+                                <option>Nada Lebih Rendah</option>
+                                <option>Bunyi Singkat</option>
                             </select>
                         </td>
                     </tr>
@@ -968,6 +965,7 @@
         </div>
 @endsection
     @section('scripts')
+            <script src="https://www.youtube.com/iframe_api"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -1073,42 +1071,56 @@
 
 
                     /* =========================
-                       VIDEO
-                    ========================= */
+        YOUTUBE PLAYER
+        ========================= */
 
-                    const video = document.getElementById("videoResonansi");
+                    let player;
 
-                    if (video) {
+                    window.onYouTubeIframeAPIReady = function () {
 
-                        video.addEventListener("ended", () => {
+                        player = new YT.Player('player', {
 
-                            videoSelesai = true;
+                            width: '100%',
+                            height: '500',
 
-                            const btnLKS = document.getElementById("btn-lks");
+                            videoId: 'ICKcBdD4N9A',
 
-                            if (btnLKS) {
-                                btnLKS.disabled = false;
-                                btnLKS.textContent = "Kerjakan LKS";
+                            playerVars: {
+                                rel: 0,
+                                modestbranding: 1
+                            },
+
+                            events: {
+
+                                onStateChange: function (event) {
+
+                                    if (event.data === YT.PlayerState.ENDED) {
+
+                                        videoSelesai = true;
+
+                                        const btnLKS = document.getElementById("btn-lks");
+
+                                        if (btnLKS) {
+                                            btnLKS.disabled = false;
+                                            btnLKS.textContent = "Kerjakan LKS";
+                                        }
+
+                                        alert("Video selesai! Sekarang kamu bisa mengerjakan LKS.");
+                                    }
+                                }
                             }
-
-                            alert("Video selesai! Sekarang kamu bisa mengerjakan LKS.");
                         });
 
-                        window.gotoVideo = function (time) {
+                    };
 
-                            if (video.readyState >= 1) {
-                                video.currentTime = time;
-                                video.play();
-                            } else {
-                                video.addEventListener("loadedmetadata", function () {
-                                    video.currentTime = time;
-                                    video.play();
-                                }, { once: true });
-                            }
+                    window.gotoVideo = function (seconds) {
 
-                        }
+                        if (!player) return;
 
-                    }
+                        player.seekTo(seconds, true);
+                        player.playVideo();
+
+                    };
 
 
                     /* =========================

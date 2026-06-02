@@ -342,14 +342,8 @@
           </p>
 
 <div style="text-align:center; margin-top:20px;">
-    <iframe
-        src="https://drive.google.com/file/d/1djl3YC8t6cXHLfMxqJi-C0JXWpt-K395/preview"
-        width="900"
-        height="500"
-        allow="autoplay">
-    </iframe>
+    <div id="playerDifraksi"></div>
 </div>
-
           <!-- Navigasi bagian video -->
           <div style="margin-top:15px; text-align:center;">
 
@@ -598,6 +592,7 @@
 
 </div>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -767,33 +762,48 @@
   </script>
 
   <script>
-    const videoDifraksi = document.getElementById("videoDifraksi");
+let playerDifraksi;
 
-    window.gotoVideoDifraksi = function (time) {
-      if (videoDifraksi.readyState >= 1) {
-        videoDifraksi.currentTime = time;
-        videoDifraksi.play();
-      } else {
+window.onYouTubeIframeAPIReady = function () {
 
-        if (videoDifraksi) {
+    playerDifraksi = new YT.Player('playerDifraksi', {
 
-          videoDifraksi.addEventListener("ended", () => {
+        width: '100%',
+        height: '500',
 
-            videoDifraksiSelesai = true;
+        videoId: 'ekGMJmOQ36s',
 
-            const btn = document.getElementById("btn-lks-difraksi");
+        playerVars: {
+            rel: 0,
+            modestbranding: 1
+        },
 
-            btn.disabled = false;
-            btn.textContent = "Kerjakan LKS";
-          });
+        events: {
 
+            onStateChange: function (event) {
+
+                if (event.data === YT.PlayerState.ENDED) {
+
+                    videoDifraksiSelesai = true;
+
+                    const btn = document.getElementById("btn-lks-difraksi");
+
+                    btn.disabled = false;
+                    btn.textContent = "Kerjakan LKS";
+                }
+            }
         }
-        videoDifraksi.addEventListener("loadedmetadata", function () {
-          videoDifraksi.currentTime = time;
-          videoDifraksi.play();
-        }, { once: true });
-      }
-    }
+    });
+
+};
+
+window.gotoVideoDifraksi = function(seconds) {
+
+    if (!playerDifraksi) return;
+
+    playerDifraksi.seekTo(seconds, true);
+    playerDifraksi.playVideo();
+};
   </script>
 
 @endsection
