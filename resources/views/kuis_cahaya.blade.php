@@ -426,11 +426,10 @@
       let benar = 0;
 
       questions.forEach((q, i) => {
-        if (userAnswers[i] === q.answer) {
+        if (+userAnswers[i] === +q.answer) {
           benar++;
         }
       });
-
       const nilaiPersen = Math.round((benar / questions.length) * 100);
       const tuntas = nilaiPersen >= 70;
 

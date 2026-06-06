@@ -438,27 +438,6 @@
 
       }
 
-      console.log("QUESTIONS:", questions);
-
-      questions.forEach((q, i) => {
-        console.log(
-          "Soal", i + 1,
-          "jawaban user =", userAnswers[i],
-          "jawaban benar =", q.answer,
-          "tipe =", typeof q.answer
-        );
-      });
-
-
-      console.log("=== CEK JAWABAN ===");
-
-      questions.forEach((q, i) => {
-        console.log(
-          "Soal", i + 1,
-          "User =", userAnswers[i], typeof userAnswers[i],
-          "Kunci =", q.answer, typeof q.answer
-        );
-      });
       let benar = 0;
 
       questions.forEach((q, i) => {

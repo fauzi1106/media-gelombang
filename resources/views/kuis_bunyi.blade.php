@@ -373,7 +373,7 @@
       let benar = 0;
 
       questions.forEach((q, i) => {
-        if (userAnswers[i] === q.answer) {
+        if (+userAnswers[i] === +q.answer) {
           benar++;
         }
       });

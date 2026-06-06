@@ -452,15 +452,13 @@
             const endTime = Date.now();
             const duration = Math.floor((endTime - startTime) / 1000);
 
-            let benar = 0;
+      let benar = 0;
 
-            questions.forEach((q, i) => {
-
-                if (userAnswers[i] === q.answer) {
-                    benar++;
-                }
-
-            });
+      questions.forEach((q, i) => {
+        if (+userAnswers[i] === +q.answer) {
+          benar++;
+        }
+      });
 
             let salahPerTopik = {};
 
