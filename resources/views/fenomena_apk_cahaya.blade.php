@@ -341,9 +341,9 @@
             Perhatikan dengan seksama agar kamu dapat mengerjakan lembar kerja setelah video selesai.
           </p>
 
-<div style="text-align:center; margin-top:20px;">
-    <div id="playerDifraksi"></div>
-</div>
+          <div style="text-align:center; margin-top:20px;">
+            <div id="playerDifraksi"></div>
+          </div>
           <!-- Navigasi bagian video -->
           <div style="margin-top:15px; text-align:center;">
 
@@ -762,11 +762,11 @@
   </script>
 
   <script>
-let playerDifraksi;
+    let playerDifraksi;
 
-window.onYouTubeIframeAPIReady = function () {
+    window.onYouTubeIframeAPIReady = function () {
 
-    playerDifraksi = new YT.Player('playerDifraksi', {
+      playerDifraksi = new YT.Player('playerDifraksi', {
 
         width: '100%',
         height: '500',
@@ -774,36 +774,36 @@ window.onYouTubeIframeAPIReady = function () {
         videoId: 'ekGMJmOQ36s',
 
         playerVars: {
-            rel: 0,
-            modestbranding: 1
+          rel: 0,
+          modestbranding: 1
         },
 
         events: {
 
-            onStateChange: function (event) {
+          onStateChange: function (event) {
 
-                if (event.data === YT.PlayerState.ENDED) {
+            if (event.data === YT.PlayerState.ENDED) {
 
-                    videoDifraksiSelesai = true;
+              videoDifraksiSelesai = true;
 
-                    const btn = document.getElementById("btn-lks-difraksi");
+              const btn = document.getElementById("btn-lks-difraksi");
 
-                    btn.disabled = false;
-                    btn.textContent = "Kerjakan LKS";
-                }
+              btn.disabled = false;
+              btn.textContent = "Kerjakan LKS";
             }
+          }
         }
-    });
+      });
 
-};
+    };
 
-window.gotoVideoDifraksi = function(seconds) {
+    window.gotoVideoDifraksi = function (seconds) {
 
-    if (!playerDifraksi) return;
+      if (!playerDifraksi) return;
 
-    playerDifraksi.seekTo(seconds, true);
-    playerDifraksi.playVideo();
-};
+      playerDifraksi.seekTo(seconds, true);
+      playerDifraksi.playVideo();
+    };
   </script>
 
 @endsection

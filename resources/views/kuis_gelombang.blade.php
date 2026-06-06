@@ -342,11 +342,11 @@
         const li = document.createElement("li");
 
         li.innerHTML = `
-                  <label>
-                    <input type="radio" name="soal" value="${idx}" ${userAnswers[currentIndex] === idx ? "checked" : ""}>
-                    <span>${opt}</span>
-                  </label>
-                `;
+                          <label>
+                            <input type="radio" name="soal" value="${idx}" ${userAnswers[currentIndex] === idx ? "checked" : ""}>
+                            <span>${opt}</span>
+                          </label>
+                        `;
 
         optionsList.appendChild(li);
 
@@ -438,14 +438,33 @@
 
       }
 
+      console.log("QUESTIONS:", questions);
+
+      questions.forEach((q, i) => {
+        console.log(
+          "Soal", i + 1,
+          "jawaban user =", userAnswers[i],
+          "jawaban benar =", q.answer,
+          "tipe =", typeof q.answer
+        );
+      });
+
+
+      console.log("=== CEK JAWABAN ===");
+
+      questions.forEach((q, i) => {
+        console.log(
+          "Soal", i + 1,
+          "User =", userAnswers[i], typeof userAnswers[i],
+          "Kunci =", q.answer, typeof q.answer
+        );
+      });
       let benar = 0;
 
       questions.forEach((q, i) => {
-
-        if (userAnswers[i] === q.answer) {
+        if (+userAnswers[i] === +q.answer) {
           benar++;
         }
-
       });
 
       const nilaiPersen = Math.round((benar / questions.length) * 100);
@@ -530,7 +549,7 @@
 
         confirmMessage.innerHTML =
           `Soal nomor <b>${raguList.join(", ")}</b> masih ditandai ragu.<br>
-                Silakan cek kembali sebelum menyelesaikan kuis.`;
+                        Silakan cek kembali sebelum menyelesaikan kuis.`;
 
         confirmFinishBtn.style.display = "none";
         cancelFinishBtn.textContent = "OK";
