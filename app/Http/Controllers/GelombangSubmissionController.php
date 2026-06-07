@@ -22,6 +22,8 @@ class GelombangSubmissionController extends Controller
     // =========================
     public function store(Request $request)
     {
+        dd('masuk store');
+        
         $request->validate([
             'file' => 'required|mimes:pdf|max:2048',
             'latihan_code' => 'required'
