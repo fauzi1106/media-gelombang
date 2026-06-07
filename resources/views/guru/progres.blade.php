@@ -395,7 +395,7 @@
                         return [
                             'latihan' => $sub->latihan_code,
                             'waktu' => $sub->created_at->format('d M Y H:i'),
-                            'file' => asset('storage/' . $sub->file_path)
+                            'file' => asset($sub->file_path)
                         ];
                     })
                 ];

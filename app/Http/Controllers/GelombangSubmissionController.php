@@ -35,7 +35,9 @@ class GelombangSubmissionController extends Controller
 
         $fileName = $request->latihan_code . '_' . Auth::id() . '_' . time() . '.pdf';
 
-        $path = $file->storeAs('submissions', $fileName, 'public');
+        $file->move(public_path('submissions'), $fileName);
+
+        $path = 'submissions/' . $fileName;
 
         GelombangSubmission::create([
             'user_id' => Auth::id(),
