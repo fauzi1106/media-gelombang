@@ -48,8 +48,6 @@ class GelombangSubmissionController extends Controller
             'file_path' => $path
         ]);
 
-        dd('DB BERHASIL');
-
         return back()->with('success', 'File berhasil dikumpulkan!');
     }
 
