@@ -381,6 +381,19 @@
 
                 const answers = d.answers || [];
 
+                console.log("DETAIL", d);
+                console.log("ANSWERS", answers);
+
+                answers.forEach((a, i) => {
+                    console.log(
+                        "Soal", i + 1,
+                        "answer =", a.answer,
+                        "correct =", a.correct_answer,
+                        "is_correct =", a.is_correct,
+                        "type =", typeof a.is_correct
+                    );
+                });
+
                 // hitung jumlah benar
                 const benar = answers.filter(a => a.is_correct).length;
 
@@ -400,46 +413,46 @@
                     const kunci = optionToLetter(a.correct_answer);
 
                     soalHtml += `
-                                        <div class="soal-box ${a.is_correct ? 'correct' : 'wrong'}">
-                                            ${i + 1}
+                                            <div class="soal-box ${a.is_correct ? 'correct' : 'wrong'}">
+                                                ${i + 1}
 
-                                    <div class="tooltip-jawaban">
+                                        <div class="tooltip-jawaban">
 
-                                    <b>Soal ${i + 1}</b><br>
-                                    ${soal}<br><br>
+                                        <b>Soal ${i + 1}</b><br>
+                                        ${soal}<br><br>
 
-                                    A. ${A}<br>
-                                    B. ${B}<br>
-                                    C. ${C}<br>
-                                    D. ${D}<br>
-                                    E. ${E}<br><br>
+                                        A. ${A}<br>
+                                        B. ${B}<br>
+                                        C. ${C}<br>
+                                        D. ${D}<br>
+                                        E. ${E}<br><br>
 
-                                    <b>Jawaban siswa :</b> ${jawaban}<br>
-                                    <b>Kunci :</b> ${kunci}
-
-                                    </div>
+                                        <b>Jawaban siswa :</b> ${jawaban}<br>
+                                        <b>Kunci :</b> ${kunci}
 
                                         </div>
-                                    `;
+
+                                            </div>
+                                        `;
                 });
 
                 soalHtml += `</div>`;
 
                 tbody.innerHTML += `
-                                <tr>
-                                    <td>${index + 1}</td>
-                                    <td>${d.score}</td>
-                                    <td><b>${benar}</b></td>
-                                    <td>${menit}m ${detik}s</td>
-                                    <td>${soalHtml}</td>
-                                    <td>${new Date(d.created_at).toLocaleString('id-ID')}</td>
-                                    <td>
-                                        <button class="btn-delete" onclick="deleteAttempt(${d.id})">
-                                            X
-                                        </button>
-                                    </td>
-                                </tr>
-                            `;
+                                    <tr>
+                                        <td>${index + 1}</td>
+                                        <td>${d.score}</td>
+                                        <td><b>${benar}</b></td>
+                                        <td>${menit}m ${detik}s</td>
+                                        <td>${soalHtml}</td>
+                                        <td>${new Date(d.created_at).toLocaleString('id-ID')}</td>
+                                        <td>
+                                            <button class="btn-delete" onclick="deleteAttempt(${d.id})">
+                                                X
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `;
             });
 
             document.getElementById('detailModal').style.display = 'flex';
@@ -463,11 +476,11 @@
                 'Konfirmasi Hapus',
                 'Apakah yakin ingin menghapus percobaan ini?',
                 `
-                                <button class="btn-delete" onclick="processDeleteAttempt(${id})">
-                                    Ya, Hapus
-                                </button>
-                                <button class="btn" onclick="closeActionModal()">Batal</button>
-                                `
+                                    <button class="btn-delete" onclick="processDeleteAttempt(${id})">
+                                        Ya, Hapus
+                                    </button>
+                                    <button class="btn" onclick="closeActionModal()">Batal</button>
+                                    `
             );
         }
 
@@ -497,11 +510,11 @@
                 'Konfirmasi Hapus Semua',
                 'Apakah yakin ingin menghapus SEMUA percobaan siswa ini?',
                 `
-                                <button class="btn-delete" onclick="processDeleteAll(${user}, ${quiz})">
-                                    Ya, Hapus Semua
-                                </button>
-                                <button class="btn" onclick="closeActionModal()">Batal</button>
-                                 `
+                                    <button class="btn-delete" onclick="processDeleteAll(${user}, ${quiz})">
+                                        Ya, Hapus Semua
+                                    </button>
+                                    <button class="btn" onclick="closeActionModal()">Batal</button>
+                                     `
             );
         }
 
@@ -543,7 +556,7 @@
             @foreach($quizzes as $quiz)
                 {{ $quiz->id }}: {{ $quiz->kkm }},
             @endforeach
-                                                  };
+                                                      };
 
         function showModal(type, title, message, buttonsHtml) {
 
@@ -583,9 +596,9 @@
                 'Konfirmasi Perubahan',
                 'Apakah yakin ingin mengubah nilai KKM?',
                 `
-                                <button class="btn" onclick="submitKKM()">Ya, Update</button>
-                                <button class="btn-delete" onclick="closeActionModal()">Batal</button>
-                                `
+                                    <button class="btn" onclick="submitKKM()">Ya, Update</button>
+                                    <button class="btn-delete" onclick="closeActionModal()">Batal</button>
+                                    `
             );
         }
 
