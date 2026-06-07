@@ -40,10 +40,6 @@ class GelombangSubmissionController extends Controller
             $fileName
         );
 
-        dd($result);
-
-        $file->move(public_path('submissions'), $fileName);
-
         $path = 'submissions/' . $fileName;
 
         GelombangSubmission::create([
@@ -51,6 +47,8 @@ class GelombangSubmissionController extends Controller
             'latihan_code' => $request->latihan_code,
             'file_path' => $path
         ]);
+
+        dd('DB BERHASIL');
 
         return back()->with('success', 'File berhasil dikumpulkan!');
     }
