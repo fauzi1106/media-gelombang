@@ -22,7 +22,7 @@ class GelombangSubmissionController extends Controller
     // =========================
     public function store(Request $request)
     {
-        dd(public_path('submissions'));
+        dd(file_exists(public_path('submissions')));
 
         $request->validate([
             'file' => 'required|mimes:pdf|max:2048',
