@@ -30,6 +30,15 @@
     <div class="topbar">
 
         <div class="topbar-left">
+            @auth
+                <button type="button" class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle Sidebar">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            @endauth
             <span class="app-name">FisiTera</span>
         </div>
 
@@ -50,6 +59,10 @@
 
         </div>
     </div>
+
+    @auth
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    @endauth
 
     @yield('content')
     @yield('scripts')

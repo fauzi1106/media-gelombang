@@ -119,7 +119,7 @@
       const nextBtn = document.getElementById("inner-next");
 
       let current = 0;
-  );
+    });
   </script>
 
   <script>

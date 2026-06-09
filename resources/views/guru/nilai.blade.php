@@ -142,8 +142,10 @@
             opacity: 1;
         }
 
-        .table-wrapper {
-            overflow: visible !important;
+        @media (min-width: 769px) {
+            .table-wrapper {
+                overflow: visible !important;
+            }
         }
     </style>
 @endsection

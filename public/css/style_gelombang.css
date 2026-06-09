@@ -196,6 +196,8 @@
     color: white;
     overflow-y: auto;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.08);
+    transition: left 0.3s ease, width 0.3s ease;
+    z-index: 1001;
   }
 
   .guru-layout .sidebar {
@@ -206,6 +208,8 @@
     top: 60px;
     left: 0;
     height: calc(100vh - 60px);
+    transition: left 0.3s ease, width 0.3s ease;
+    z-index: 1001;
   }
 
 
@@ -563,7 +567,7 @@
     }
 
     .sidebar {
-      display: none;
+      left: -240px;
     }
 
     .materi-gelombang .content {
@@ -1213,7 +1217,7 @@
     padding: 0 28px;
     box-sizing: border-box;
 
-    z-index: 1000;
+    z-index: 1010;
     box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
   }
 
@@ -1224,6 +1228,9 @@
   }
 
   .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -1700,6 +1707,7 @@
     min-height: calc(100vh - 60px);
 
     overflow-x: hidden;
+    transition: margin-left 0.3s ease;
 }
 
   /* ===== ACCORDION GURU ===== */
@@ -2087,7 +2095,7 @@
   /* ===== SIDEBAR ===== */
   .sidebar,
   .guru-sidebar {
-    display: none;
+    left: -240px;
   }
 
   /* ===== MAIN CONTENT ===== */
@@ -2128,11 +2136,20 @@
 
   /* ===== TABLE ===== */
   .table-wrapper {
-    overflow-x: auto;
+    overflow-x: auto !important;
+    display: block !important;
+    width: 100% !important;
   }
 
-  table {
-    min-width: 700px;
+  .table-wrapper table {
+    width: max-content !important;
+    min-width: 100% !important;
+    table-layout: auto !important;
+  }
+
+  .table-wrapper th,
+  .table-wrapper td {
+    white-space: nowrap !important;
   }
 
   /* ===== QUIZ ===== */
@@ -2302,7 +2319,6 @@
   /* RESET SEMUA WRAPPER */
   html,
   body,
-  .layout-wrapper,
   .materi-gelombang,
   .main-content,
   .content {
@@ -2316,11 +2332,20 @@
     overflow-x: hidden !important;
   }
 
+  .layout-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 60px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
   /* HIDE SIDEBAR TOTAL */
   .sidebar,
   .guru-sidebar {
-    display: none !important;
-    width: 0 !important;
+    left: -240px !important;
+    width: 240px !important;
   }
 
   /* MAIN CONTENT */
@@ -2436,6 +2461,9 @@
   .topbar-left {
     flex: 1;
     min-width: 0;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
   }
 
   .topbar-right {
@@ -2479,4 +2507,140 @@
     overflow-x: hidden !important;
   }
 
+}
+
+/* =========================================================
+   SIDEBAR COLLAPSED & MOBILE DRAWER STATE
+========================================================= */
+
+/* Toggle Button Styling */
+.sidebar-toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin-right: 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  outline: none;
+}
+
+.sidebar-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-toggle-btn:active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.sidebar-toggle-btn svg {
+  display: block;
+}
+
+/* Sidebar Backdrop Overlay */
+.sidebar-backdrop {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.sidebar-open-mobile .sidebar-backdrop {
+  display: block;
+  opacity: 1;
+}
+
+/* Desktop Collapsed States */
+@media (min-width: 769px) {
+  body.sidebar-collapsed .sidebar {
+    left: -240px !important;
+  }
+  
+  body.sidebar-collapsed .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+/* Mobile Active States & Layout Fixes */
+@media (max-width: 768px) {
+  body.sidebar-open-mobile .sidebar,
+  body.sidebar-open-mobile .guru-sidebar {
+    left: 0 !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Prevent page body overflow */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  .guru-content, .main-content {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px !important;
+    margin-left: 0 !important;
+  }
+
+  /* Force table horizontal scroll even with custom page overrides */
+  .table-wrapper {
+    overflow-x: auto !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Filter buttons wrap and alignment */
+  .quiz-filter-wrapper {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .quiz-filter {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin: 10px 0 !important;
+    width: 100% !important;
+  }
+
+  .quiz-btn {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+  }
+  
+  /* KKM Box responsive wrap */
+  .kkm-box {
+    padding: 12px !important;
+    width: 100% !important;
+  }
+  
+  .kkm-form {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+}
+
+/* Hide toggle button if there is no sidebar on the page */
+body:not(:has(.sidebar)) .sidebar-toggle-btn {
+  display: none !important;
 }
