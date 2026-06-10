@@ -123,4 +123,34 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard-guru', [DashboardController::class, 'index'])
         ->name('guru.dashboard');
+
+    Route::get('/profil-siswa', function () {
+
+        $user = auth()->user();
+
+        $nilai = \App\Models\Nilai::with('quiz')
+            ->where('user_id', $user->id)
+            ->orderByDesc('score')
+            ->get()
+            ->unique('quiz_id')
+            ->values();
+
+        $jumlahQuiz = $nilai->count();
+
+        $rataRata = round($nilai->avg('score') ?? 0, 1);
+
+        $nilaiTertinggi = $nilai->max('score') ?? 0;
+
+        return view(
+            'siswa.profil',
+            compact(
+                'user',
+                'nilai',
+                'jumlahQuiz',
+                'rataRata',
+                'nilaiTertinggi'
+            )
+        );
+
+    })->name('profil.siswa');
 });

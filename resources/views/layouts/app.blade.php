@@ -9,8 +9,10 @@
     <title>@yield('title', 'Media Pembelajaran')</title>
 
     <!-- CSS GLOBAL -->
-    <link rel="stylesheet" href="{{ asset('css/style_gelombang.css') }}?v={{ filemtime(public_path('css/style_gelombang.css')) }}">
+    <link rel="stylesheet"
+        href="{{ asset('css/style_gelombang.css') }}?v={{ filemtime(public_path('css/style_gelombang.css')) }}">
     @yield('style')
+
 
     <!-- JS GLOBAL -->
     <script src="{{ asset('js/app.js') }}?v={{ filemtime(public_path('js/app.js')) }}"></script>
@@ -32,7 +34,8 @@
         <div class="topbar-left">
             @auth
                 <button type="button" class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle Sidebar">
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -45,16 +48,32 @@
         <div class="topbar-right">
 
             @auth
-                <span class="user-name">
-                    {{ auth()->user()->name }}
-                </span>
+                <div class="user-dropdown">
 
-                <form action="{{ url('/logout') }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="logout-btn">
-                        Logout
+                    <button id="userDropdownBtn" class="user-dropdown-btn">
+                        {{ auth()->user()->name }} ▼
                     </button>
-                </form>
+
+                    <div id="userDropdownMenu" class="user-dropdown-menu">
+
+                        <a href="{{ route('profil.siswa') }}">
+                            Profil Saya
+                        </a>
+
+                        <a href="#">
+                            Ubah Password
+                        </a>
+
+                        <form action="{{ url('/logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">
+                                Logout
+                            </button>
+                        </form>
+
+                    </div>
+
+                </div>
             @endauth
 
         </div>
@@ -89,6 +108,25 @@
                 })
             });
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const btn = document.getElementById('userDropdownBtn');
+            const menu = document.getElementById('userDropdownMenu');
+
+            if (btn && menu) {
+
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menu.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    menu.classList.remove('show');
+                });
+            }
+        });
     </script>
 </body>
 
