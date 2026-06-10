@@ -43,7 +43,7 @@
         </div>
 
     </div>
-    <div class="profil-card profil-riwayat">
+    <div class="table-responsive">
 
         <h3>Riwayat Nilai Quiz</h3>
 

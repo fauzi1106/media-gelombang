@@ -1217,7 +1217,7 @@
     padding: 0 28px;
     box-sizing: border-box;
 
-    z-index: 1010;
+    z-index: 20000;
     box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
   }
 
@@ -2455,7 +2455,7 @@
       width: 100%;
       padding: 10px 12px !important;
 
-      overflow: hidden;
+      overflow: visible;
       gap: 8px;
     }
 
@@ -2653,6 +2653,7 @@
 
   .user-dropdown {
     position: relative;
+    z-index: 20001;
   }
 
   .user-dropdown-btn {
@@ -2679,7 +2680,7 @@
     display: none;
 
     overflow: hidden;
-    z-index: 9999;
+    z-index: 999999;
   }
 
   .user-dropdown-menu.show {

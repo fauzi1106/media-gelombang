@@ -62,23 +62,36 @@
     background: #f8fafc;
     font-weight: 600;
 }
-.status-lulus{
-    background:#dcfce7;
-    color:#166534;
-    padding:4px 10px;
-    border-radius:999px;
-    font-size:13px;
-    font-weight:600;
+
+.status-lulus {
+    background: #dcfce7;
+    color: #166534;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.status-belum{
-    background:#fee2e2;
-    color:#991b1b;
-    padding:4px 10px;
-    border-radius:999px;
-    font-size:13px;
-    font-weight:600;
+.status-belum {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
 }
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.profil-table {
+    min-width: 700px;
+    width: max-content;
+}
+
 @media (max-width: 768px) {
 
     .profil-stats {
