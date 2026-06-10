@@ -108,6 +108,7 @@
             position: relative;
             cursor: pointer;
             overflow: visible;
+            transition: .2s;
         }
 
         .tooltip-jawaban {
@@ -140,12 +141,54 @@
         .soal-box:hover .tooltip-jawaban {
             display: block;
             opacity: 1;
+            transform: scale(1.08);
+        }
+
+        .mobile-hint {
+            font-size: 13px;
+            color: #64748b;
+            text-align: center;
+            margin: 10px 0 15px;
+        }
+
+        @media (min-width:769px) {
+            .mobile-hint {
+                display: none;
+            }
         }
 
         @media (min-width: 769px) {
             .table-wrapper {
                 overflow: visible !important;
             }
+        }
+
+        @media (max-width:768px) {
+
+            .detail-modal {
+                width: 95% !important;
+                max-width: 95% !important;
+
+                max-height: 85vh;
+                overflow-y: auto !important;
+
+                padding: 16px;
+            }
+
+            #detailContent {
+                font-size: 13px;
+            }
+
+        }
+
+        .detail-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .detail-table-wrapper table {
+            min-width: 900px;
         }
     </style>
 @endsection
@@ -273,26 +316,35 @@
 
                     <h3>Detail Percobaan</h3>
 
+                    <p class="mobile-hint">
+                        Ketuk nomor soal berwarna merah/hijau untuk melihat detail soal dan jawaban.
+                    </p>
+
                     <button class="btn-delete-all" id="dropAllBtn">
                         Drop Semua
                     </button>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Percobaan</th>
-                                <th>Nilai</th>
-                                <th>Benar</th>
-                                <th>Waktu</th>
-                                <th>Soal</th>
-                                <th>Tanggal</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody id="detailContent">
-                            {{-- diisi JS --}}
-                        </tbody>
-                    </table>
+                    <div class="detail-table-wrapper">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Percobaan</th>
+                                    <th>Nilai</th>
+                                    <th>Benar</th>
+                                    <th>Waktu</th>
+                                    <th>Soal</th>
+                                    <th>Tanggal</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="detailContent">
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                     <br>
                     <button class="btn" onclick="closeDetail()">Tutup</button>
@@ -417,46 +469,46 @@
                     const kunci = optionToLetter(a.correct_answer);
 
                     soalHtml += `
-                    <div class="soal-box ${Number(a.is_correct) === 1 ? 'correct' : 'wrong'}">
-                        ${i + 1}
+                                        <div class="soal-box ${Number(a.is_correct) === 1 ? 'correct' : 'wrong'}">
+                                            ${i + 1}
 
-                <div class="tooltip-jawaban">
+                                    <div class="tooltip-jawaban">
 
-                <b>Soal ${i + 1}</b><br>
-                ${soal}<br><br>
+                                    <b>Soal ${i + 1}</b><br>
+                                    ${soal}<br><br>
 
-                A. ${A}<br>
-                B. ${B}<br>
-                C. ${C}<br>
-                D. ${D}<br>
-                E. ${E}<br><br>
+                                    A. ${A}<br>
+                                    B. ${B}<br>
+                                    C. ${C}<br>
+                                    D. ${D}<br>
+                                    E. ${E}<br><br>
 
-                <b>Jawaban siswa :</b> ${jawaban}<br>
-                <b>Kunci :</b> ${kunci}
+                                    <b>Jawaban siswa :</b> ${jawaban}<br>
+                                    <b>Kunci :</b> ${kunci}
 
-                </div>
+                                    </div>
 
-                    </div>
-                `;
+                                        </div>
+                                    `;
                 });
 
                 soalHtml += `</div>`;
 
                 tbody.innerHTML += `
-                                            <tr>
-                                                <td>${index + 1}</td>
-                                                <td>${d.score}</td>
-                                                <td><b>${benar}</b></td>
-                                                <td>${menit}m ${detik}s</td>
-                                                <td>${soalHtml}</td>
-                                                <td>${new Date(d.created_at).toLocaleString('id-ID')}</td>
-                                                <td>
-                                                    <button class="btn-delete" onclick="deleteAttempt(${d.id})">
-                                                        X
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        `;
+                                                                <tr>
+                                                                    <td>${index + 1}</td>
+                                                                    <td>${d.score}</td>
+                                                                    <td><b>${benar}</b></td>
+                                                                    <td>${menit}m ${detik}s</td>
+                                                                    <td>${soalHtml}</td>
+                                                                    <td>${new Date(d.created_at).toLocaleString('id-ID')}</td>
+                                                                    <td>
+                                                                        <button class="btn-delete" onclick="deleteAttempt(${d.id})">
+                                                                            X
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            `;
             });
 
             document.getElementById('detailModal').style.display = 'flex';
@@ -480,11 +532,11 @@
                 'Konfirmasi Hapus',
                 'Apakah yakin ingin menghapus percobaan ini?',
                 `
-                                            <button class="btn-delete" onclick="processDeleteAttempt(${id})">
-                                                Ya, Hapus
-                                            </button>
-                                            <button class="btn" onclick="closeActionModal()">Batal</button>
-                                            `
+                                                                <button class="btn-delete" onclick="processDeleteAttempt(${id})">
+                                                                    Ya, Hapus
+                                                                </button>
+                                                                <button class="btn" onclick="closeActionModal()">Batal</button>
+                                                                `
             );
         }
 
@@ -514,11 +566,11 @@
                 'Konfirmasi Hapus Semua',
                 'Apakah yakin ingin menghapus SEMUA percobaan siswa ini?',
                 `
-                                            <button class="btn-delete" onclick="processDeleteAll(${user}, ${quiz})">
-                                                Ya, Hapus Semua
-                                            </button>
-                                            <button class="btn" onclick="closeActionModal()">Batal</button>
-                                             `
+                                                                <button class="btn-delete" onclick="processDeleteAll(${user}, ${quiz})">
+                                                                    Ya, Hapus Semua
+                                                                </button>
+                                                                <button class="btn" onclick="closeActionModal()">Batal</button>
+                                                                 `
             );
         }
 
@@ -560,7 +612,7 @@
             @foreach($quizzes as $quiz)
                 {{ $quiz->id }}: {{ $quiz->kkm }},
             @endforeach
-                                                              };
+                                                                                  };
 
         function showModal(type, title, message, buttonsHtml) {
 
@@ -600,9 +652,9 @@
                 'Konfirmasi Perubahan',
                 'Apakah yakin ingin mengubah nilai KKM?',
                 `
-                                            <button class="btn" onclick="submitKKM()">Ya, Update</button>
-                                            <button class="btn-delete" onclick="closeActionModal()">Batal</button>
-                                            `
+                                                                <button class="btn" onclick="submitKKM()">Ya, Update</button>
+                                                                <button class="btn-delete" onclick="closeActionModal()">Batal</button>
+                                                                `
             );
         }
 

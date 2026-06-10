@@ -60,13 +60,13 @@
                             Profil Saya
                         </a>
 
-                        <a href="#">
+                        {{-- <a href="#">
                             Ubah Password
-                        </a>
+                        </a> --}}
 
                         <form action="{{ url('/logout') }}" method="POST">
                             @csrf
-                            <button type="submit">
+                            <button class="logout-btn" type="submit">
                                 Logout
                             </button>
                         </form>
