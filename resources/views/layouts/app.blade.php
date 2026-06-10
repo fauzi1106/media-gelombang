@@ -9,11 +9,11 @@
     <title>@yield('title', 'Media Pembelajaran')</title>
 
     <!-- CSS GLOBAL -->
-    <link rel="stylesheet" href="{{ asset('css/style_gelombang.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style_gelombang.css') }}?v={{ filemtime(public_path('css/style_gelombang.css')) }}">
     @yield('style')
 
     <!-- JS GLOBAL -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}?v={{ filemtime(public_path('js/app.js')) }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">

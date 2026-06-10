@@ -4,22 +4,22 @@
 
 @section('style')
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
       --primary-blue: #229add;
       --dark-text: #2a3342;
       --gray-text: #6b7280;
-      --bg-color: #eaf3fb; 
+      --bg-color: #eaf3fb;
     }
 
     .hero-section {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-color);
-      min-height: 90vh; 
+      min-height: auto;
       display: flex;
       align-items: center;
-      padding: 60px 0;
+      padding: 60px 0 40px;
     }
 
     .container {
@@ -29,7 +29,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 80px;
+      flex-direction: row;
+      text-align: center;
+      gap: 25px;
     }
 
     /* --- Sisi Kiri: Content --- */
@@ -119,12 +121,12 @@
       background: #ffffff;
       width: 100%;
       max-width: 520px;
-      height: 280px;
+      height: 220px;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
-      padding: 40px;
+      padding: 25px;
       position: relative;
     }
 
@@ -147,9 +149,17 @@
       stroke-linecap: round;
     }
 
-    .line-1 { stroke: #229add; }          
-    .line-2 { stroke: #8cc4e8; }          
-    .line-3 { stroke: #d1cbf0; }          
+    .line-1 {
+      stroke: #229add;
+    }
+
+    .line-2 {
+      stroke: #8cc4e8;
+    }
+
+    .line-3 {
+      stroke: #d1cbf0;
+    }
 
     .card-footer {
       display: flex;
@@ -178,14 +188,26 @@
       .container {
         flex-direction: column;
         text-align: center;
-        gap: 50px;
-      }
-      
-      .hero-content p {
-        margin: 0 auto 40px;
+        gap: 25px;
       }
 
-      .category, .cta-group {
+      .hero-section {
+        padding: 100px 0 40px;
+      }
+
+      .hero-content h1 {
+        padding-top: 0;
+        font-size: 2.2rem;
+        line-height: 1.15;
+      }
+
+      .hero-content p {
+        max-width: 320px;
+        margin: 0 auto 30px;
+      }
+
+      .category,
+      .cta-group {
         justify-content: center;
       }
 
@@ -200,18 +222,23 @@
 @section('content')
   <section class="hero-section">
     <div class="container">
-      
+
       <div class="hero-content">
 
 
         <h1>Fisitera: Fisika Interaktif <br> <span class="highlight">Gelombang, Bunyi <br> & Cahaya</span></h1>
 
-        <p>Jelajahi konsep fisika melalui simulasi interaktif, animasi yang menarik, dan kuis menyenangkan yang dirancang khusus untuk meningkatkan pemahaman Anda.</p>
+        <p>Jelajahi konsep fisika melalui simulasi interaktif, animasi yang menarik, dan kuis menyenangkan yang dirancang
+          khusus untuk meningkatkan pemahaman Anda.</p>
 
         <div class="cta-group">
           <a href="definisi_gelombang" class="btn btn-primary">
-            Mulai Belajar 
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            Mulai Belajar
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </a>
         </div>
       </div>
@@ -228,21 +255,40 @@
 
           <div class="card-footer">
             <span class="footer-item">
-              <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-9 5 18 5-18 2 9h2"/></svg>
+              <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12h4l2-9 5 18 5-18 2 9h2" />
+              </svg>
               Gelombang
             </span>
             <span class="footer-item">
-              <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+              <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              </svg>
               Bunyi
             </span>
             <span class="footer-item">
-              <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
               Cahaya
             </span>
           </div>
         </div>
       </div>
-      
+
     </div>
   </section>
 @endsection

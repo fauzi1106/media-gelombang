@@ -8,8 +8,8 @@
 
 
     <!-- ====================
-                             KONTEN UTAMA
-                             ==================== -->
+                               KONTEN UTAMA
+                               ==================== -->
     <main class="content">
 
       <h2>Definisi dan Konsep Dasar: Getaran dan Gelombang</h2>
@@ -237,8 +237,8 @@
           </p>
 
           <!-- ========================
-                                  TAB LATIHAN (3 HALAMAN)
-                                  ======================== -->
+                                    TAB LATIHAN (3 HALAMAN)
+                                    ======================== -->
           <div class="latihan-tabs-wrapper">
 
             <!-- HEADER TAB -->
@@ -257,8 +257,8 @@
             </div>
 
             <!-- ========================
-                                    HALAMAN LATIHAN 1
-                                    ======================== -->
+                                      HALAMAN LATIHAN 1
+                                      ======================== -->
             <div id="latihan-1" class="latihan-tab-page latihan-tab-page-active">
 
               <div class="box-diff" style="margin-top:12px;">
@@ -315,8 +315,8 @@
             </div>
 
             <!-- ========================
-                                    HALAMAN LATIHAN 2
-                                    ======================== -->
+                                      HALAMAN LATIHAN 2
+                                      ======================== -->
             <div id="latihan-2" class="latihan-tab-page">
 
               <div class="box-diff" style="margin-top:12px;">
@@ -379,8 +379,8 @@
             </div>
 
             <!-- ========================
-                                    HALAMAN LATIHAN 3
-                                    ======================== -->
+                                      HALAMAN LATIHAN 3
+                                      ======================== -->
             <div id="latihan-3" class="latihan-tab-page">
 
               <div class="box-diff" style="margin-top:12px;">
@@ -947,15 +947,30 @@
         requestAnimationFrame(loop);
       }
 
-      cv.addEventListener('click', (e) => {
-        const rect = cv.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+      // cv.addEventListener('click', (e) => {
+      //   const rect = cv.getBoundingClientRect();
+      //   const x = e.clientX - rect.left;
+      //   const y = e.clientY - rect.top;
 
-        if (y >= waterY - 10) {
-          spawnStone(x);
-        }
-      });
+      //   if (y >= waterY - 10) {
+      //     spawnStone(x);
+      //   }
+      // });
+cv.addEventListener('pointerdown', (e) => {
+
+    const rect = cv.getBoundingClientRect();
+
+    const scaleX = cv.width / rect.width;
+    const scaleY = cv.height / rect.height;
+
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+
+    if (y >= waterY - 10) {
+        spawnStone(x);
+    }
+
+});
 
       requestAnimationFrame(loop);
     })();
