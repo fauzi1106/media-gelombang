@@ -47,6 +47,11 @@
 
         <div class="topbar-right">
 
+            <div class="public-nav">
+                <a href="{{ route('informasi') }}">Informasi Media</a>
+                <a href="{{ route('panduan') }}">Panduan</a>
+            </div>
+
             @auth
                 <div class="user-dropdown">
 

@@ -15,10 +15,16 @@ use App\Http\Controllers\Guru\DashboardController;
 | PUBLIC ROUTES
 |--------------------------------------------------------------------------
 */
+Route::get('/informasi', function () {
+    return view('informasi');
+})->name('informasi');
 
+Route::get('/panduan', function () {
+    return view('panduan');
+})->name('panduan');
 Route::get('/', function () {
     return view('landing');
-});
+})->name('landing');
 
 Route::get('/login', function () {
     return view('login');
