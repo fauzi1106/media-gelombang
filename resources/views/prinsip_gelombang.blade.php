@@ -418,20 +418,6 @@
             </button>
           </div>
 
-          <div style="margin-top:20px; text-align:center;">
-            <form action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data">
-              @csrf
-
-              <input type="hidden" name="latihan_code" value="L12">
-
-              <input type="file" name="file" accept="application/pdf" required>
-
-              <button type="submit" class="next-btn">
-                Upload Jawaban (PDF)
-              </button>
-
-            </form>
-          </div>
         </section>
 
 
@@ -477,73 +463,146 @@
         soal3: null
       };
 
+      const status = {
+
+        soal1: false,
+        soal2: false,
+        soal3: false
+
+      };
+
       const downloadBtn = document.getElementById("download-pdf-btn");
 
       function cekSelesai() {
-        if (hasil.soal1 && hasil.soal2 && hasil.soal3) {
+
+        if (
+          status.soal1 &&
+          status.soal2 &&
+          status.soal3
+        ) {
+
           downloadBtn.style.display = "inline-block";
+
+        } else {
+
+          downloadBtn.style.display = "none";
+
         }
+
       }
 
       /* ================= SOAL 1 ================= */
       document.getElementById("lat1-btn")?.addEventListener("click", () => {
 
-        const jawaban = document.getElementById("lat1-jawaban").value;
-        if (!jawaban) return;
+        const val = parseFloat(document.getElementById("lat1-jawaban").value);
+        const kunci = 12;
 
-        hasil.soal1 = {
-          judul: "Soal 1 – Energi dan Amplitudo",
-          soal:
-            "Suatu gelombang memiliki amplitudo A = 2 satuan. Energi gelombang sebanding dengan kuadrat amplitudo (E = k · A²) dengan k = 3.",
-          diketahui: "A = 2 satuan, k = 3",
-          ditanyakan: "E = ... ?",
-          jawabanSiswa: jawaban + " satuan energi",
-          jawabanBenar: "12 satuan energi"
-        };
+        if (isNaN(val)) return;
+
+        if (Math.abs(val - kunci) < 0.01) {
+
+          status.soal1 = true;
+
+          hasil.soal1 = {
+            judul: "Soal 1 – Energi dan Amplitudo",
+            soal: "Suatu gelombang memiliki amplitudo A = 2 satuan. Energi gelombang sebanding dengan kuadrat amplitudo (E = k · A²) dengan k = 3.",
+            diketahui: "A = 2 satuan, k = 3",
+            ditanyakan: "E = ... ?",
+            jawabanSiswa: val + " satuan energi",
+            jawabanBenar: "12 satuan energi"
+          };
+
+        } else {
+
+          status.soal1 = false;
+          hasil.soal1 = null;
+
+        }
 
         cekSelesai();
+
       });
 
       /* ================= SOAL 2 ================= */
       document.getElementById("lat2-btn")?.addEventListener("click", () => {
 
-        const jawaban = document.getElementById("lat2-jawaban").value;
-        if (!jawaban) return;
+        const val = parseFloat(document.getElementById("lat2-jawaban").value);
+        const kunci = 20;
 
-        hasil.soal2 = {
-          judul: "Soal 2 – Intensitas Gelombang",
-          soal:
-            "Sumber bunyi memancarkan daya P = 120 W yang tersebar merata pada permukaan seluas A = 6 m².",
-          diketahui: "P = 120 W, A = 6 m²",
-          ditanyakan: "I = ... ?",
-          jawabanSiswa: jawaban + " W/m²",
-          jawabanBenar: "20 W/m²"
-        };
+        if (isNaN(val)) return;
+
+        if (Math.abs(val - kunci) < 0.01) {
+
+          status.soal2 = true;
+
+          hasil.soal2 = {
+
+            judul: "Soal 2 – Intensitas Gelombang",
+
+            soal: "Sumber bunyi memancarkan daya P = 120 W yang tersebar merata pada permukaan seluas A = 6 m².",
+
+            diketahui: "P = 120 W, A = 6 m²",
+
+            ditanyakan: "I = ... ?",
+
+            jawabanSiswa: val + " W/m²",
+
+            jawabanBenar: "20 W/m²"
+
+          };
+
+        } else {
+
+          status.soal2 = false;
+          hasil.soal2 = null;
+
+        }
 
         cekSelesai();
+
       });
 
       /* ================= SOAL 3 ================= */
       document.getElementById("lat3-btn")?.addEventListener("click", () => {
 
-        const jawaban = document.getElementById("lat3-jawaban").value;
-        if (!jawaban) return;
+        const val = parseFloat(document.getElementById("lat3-jawaban").value);
+        const kunci = 9;
 
-        hasil.soal3 = {
-          judul: "Soal 3 – Hukum Kuadrat Terbalik",
-          soal:
-            "Pada jarak r₁ = 2 m dari sumber titik, intensitas tercatat I₁ = 36 W/m². Tentukan intensitas pada jarak r₂ = 4 m.",
-          diketahui: "r₁ = 2 m, I₁ = 36 W/m², r₂ = 4 m",
-          ditanyakan: "I₂ = ... ?",
-          jawabanSiswa: jawaban + " W/m²",
-          jawabanBenar: "9 W/m²"
-        };
+        if (isNaN(val)) return;
+
+        if (Math.abs(val - kunci) < 0.01) {
+
+          status.soal3 = true;
+
+          hasil.soal3 = {
+
+            judul: "Soal 3 – Hukum Kuadrat Terbalik",
+
+            soal: "Pada jarak r₁ = 2 m dari sumber titik, intensitas tercatat I₁ = 36 W/m². Tentukan intensitas pada jarak r₂ = 4 m.",
+
+            diketahui: "r₁ = 2 m, I₁ = 36 W/m², r₂ = 4 m",
+
+            ditanyakan: "I₂ = ... ?",
+
+            jawabanSiswa: val + " W/m²",
+
+            jawabanBenar: "9 W/m²"
+
+          };
+
+        } else {
+
+          status.soal3 = false;
+          hasil.soal3 = null;
+
+        }
 
         cekSelesai();
+
       });
 
       /* ================= GENERATE PDF ================= */
-      downloadBtn?.addEventListener("click", () => {
+      downloadBtn?.addEventListener("click", async () => {
 
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF();
@@ -591,7 +650,48 @@
           }
         });
 
-        pdf.save("hasil_latihan_prinsip_gelombang.pdf");
+        const blob = pdf.output("blob");
+
+        const formData = new FormData();
+
+        formData.append(
+          "file",
+          blob,
+          "hasil_latihan_prinsip_gelombang.pdf"
+        );
+
+        formData.append(
+          "latihan_code",
+          "L12"
+        );
+
+        const response = await fetch("/pengumpulan-gelombang", {
+
+          method: "POST",
+
+          headers: {
+            "X-CSRF-TOKEN":
+              document.querySelector('meta[name="csrf-token"]').content
+          },
+
+          body: formData
+
+        });
+
+        if (response.ok) {
+
+          downloadBtn.disabled = true;
+
+          downloadBtn.innerHTML =
+            "✔ Latihan Berhasil Disimpan";
+
+          pdf.save("hasil_latihan_prinsip_gelombang.pdf");
+
+        } else {
+
+          alert("PDF gagal disimpan.");
+
+        }
       });
 
     });

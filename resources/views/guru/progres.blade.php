@@ -168,7 +168,6 @@
                         <th>L2.1</th>
                         <th>L2.2</th>
                         <th>L2.3</th>
-                        <th>L2.4</th>
                         <th>K2</th>
 
                         <th>L3.1</th>
@@ -186,7 +185,7 @@
                     @forelse($students as $index => $s)
 
                         @php
-                            $total = 11;
+                            $total = 10;
 
                             $done =
                                 ($s->L11 ? 1 : 0) +
@@ -195,7 +194,6 @@
                                 ($s->L21 ? 1 : 0) +
                                 ($s->L22 ? 1 : 0) +
                                 ($s->L23 ? 1 : 0) +
-                                ($s->L24 ? 1 : 0) +
                                 ($s->K2 ? 1 : 0) +
                                 ($s->L31 ? 1 : 0) +
                                 ($s->K3 ? 1 : 0) +
@@ -265,14 +263,6 @@
 
                             <td>
                                 @if($s->L23)
-                                    <span class="icon-check">✔</span>
-                                @else
-                                    <span class="icon-cross">✖</span>
-                                @endif
-                            </td>
-
-                            <td>
-                                @if($s->L24)
                                     <span class="icon-check">✔</span>
                                 @else
                                     <span class="icon-cross">✖</span>

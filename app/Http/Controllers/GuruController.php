@@ -73,14 +73,43 @@ class GuruController extends Controller
 
         foreach ($grouped as $group) {
 
+            $group = $group->sortBy('created_at')->values();
+
             $first = $group->first();
+            $kkm = $first->quiz->kkm;
+
+            // Jika lulus di percobaan pertama
+            if ($first->score >= $kkm) {
+
+                $finalScore = $first->score;
+
+            } else {
+
+                // Cari apakah remedial pernah mencapai KKM
+                $passedAfter = $group->skip(1)->first(function ($attempt) use ($kkm) {
+                    return $attempt->score >= $kkm;
+                });
+
+                if ($passedAfter) {
+
+                    // Lulus setelah remedial → nilai dipatok KKM
+                    $finalScore = $kkm;
+
+                } else {
+
+                    // Belum pernah lulus → tampilkan nilai terbaik
+                    $finalScore = $group->max('score');
+
+                }
+            }
 
             $nilai->push((object) [
                 'user_id' => $first->user_id,
                 'quiz_id' => $first->quiz_id,
                 'user' => $first->user,
                 'quiz' => $first->quiz,
-                'score' => $group->max('score'),
+                'score_asli' => $group->max('score'),
+                'score' => $finalScore,
                 'total_attempt' => $group->count(),
                 'detail' => $group->sortBy('created_at')->values()->map(function ($attempt) {
 
@@ -215,9 +244,8 @@ class GuruController extends Controller
             $s->L21 = in_array('L21', $latihan);
             $s->L22 = in_array('L22', $latihan);
             $s->L23 = in_array('L23', $latihan);
-            $s->L24 = in_array('L24', $latihan);
             $s->L31 = in_array('L31', $latihan);
-            
+
             // =========================
             // QUIZ
             // =========================

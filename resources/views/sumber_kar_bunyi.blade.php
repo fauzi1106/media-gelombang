@@ -14,8 +14,8 @@
       <div class="box">
 
         <!-- ====================
-                                           HALAMAN 1 – KONSEP DASAR BUNYI
-                                           ==================== -->
+                                             HALAMAN 1 – KONSEP DASAR BUNYI
+                                             ==================== -->
         <section id="page-sumber" class="subpage">
           <h3>Sumber Bunyi</h3>
 
@@ -40,8 +40,8 @@
           </div>
 
           <!-- ====================
-                                            CONTOH SUMBER BUNYI
-                                            ==================== -->
+                                              CONTOH SUMBER BUNYI
+                                              ==================== -->
           <div class="example-row">
 
             <!-- KIRI: TEKS -->
@@ -73,8 +73,8 @@
           </div>
         </section>
         <!-- ====================
-                                         HALAMAN 2 – GELOMBANG LONGITUDINAL
-                                         ==================== -->
+                                           HALAMAN 2 – GELOMBANG LONGITUDINAL
+                                           ==================== -->
         <section id="page-frekuensi" class="subpage" style="display:none;">
           <h3>Frekuensi dan Tinggi Rendah Bunyi</h3>
 
@@ -246,37 +246,12 @@
             </button>
           </div>
 
-          {{-- ================= UPLOAD PDF JAWABAN ================= --}}
-          <div style="margin-top:25px; text-align:center;">
-
-            @if(session('success'))
-              <div style="color:#059669; font-weight:600; margin-bottom:10px;">
-                {{ session('success') }}
-              </div>
-            @endif
-
-            <form id="upload-form-freq" action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data" style="display:none;">
-              @csrf
-
-              <input type="hidden" name="latihan_code" value="L22">
-
-              <div style="margin-bottom:10px;">
-                <input type="file" name="file" accept="application/pdf" required style="padding:6px;">
-              </div>
-
-              <button type="submit" class="next-btn">
-                Upload Jawaban (PDF)
-              </button>
-
-            </form>
-
-          </div>
         </section>
 
 
         <!-- ====================
-                                         HALAMAN 3 – 
-                                         ==================== -->
+                                           HALAMAN 3 – 
+                                           ==================== -->
         <section id="page-amplitudo" class="subpage" style="display:none;">
           <h3>Amplitudo dan Kuat Lemah Bunyi</h3>
 
@@ -300,8 +275,8 @@
           </div>
 
           <!-- ====================
-                                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
-                                            ==================== -->
+                                              CONTOH DALAM KEHIDUPAN SEHARI-HARI
+                                              ==================== -->
           <div class="example-row">
 
             <!-- KIRI: TEKS -->
@@ -327,8 +302,8 @@
           </div>
 
           <!-- ====================
-                                            PENEGASAN KONSEP
-                                            ==================== -->
+                                              PENEGASAN KONSEP
+                                              ==================== -->
           <div class="box-diff" style="margin-top:12px;">
             <b>Perlu diingat:</b><br>
             Kuat–lemah bunyi <b>tidak mempengaruhi</b> tinggi–rendah bunyi.<br>
@@ -336,8 +311,8 @@
           </div>
         </section>
         <!-- ====================
-                                         HALAMAN 4 – 
-                                         ==================== -->
+                                           HALAMAN 4 – 
+                                           ==================== -->
         <section id="page-warna" class="subpage" style="display:none;">
           <h3>Warna Bunyi (Timbre)</h3>
 
@@ -362,8 +337,8 @@
           </div>
 
           <!-- ====================
-                                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
-                                            ==================== -->
+                                              CONTOH DALAM KEHIDUPAN SEHARI-HARI
+                                              ==================== -->
           <div class="example-row">
 
             <!-- KIRI: TEKS -->
@@ -388,8 +363,8 @@
           </div>
 
           <!-- ====================
-                                            PENJELASAN TAMBAHAN
-                                            ==================== -->
+                                              PENJELASAN TAMBAHAN
+                                              ==================== -->
           <div class="box-diff" style="margin-top:12px;">
             <p><b>Apa yang Menyebabkan Perbedaan Warna Bunyi?</b></p>
             <ul>
@@ -462,10 +437,17 @@
         const downloadFreqBtn = $("download-pdf-freq");
 
         function cekFreqSelesai() {
-          document.getElementById("upload-form-freq").style.display = "block";
+
           if (hasilFreq.latihan1 && hasilFreq.latihan2) {
+
             downloadFreqBtn.style.display = "inline-block";
+
+          } else {
+
+            downloadFreqBtn.style.display = "none";
+
           }
+
         }
 
         /* ====================
@@ -664,7 +646,7 @@
         });
 
 
-        downloadFreqBtn?.addEventListener("click", () => {
+        downloadFreqBtn?.addEventListener("click", async () => {
 
           const { jsPDF } = window.jspdf;
           const pdf = new jsPDF();
@@ -677,24 +659,84 @@
 
           Object.values(hasilFreq).forEach((item) => {
 
+            pdf.setFont(undefined, "bold");
             pdf.text(item.judul, 14, y);
             y += 8;
 
-            pdf.text("Diketahui: " + item.diketahui, 14, y);
+            pdf.setFont(undefined, "normal");
+
+            pdf.text("Soal:", 14, y);
+            y += 6;
+            pdf.text(item.soal, 18, y);
             y += 8;
 
-            pdf.text("Jawaban Siswa: " + item.jawabanSiswa, 14, y);
+            pdf.text("Diketahui:", 14, y);
+            y += 6;
+            pdf.text(item.diketahui, 18, y);
             y += 8;
 
-            pdf.text("Jawaban Benar: " + item.jawabanBenar, 14, y);
-            y += 12;
+            pdf.text("Ditanyakan:", 14, y);
+            y += 6;
+            pdf.text(item.ditanyakan, 18, y);
+            y += 8;
+
+            pdf.text("Jawaban Siswa:", 14, y);
+            y += 6;
+            pdf.text(item.jawabanSiswa, 18, y);
+            y += 8;
+
+            pdf.text("Jawaban Benar:", 14, y);
+            y += 6;
+            pdf.text(item.jawabanBenar, 18, y);
+
+            y += 14;
+
+            if (y > 260) {
+              pdf.addPage();
+              y = 20;
+            }
 
           });
 
-          pdf.save("hasil_latihan_frekuensi.pdf");
+          const blob = pdf.output("blob");
+
+          const formData = new FormData();
+
+          formData.append(
+            "file",
+            blob,
+            "hasil_latihan_frekuensi.pdf"
+          );
+
+          formData.append(
+            "latihan_code",
+            "L22"
+          );
+
+          const response = await fetch("/pengumpulan-gelombang", {
+
+            method: "POST",
+
+            headers: {
+              "X-CSRF-TOKEN":
+                document.querySelector('meta[name="csrf-token"]').content
+            },
+
+            body: formData
+
+          });
+
+          if (response.ok) {
+
+            pdf.save("hasil_latihan_frekuensi.pdf");
+
+          } else {
+
+            alert("PDF gagal disimpan.");
+
+          }
 
         });
-
       });
     </script>
 

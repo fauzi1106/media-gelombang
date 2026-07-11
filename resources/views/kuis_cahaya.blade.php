@@ -331,11 +331,11 @@
         const li = document.createElement("li");
 
         li.innerHTML = `
-                    <label>
-                      <input type="radio" name="soal" value="${i}" ${userAnswers[currentIndex] === i ? "checked" : ""}>
-                      <span>${opt}</span>
-                    </label>
-                  `;
+                      <label>
+                        <input type="radio" name="soal" value="${i}" ${userAnswers[currentIndex] === i ? "checked" : ""}>
+                        <span>${opt}</span>
+                      </label>
+                    `;
 
         optionsList.appendChild(li);
 
@@ -431,7 +431,8 @@
         }
       });
       const nilaiPersen = Math.round((benar / questions.length) * 100);
-      const tuntas = nilaiPersen >= 70;
+      const KKM = {{ $kkm }};
+      const tuntas = nilaiPersen >= KKM;
 
 
       if (tuntas) {

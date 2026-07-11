@@ -130,33 +130,76 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard-guru', [DashboardController::class, 'index'])
         ->name('guru.dashboard');
 
-    Route::get('/profil-siswa', function () {
+Route::get('/profil-siswa', function () {
 
-        $user = auth()->user();
+    $user = auth()->user();
 
-        $nilai = \App\Models\Nilai::with('quiz')
-            ->where('user_id', $user->id)
-            ->orderByDesc('score')
-            ->get()
-            ->unique('quiz_id')
-            ->values();
+    $attempts = \App\Models\QuizAttempt::with('quiz')
+        ->where('user_id', $user->id)
+        ->get();
 
-        $jumlahQuiz = $nilai->count();
+    $grouped = $attempts->groupBy(function ($item) {
+        return $item->quiz_id;
+    });
 
-        $rataRata = round($nilai->avg('score') ?? 0, 1);
+    $nilai = collect();
 
-        $nilaiTertinggi = $nilai->max('score') ?? 0;
+    foreach ($grouped as $group) {
 
-        return view(
-            'siswa.profil',
-            compact(
-                'user',
-                'nilai',
-                'jumlahQuiz',
-                'rataRata',
-                'nilaiTertinggi'
-            )
-        );
+        $group = $group->sortBy('created_at')->values();
 
-    })->name('profil.siswa');
+        $first = $group->first();
+
+        $kkm = $first->quiz->kkm;
+
+        // nilai asli (tertinggi yang pernah diperoleh)
+        $scoreAsli = $group->max('score');
+
+        // hitung nilai diterima
+        if ($first->score >= $kkm) {
+
+            $scoreFinal = $first->score;
+
+        } else {
+
+            $passed = $group->skip(1)->first(function ($item) use ($kkm) {
+                return $item->score >= $kkm;
+            });
+
+            if ($passed) {
+                $scoreFinal = $kkm;
+            } else {
+                $scoreFinal = $scoreAsli;
+            }
+        }
+
+        $last = $group->last();
+
+        $nilai->push((object)[
+            'quiz' => $first->quiz,
+            'score_asli' => $scoreAsli,
+            'score' => $scoreFinal,
+            'duration' => $last->duration,
+            'created_at' => $last->created_at,
+        ]);
+    }
+
+    $jumlahQuiz = $nilai->count();
+
+    $rataRata = round($nilai->avg('score') ?? 0, 1);
+
+    $nilaiTertinggi = $nilai->max('score') ?? 0;
+
+    return view(
+        'siswa.profil',
+        compact(
+            'user',
+            'nilai',
+            'jumlahQuiz',
+            'rataRata',
+            'nilaiTertinggi'
+        )
+    );
+
+})->name('profil.siswa');
 });

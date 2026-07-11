@@ -42,7 +42,7 @@
 
         </div>
 
-    </div>
+    
     <div class="table-responsive">
 
         <h3>Riwayat Nilai Quiz</h3>
@@ -52,7 +52,8 @@
             <thead>
                 <tr>
                     <th>Quiz</th>
-                    <th>Nilai</th>
+                    <th>Nilai Diperoleh</th>
+                    <th>Nilai Diterima</th>
                     <th>KKM</th>
                     <th>Status</th>
                     <th>Durasi</th>
@@ -65,6 +66,8 @@
                 @forelse($nilai as $n)
                     <tr>
                         <td>{{ $n->quiz->title ?? '-' }}</td>
+                        <td>{{ $n->score_asli }}</td>
+
                         <td>{{ $n->score }}</td>
 
                         <td>{{ $n->quiz->kkm }}</td>
@@ -78,7 +81,7 @@
                         </td>
 
                         <td>
-                        {{ sprintf('%02d:%02d', floor($n->duration / 60), $n->duration % 60) }}
+                            {{ sprintf('%02d:%02d', floor($n->duration / 60), $n->duration % 60) }}
                         </td>
 
                         <td>{{ $n->created_at->format('d/m/Y') }}</td>
@@ -95,6 +98,7 @@
 
         </table>
 
+    </div>
     </div>
 
 @endsection

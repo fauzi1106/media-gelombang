@@ -116,9 +116,6 @@
 
         }
 
-        /* =========================
-                                                                                                                                       AREA PDF (LKS CETAK)
-                                                                                                                                    ========================= */
         #area-pdf {
             background: white;
             padding: 30px;
@@ -130,10 +127,6 @@
             margin-bottom: 20px;
         }
 
-
-        /* =========================
-                                                                                       LKS ACTION LAYOUT
-                                                                                    ========================= */
 
         .lks-actions {
             margin-top: 30px;
@@ -231,10 +224,6 @@
             opacity: 1;
         }
 
-        /* =========================
-                                           PETUNJUK LKS
-                                        ========================= */
-
         .petunjuk-lks {
             background: #eff6ff;
             border-left: 5px solid #2563eb;
@@ -252,10 +241,6 @@
             padding-left: 20px;
             line-height: 1.8;
         }
-
-        /* =========================
-                                           MODAL RESPONSIVE
-                                        ========================= */
 
         .modal-lks-content {
             width: 95%;
@@ -374,197 +359,94 @@
                         <h2>Gema dan Gaung</h2>
                     </header>
 
-                    <div class="latihan-tabs-wrapper">
+                    <!-- ================= MATERI ================= -->
+                    <div id="gema-materi" class="latihan-tab-page latihan-tab-page-active">
 
-                        <!-- TAB HEADER -->
-                        <div class="latihan-tabs-header">
-                            <button class="latihan-tab-btn latihan-tab-active" data-target="gema-materi">
-                                Materi
-                            </button>
-                            <button class="latihan-tab-btn" data-target="gema-latihan1">
-                                Latihan 1
-                            </button>
-                            <button class="latihan-tab-btn" data-target="gema-latihan2">
-                                Latihan 2
-                            </button>
+                        <!-- ================= PENGANTAR ================= -->
+                        <p>
+                            Ketika bunyi mengenai permukaan keras seperti dinding,
+                            tebing, atau gunung, bunyi tersebut akan dipantulkan kembali.
+                            Bunyi pantul inilah yang menyebabkan kita dapat mendengar
+                            <b>gema</b> atau <b>gaung</b>.
+                        </p>
+
+                        <div class="box-diff">
+                            <b>Gema</b> terdengar jelas karena bunyi pantul datang
+                            setelah bunyi asli selesai.<br>
+                            <b>Gaung</b> terjadi ketika bunyi pantul datang hampir
+                            bersamaan dengan bunyi asli sehingga bunyi terdengar tidak jelas.
                         </div>
 
-                        <!-- ================= MATERI ================= -->
-                        <div id="gema-materi" class="latihan-tab-page latihan-tab-page-active">
+                        <!-- ================= PERBEDAAN ================= -->
+                        <div class="materi-dua-kolom" style="margin-top:16px;">
 
-                            <!-- ================= PENGANTAR ================= -->
+                            <div class="kolom">
+                                <h3>Gema</h3>
+                                <ul>
+                                    <li>Bunyi terdengar ulang dengan jelas</li>
+                                    <li>Ada jeda waktu dengan bunyi asli</li>
+                                    <li>Terjadi di tempat terbuka</li>
+                                    <li>Contoh: gua, tebing</li>
+                                </ul>
+                            </div>
+
+                            <div class="kolom">
+                                <h3>Gaung</h3>
+                                <ul>
+                                    <li>Bunyi bercampur dengan bunyi asli</li>
+                                    <li>Tidak ada jeda waktu jelas</li>
+                                    <li>Terjadi di ruangan besar</li>
+                                    <li>Contoh: aula, gedung kosong</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="box-diff" style="margin-bottom:16px;">
+                            <b>Skenario Simulasi:</b>
+
+                            <ol style="margin-top:8px;">
+                                <li>Bayangkan kamu sedang berada di depan sebuah tebing.</li>
+                                <li>Klik tombol <b>Aktifkan Mikrofon</b>, kemudian ucapkan kata <b>"Halo"</b> atau tepuk
+                                    tangan sekali.</li>
+                                <li>Aktifkan tombol <b>Gema ON</b>.</li>
+                                <li>Amati gelombang bunyi yang merambat menuju tebing, kemudian gelombang pantul yang
+                                    kembali ke arah pendengar.</li>
+                                <li>Perhatikan bahwa bunyi pantul terdengar setelah bunyi asli selesai sehingga menghasilkan
+                                    <b>gema</b>.</li>
+                            </ol>
+
+                            <p style="margin-top:8px; font-size:0.95em;">
+                                <i>Perhatikan bahwa yang dipantulkan adalah <b>gelombang bunyi</b>, bukan sumber bunyinya.
+                                    Semakin jauh jarak ke tebing, semakin lama jeda bunyi pantul terdengar.</i>
+                            </p>
+                        </div>
+
+                        <!-- ================= SIMULASI ================= -->
+                        <div class="interaktif-box" style="margin-top:20px;">
+                            <h4>Simulasi Gema (Interaktif)</h4>
+
                             <p>
-                                Ketika bunyi mengenai permukaan keras seperti dinding,
-                                tebing, atau gunung, bunyi tersebut akan dipantulkan kembali.
-                                Bunyi pantul inilah yang menyebabkan kita dapat mendengar
-                                <b>gema</b> atau <b>gaung</b>.
+                                Aktifkan mikrofon lalu berbicaralah.
+                                Nyalakan gema untuk merasakan perbedaan bunyi asli
+                                dan bunyi pantul seperti di dalam gua.
                             </p>
 
-                            <div class="box-diff">
-                                <b>Gema</b> terdengar jelas karena bunyi pantul datang
-                                setelah bunyi asli selesai.<br>
-                                <b>Gaung</b> terjadi ketika bunyi pantul datang hampir
-                                bersamaan dengan bunyi asli sehingga bunyi terdengar tidak jelas.
-                            </div>
+                            <button class="next-btn" id="btn-mic">Aktifkan Mikrofon</button>
+                            <button class="next-btn" id="btn-echo">Gema OFF</button>
 
-                            <!-- ================= PERBEDAAN ================= -->
-                            <div class="materi-dua-kolom" style="margin-top:16px;">
+                            <canvas id="waveCanvas" width="500" height="150"
+                                style="margin-top:12px; background:#ffffff; border-radius:8px;">
+                            </canvas>
 
-                                <div class="kolom">
-                                    <h3>Gema</h3>
-                                    <ul>
-                                        <li>Bunyi terdengar ulang dengan jelas</li>
-                                        <li>Ada jeda waktu dengan bunyi asli</li>
-                                        <li>Terjadi di tempat terbuka</li>
-                                        <li>Contoh: gua, tebing</li>
-                                    </ul>
-                                </div>
-
-                                <div class="kolom">
-                                    <h3>Gaung</h3>
-                                    <ul>
-                                        <li>Bunyi bercampur dengan bunyi asli</li>
-                                        <li>Tidak ada jeda waktu jelas</li>
-                                        <li>Terjadi di ruangan besar</li>
-                                        <li>Contoh: aula, gedung kosong</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-                            <!-- ================= KONSEP FISIKA ================= -->
-                            <div class="box-diff" style="margin-top:18px;">
-                                Bunyi pantul dapat digunakan untuk menentukan jarak suatu benda.
-                                Karena bunyi menempuh perjalanan pergi dan kembali,
-                                maka jarak dihitung dengan rumus:
-                                <br><br>
-                                <b>s = v × t / 2</b>
-                                <br><br>
-                                Keterangan:<br>
-                                s = jarak (meter)<br>
-                                v = cepat rambat bunyi (m/s)<br>
-                                t = waktu bunyi pergi dan kembali (detik)
-                            </div>
-
-                            <!-- ================= SIMULASI ================= -->
-                            <div class="interaktif-box" style="margin-top:20px;">
-                                <h4>Simulasi Gema (Interaktif)</h4>
-
-                                <p>
-                                    Aktifkan mikrofon lalu berbicaralah.
-                                    Nyalakan gema untuk merasakan perbedaan bunyi asli
-                                    dan bunyi pantul seperti di dalam gua.
-                                </p>
-
-                                <button class="next-btn" id="btn-mic">Aktifkan Mikrofon</button>
-                                <button class="next-btn" id="btn-echo">Gema OFF</button>
-
-                                <canvas id="waveCanvas" width="500" height="150"
-                                    style="margin-top:12px; background:#ffffff; border-radius:8px;">
-                                </canvas>
-
-                                <p style="font-size:0.8rem; text-align:center; margin-top:6px;">
-                                    Visualisasi gelombang bunyi dari suara kamu
-                                </p>
-                            </div>
-
-                        </div>
-
-                        <!-- ================= LATIHAN 1 ================= -->
-                        <div id="gema-latihan1" class="latihan-tab-page">
-
-                            <div class="box-diff">
-                                <p><b>Latihan 1 – Jarak Tebing</b></p>
-
-                                <p>
-                                    Seorang siswa mendengar gema setelah <b>2 detik</b>.
-                                    Jika cepat rambat bunyi <b>340 m/s</b>,
-                                    tentukan jarak siswa ke tebing.
-                                </p>
-
-                                <hr>
-
-                                <h4>Diketahui</h4>
-                                t = <input type="number" id="l1-t"> detik<br><br>
-                                v = <input type="number" id="l1-v"> m/s<br><br>
-                                <p id="l1-feedback" style="margin-top:10px;"></p>
-
-
-                                <hr>
-
-                                <h4>Ditanya</h4>
-                                <p><b>Jarak ke tebing (s)</b></p>
-
-                                <hr>
-
-                                <h4>Jawaban</h4>
-                                s = <input type="number" id="l1-answer"> meter<br><br>
-
-                                <button class="next-btn" id="l1-check-answer">Cek Jawaban</button>
-
-                            </div>
-
-                        </div>
-
-                        <!-- ================= LATIHAN 2 ================= -->
-                        <div id="gema-latihan2" class="latihan-tab-page">
-
-                            <div class="box-diff">
-                                <p><b>Latihan 2 – SONAR</b></p>
-
-                                <p>
-                                    Bunyi pantul diterima kembali setelah <b>4 detik</b>.
-                                    Jika cepat rambat bunyi di air <b>1500 m/s</b>,
-                                    tentukan kedalaman laut.
-                                </p>
-
-                                <hr>
-
-                                <h4>Diketahui</h4>
-                                t = <input type="number" id="l2-t"> detik<br><br>
-                                v = <input type="number" id="l2-v"> m/s<br><br>
-                                <p id="l2-feedback" style="margin-top:10px;"></p>
-
-
-                                <hr>
-
-                                <h4>Ditanya</h4>
-                                <p><b>Kedalaman laut (s)</b></p>
-
-                                <hr>
-
-                                <h4>Jawaban</h4>
-                                s = <input type="number" id="l2-answer"> meter<br><br>
-
-                                <button class="next-btn" id="l2-check-answer">Cek Jawaban</button>
-
-                            </div>
-
-                        </div>
-                        <div style="margin-top:20px; text-align:center;">
-
-                            <button id="gema-download-btn" class="next-btn" style="display:none;">
-                                📄 Download Hasil Jawaban (PDF)
-                            </button>
-
-                            <br>
-                            <p style="margin-top:10px; font-size:14px; color:#64748b;">
-                                Setelah download, klik kumpulkan untuk upload jawaban.
+                            <p style="font-size:0.8rem; text-align:center; margin-top:6px;">
+                                Visualisasi gelombang bunyi dari suara kamu
                             </p>
-
-                            <br>
-
-                            <form id="gema-upload-form" action="{{ url('/pengumpulan-gelombang') }}" method="POST"
-                                enctype="multipart/form-data" style="display:none;">
-                                @csrf
-                                <input type="hidden" name="latihan_code" value="L23">
-                                <input type="file" name="file" accept="application/pdf" required>
-                                <button type="submit">Upload Jawaban</button>
-                            </form>
-
                         </div>
 
                     </div>
+
+
                 </section>
 
 
@@ -945,7 +827,7 @@
                         <form action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            <input type="hidden" name="latihan_code" value="L24">
+                            <input type="hidden" name="latihan_code" value="L23">
 
                             <input type="file" name="file" accept="application/pdf" required>
 
@@ -965,572 +847,447 @@
         </div>
 @endsection
     @section('scripts')
-            <script src="https://www.youtube.com/iframe_api"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    let videoSelesai = false;
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let videoSelesai = false;
 
-                    /* =========================
-                       MODAL LKS
-                    ========================= */
-                    const modal = document.getElementById("lksModal");
+                /* =========================
+                   MODAL LKS
+                ========================= */
+                const modal = document.getElementById("lksModal");
 
+                if (modal) {
+                    modal.style.display = "none";
+                }
+
+                window.openLKS = function () {
+
+                    if (!videoSelesai) {
+                        alert("Selesaikan video terlebih dahulu!");
+                        return;
+                    }
+
+                    if (modal) {
+                        modal.style.display = "flex";
+                    }
+
+                };
+
+
+                window.closeLKS = function () {
                     if (modal) {
                         modal.style.display = "none";
                     }
-
-                    window.openLKS = function () {
-
-                        if (!videoSelesai) {
-                            alert("Selesaikan video terlebih dahulu!");
-                            return;
-                        }
-
-                        if (modal) {
-                            modal.style.display = "flex";
-                        }
-
-                    };
+                }
 
 
-                    window.closeLKS = function () {
-                        if (modal) {
-                            modal.style.display = "none";
-                        }
-                    }
+                /* =========================
+                   NAVIGASI HALAMAN
+                ========================= */
+                const pages = document.querySelectorAll(".subpage");
+                const navButtons = document.querySelectorAll(".inner-nav-btn");
+                const prevBtn = document.getElementById("inner-prev");
+                const nextBtn = document.getElementById("inner-next");
 
+                const order = [
+                    "page-intro",
+                    "page-gema",
+                    "page-resonansi",
+                    "page-aplikasi",
+                    "page-doppler"
+                ];
 
-                    /* =========================
-                       NAVIGASI HALAMAN
-                    ========================= */
-                    const pages = document.querySelectorAll(".subpage");
-                    const navButtons = document.querySelectorAll(".inner-nav-btn");
-                    const prevBtn = document.getElementById("inner-prev");
-                    const nextBtn = document.getElementById("inner-next");
+                let currentIndex = 0;
 
-                    const order = [
-                        "page-intro",
-                        "page-gema",
-                        "page-resonansi",
-                        "page-aplikasi",
-                        "page-doppler"
-                    ];
+                function showPage(id) {
 
-                    let currentIndex = 0;
-
-                    function showPage(id) {
-
-                        pages.forEach(p => {
-                            p.style.display = (p.id === id) ? "block" : "none";
-                        });
-
-                        navButtons.forEach(btn => {
-                            const active = btn.dataset.target === id;
-
-                            btn.style.backgroundColor = active ? "#0f766e" : "";
-                            btn.style.color = active ? "#ffffff" : "";
-                        });
-
-                        currentIndex = order.indexOf(id);
-
-                        if (prevBtn) {
-                            prevBtn.disabled = currentIndex === 0;
-                        }
-
-                        if (nextBtn) {
-                            nextBtn.disabled = currentIndex === order.length - 1;
-                        }
-                    }
-
-                    navButtons.forEach(btn => {
-                        btn.addEventListener("click", () => {
-                            showPage(btn.dataset.target);
-                        });
+                    pages.forEach(p => {
+                        p.style.display = (p.id === id) ? "block" : "none";
                     });
 
+                    navButtons.forEach(btn => {
+                        const active = btn.dataset.target === id;
+
+                        btn.style.backgroundColor = active ? "#0f766e" : "";
+                        btn.style.color = active ? "#ffffff" : "";
+                    });
+
+                    currentIndex = order.indexOf(id);
+
                     if (prevBtn) {
-                        prevBtn.addEventListener("click", () => {
-                            if (currentIndex > 0) {
-                                showPage(order[currentIndex - 1]);
-                            }
-                        });
+                        prevBtn.disabled = currentIndex === 0;
                     }
 
                     if (nextBtn) {
-                        nextBtn.addEventListener("click", () => {
-                            if (currentIndex < order.length - 1) {
-                                showPage(order[currentIndex + 1]);
-                            }
-                        });
+                        nextBtn.disabled = currentIndex === order.length - 1;
                     }
-
-                    showPage(order[0]);
-
-
-                    /* =========================
-        YOUTUBE PLAYER
-        ========================= */
-
-                    let player;
-
-                    window.onYouTubeIframeAPIReady = function () {
-
-                        player = new YT.Player('player', {
-
-                            width: '100%',
-                            height: '500',
-
-                            videoId: 'ICKcBdD4N9A',
-
-                            playerVars: {
-                                rel: 0,
-                                modestbranding: 1
-                            },
-
-                            events: {
-
-                                onStateChange: function (event) {
-
-                                    if (event.data === YT.PlayerState.ENDED) {
-
-                                        videoSelesai = true;
-
-                                        const btnLKS = document.getElementById("btn-lks");
-
-                                        if (btnLKS) {
-                                            btnLKS.disabled = false;
-                                            btnLKS.textContent = "Kerjakan LKS";
-                                        }
-
-                                        alert("Video selesai! Sekarang kamu bisa mengerjakan LKS.");
-                                    }
-                                }
-                            }
-                        });
-
-                    };
-
-                    window.gotoVideo = function (seconds) {
-
-                        if (!player) return;
-
-                        player.seekTo(seconds, true);
-                        player.playVideo();
-
-                    };
-
-
-                    /* =========================
-                       TAB LATIHAN
-                    ========================= */
-
-                    document.querySelectorAll(".latihan-tab-btn").forEach(btn => {
-
-                        btn.addEventListener("click", () => {
-
-                            const wrapper = btn.closest(".latihan-tabs-wrapper");
-                            const target = btn.dataset.target;
-
-                            wrapper.querySelectorAll(".latihan-tab-btn")
-                                .forEach(b => b.classList.remove("latihan-tab-active"));
-
-                            btn.classList.add("latihan-tab-active");
-
-                            wrapper.querySelectorAll(".latihan-tab-page")
-                                .forEach(p => p.classList.remove("latihan-tab-page-active"));
-
-                            wrapper.querySelector("#" + target)
-                                .classList.add("latihan-tab-page-active");
-
-                        });
-
-                    });
-
-                    /* =========================
-                       AUDIO – MIKROFON + ECHO (SCRIPT ASLI)
-                    ========================= */
-
-                    let audioContext;
-                    let micStream;
-                    let micSource;
-                    let inputGain;
-
-                    let delayNode;
-                    let feedbackGain;
-                    let echoGain;
-
-                    let isMicOn = false;
-                    let isEchoOn = false;
-
-                    const micBtn = document.getElementById("btn-mic");
-                    const echoBtn = document.getElementById("btn-echo");
-
-                    if (micBtn) {
-
-                        micBtn.addEventListener("click", async () => {
-
-                            if (!isMicOn) {
-
-                                try {
-
-                                    micStream = await navigator.mediaDevices.getUserMedia({
-                                        audio: {
-                                            echoCancellation: false,
-                                            noiseSuppression: false,
-                                            autoGainControl: false
-                                        }
-                                    });
-
-                                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                                    micSource = audioContext.createMediaStreamSource(micStream);
-
-                                    inputGain = audioContext.createGain();
-                                    inputGain.gain.value = 1.2;
-
-                                    delayNode = audioContext.createDelay(5.0);
-                                    delayNode.delayTime.value = 0.4;
-
-                                    feedbackGain = audioContext.createGain();
-                                    feedbackGain.gain.value = 0.35;
-
-                                    echoGain = audioContext.createGain();
-                                    echoGain.gain.value = 0; // echo OFF awal
-
-                                    micSource.connect(inputGain);
-                                    inputGain.connect(audioContext.destination);
-
-                                    inputGain.connect(delayNode);
-                                    delayNode.connect(feedbackGain);
-                                    feedbackGain.connect(delayNode);
-
-                                    delayNode.connect(echoGain);
-                                    echoGain.connect(audioContext.destination);
-
-                                    micBtn.textContent = "Matikan Mikrofon";
-                                    echoBtn.textContent = "Gema OFF";
-
-                                    isMicOn = true;
-
-                                    startWaveVisual();
-
-                                } catch (err) {
-
-                                    alert("Mikrofon tidak dapat diakses.");
-
-                                }
-
-                            } else {
-
-                                micSource.disconnect();
-                                micStream.getTracks().forEach(t => t.stop());
-                                audioContext.close();
-
-                                micBtn.textContent = "Aktifkan Mikrofon";
-                                echoBtn.textContent = "Gema OFF";
-
-                                isMicOn = false;
-                                isEchoOn = false;
-
-                                stopWaveVisual();
-                            }
-
-                        });
-                    }
-
-
-                    if (echoBtn) {
-
-                        echoBtn.addEventListener("click", () => {
-
-                            if (!isMicOn) return;
-
-                            if (!isEchoOn) {
-
-                                echoGain.gain.value = 0.6;
-                                echoBtn.textContent = "Gema ON";
-                                isEchoOn = true;
-
-                            } else {
-
-                                echoGain.gain.value = 0;
-                                echoBtn.textContent = "Gema OFF";
-                                isEchoOn = false;
-
-                            }
-
-                        });
-
-                    }
-
-
-                    /* =========================
-                       VISUAL GELOMBANG
-                    ========================= */
-
-                    const canvas = document.getElementById("waveCanvas");
-                    const ctx = canvas ? canvas.getContext("2d") : null;
-
-                    let analyser;
-                    let dataArray;
-                    let animationId;
-
-                    function startWaveVisual() {
-
-                        if (!canvas) return;
-
-                        analyser = audioContext.createAnalyser();
-                        analyser.fftSize = 2048;
-
-                        const bufferLength = analyser.fftSize;
-                        dataArray = new Uint8Array(bufferLength);
-
-                        inputGain.connect(analyser);
-
-                        drawWave();
-                    }
-
-                    function stopWaveVisual() {
-
-                        if (!canvas) return;
-
-                        cancelAnimationFrame(animationId);
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    }
-
-                    function drawWave() {
-
-                        animationId = requestAnimationFrame(drawWave);
-
-                        analyser.getByteTimeDomainData(dataArray);
-
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                        ctx.strokeStyle = "#e5e7eb";
-                        ctx.beginPath();
-                        ctx.moveTo(0, canvas.height / 2);
-                        ctx.lineTo(canvas.width, canvas.height / 2);
-                        ctx.stroke();
-
-                        ctx.lineWidth = 2;
-                        ctx.strokeStyle = isEchoOn ? "#dc2626" : "#2563eb";
-
-                        ctx.beginPath();
-
-                        const sliceWidth = canvas.width / dataArray.length;
-                        let x = 0;
-
-                        for (let i = 0; i < dataArray.length; i++) {
-
-                            const v = dataArray[i] / 128.0;
-                            const y = (v * canvas.height) / 2;
-
-                            if (i === 0) {
-                                ctx.moveTo(x, y);
-                            } else {
-                                ctx.lineTo(x, y);
-                            }
-
-                            x += sliceWidth;
-                        }
-
-                        ctx.lineTo(canvas.width, canvas.height / 2);
-                        ctx.stroke();
-                    }
-
-
-                    /* =========================
-                       CEK JAWABAN LKS
-                    ========================= */
-
-                    window.cekJawaban = function () {
-
-                        let benar = 0;
-
-                        if (document.getElementById("jawab1").value === "Tidak Menghasilkan Bunyi") {
-                            benar++;
-                        }
-
-                        if (document.getElementById("jawab2").value === "Bunyi Nyaring") {
-                            benar++;
-                        }
-
-                        if (document.getElementById("jawab3").value === "Bunyi Lemah") {
-                            benar++;
-                        }
-
-                        if (document.getElementById("jawab4").value === "Nada Lebih Rendah") {
-                            benar++;
-                        }
-
-                        if (document.getElementById("jawab5").value === "Bunyi Singkat") {
-                            benar++;
-                        }
-
-                        alert("Jawaban benar: " + benar + " dari 5");
-                    }
-
-                    /* ================================
-                       SISTEM HASIL GEMA (SAMA KAYAK L1.1)
-                    ================================ */
-
-                    const hasilGema = {
-                        latihan1: null,
-                        latihan2: null
-                    };
-
-                    const downloadBtn = document.getElementById("gema-download-btn");
-                    const uploadForm = document.getElementById("gema-upload-form");
-
-                    function cekSelesaiGema() {
-                        if (hasilGema.latihan1 && hasilGema.latihan2) {
-                            downloadBtn.style.display = "inline-block";
-                            uploadForm.style.display = "block";
-                        }
-                    }
-
-
-                    /* =============================
-                       LATIHAN 1
-                    ============================= */
-                    document.getElementById("l1-check-answer")?.addEventListener("click", () => {
-
-                        const t = document.getElementById("l1-t").value;
-                        const v = document.getElementById("l1-v").value;
-                        const s = parseFloat(document.getElementById("l1-answer").value);
-
-                        const feedback = document.getElementById("l1-feedback");
-
-                        let pesan = [];
-
-                        if (t != 2) pesan.push("t harus 2 detik");
-                        if (v != 340) pesan.push("v harus 340 m/s");
-
-                        if (isNaN(s)) {
-                            pesan.push("Isi jawaban dulu");
-                        } else if (Math.abs(s - 340) > 1) {
-                            pesan.push("Hasil masih salah");
-                        }
-
-                        if (pesan.length === 0) {
-                            feedback.textContent = "✅ Benar! Jawaban tepat";
-                            feedback.style.color = "#059669";
-                        } else {
-                            feedback.innerHTML = pesan.join("<br>");
-                            feedback.style.color = "#dc2626";
-                        }
-
-                        hasilGema.latihan1 = {
-                            judul: "Latihan 1 – Gema",
-                            diketahui: `t=${t}, v=${v}`,
-                            jawabanSiswa: s
-                        };
-
-                        cekSelesaiGema();
-                    });
-
-                    /* =============================
-                       LATIHAN 2
-                    ============================= */
-
-                    document.getElementById("l2-check-answer")?.addEventListener("click", () => {
-
-                        const t = document.getElementById("l2-t").value;
-                        const v = document.getElementById("l2-v").value;
-                        const s = parseFloat(document.getElementById("l2-answer").value);
-
-                        const feedback = document.getElementById("l2-feedback");
-
-                        let pesan = [];
-
-                        if (t != 4) pesan.push("t harus 4 detik");
-                        if (v != 1500) pesan.push("v harus 1500 m/s");
-
-                        if (isNaN(s)) {
-                            pesan.push("Isi jawaban dulu");
-                        } else if (Math.abs(s - 3000) > 1) {
-                            pesan.push("Hasil masih salah");
-                        }
-
-                        if (pesan.length === 0) {
-                            feedback.textContent = "✅ Benar! Jawaban tepat";
-                            feedback.style.color = "#059669";
-                        } else {
-                            feedback.innerHTML = pesan.join("<br>");
-                            feedback.style.color = "#dc2626";
-                        }
-
-                        hasilGema.latihan2 = {
-                            judul: "Latihan 2 – SONAR",
-                            diketahui: `t=${t}, v=${v}`,
-                            jawabanSiswa: s
-                        };
-
-                        cekSelesaiGema();
-                    });
-                    /* =============================
-                       GENERATE PDF
-                    ============================= */
-                    downloadBtn?.addEventListener("click", () => {
-
-                        const element = document.getElementById("area-pdf");
-
-                        if (!element) {
-                            alert("Area PDF tidak ditemukan!");
-                            return;
-                        }
-
-                        html2canvas(element, { scale: 2 }).then(canvas => {
-
-                            const imgData = canvas.toDataURL("image/png");
-
-                            const { jsPDF } = window.jspdf;
-                            const pdf = new jsPDF("p", "mm", "a4");
-
-                            const imgWidth = 210;
-                            const imgHeight = canvas.height * imgWidth / canvas.width;
-
-                            const pdfHeight = pdf.internal.pageSize.getHeight();
-
-                            if (imgHeight > pdfHeight) {
-
-                                let heightLeft = imgHeight;
-                                let position = 0;
-
-                                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                                heightLeft -= pdfHeight;
-
-                                while (heightLeft > 0) {
-
-                                    position = heightLeft - imgHeight;
-
-                                    pdf.addPage();
-
-                                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-
-                                    heightLeft -= pdfHeight;
-                                }
-
-                            } else {
-
-                                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-
-                            }
-
-                            pdf.save("LKS_Siswa.pdf");
-
-                        }).catch(err => {
-                            console.error(err);
-                            alert("Gagal generate PDF");
-                        });
-
+                }
+
+                navButtons.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        showPage(btn.dataset.target);
                     });
                 });
+
+                if (prevBtn) {
+                    prevBtn.addEventListener("click", () => {
+                        if (currentIndex > 0) {
+                            showPage(order[currentIndex - 1]);
+                        }
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener("click", () => {
+                        if (currentIndex < order.length - 1) {
+                            showPage(order[currentIndex + 1]);
+                        }
+                    });
+                }
+
+                showPage(order[0]);
+
+
                 /* =========================
-        PDF LKS (MODAL)
-        ========================= */
+                YOUTUBE PLAYER
+                ========================= */
+
+                let player;
+
+                window.onYouTubeIframeAPIReady = function () {
+
+                    console.log("YouTube ready");
+                    console.log("YouTube API Loaded");
+
+                    player = new YT.Player('player', {
+
+                        width: '100%',
+                        height: '500',
+
+                        videoId: 'ICKcBdD4N9A',
+
+                        playerVars: {
+                            rel: 0,
+                            modestbranding: 1
+                        },
+
+                        events: {
+
+                            onStateChange: function (event) {
+
+                                if (event.data === YT.PlayerState.ENDED) {
+
+                                    videoSelesai = true;
+
+                                    const btnLKS = document.getElementById("btn-lks");
+
+                                    if (btnLKS) {
+                                        btnLKS.disabled = false;
+                                        btnLKS.textContent = "Kerjakan LKS";
+                                    }
+
+                                    alert("Video selesai! Sekarang kamu bisa mengerjakan LKS.");
+                                }
+                            }
+                        }
+                    });
+
+                };
+
+                window.gotoVideo = function (seconds) {
+
+                    if (!player) return;
+
+                    player.seekTo(seconds, true);
+                    player.playVideo();
+
+                };
+
+
+
+
+                /* =========================
+                   AUDIO – MIKROFON + ECHO
+                ========================= */
+
+                let audioContext;
+                let micStream;
+                let micSource;
+                let inputGain;
+                let delayNode;
+                let feedbackGain;
+                let echoGain;
+
+                let isMicOn = false;
+                let isEchoOn = false;
+
+                const micBtn = document.getElementById("btn-mic");
+                const echoBtn = document.getElementById("btn-echo");
+
+                if (micBtn) {
+                    micBtn.addEventListener("click", async () => {
+                        if (!isMicOn) {
+                            try {
+                                // 1. Dapatkan akses mic
+                                micStream = await navigator.mediaDevices.getUserMedia({
+                                    audio: {
+                                        echoCancellation: false,
+                                        noiseSuppression: false,
+                                        autoGainControl: false
+                                    }
+                                });
+
+                                // 2. Inisialisasi AudioContext & pastikan di-resume (Perbaikan Error Mic)
+                                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                                if (audioContext.state === 'suspended') {
+                                    await audioContext.resume();
+                                }
+
+                                micSource = audioContext.createMediaStreamSource(micStream);
+
+                                // Siapkan Analyser untuk deteksi volume (Untuk trigger animasi)
+                                analyser = audioContext.createAnalyser();
+                                analyser.fftSize = 256;
+                                dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+                                inputGain = audioContext.createGain();
+                                inputGain.gain.value = 1.2;
+
+                                delayNode = audioContext.createDelay(5.0);
+                                delayNode.delayTime.value = 0.8; // Waktu pantul audio disesuaikan
+
+                                feedbackGain = audioContext.createGain();
+                                feedbackGain.gain.value = 0.35;
+
+                                echoGain = audioContext.createGain();
+                                echoGain.gain.value = 0; // echo OFF awal
+
+                                // Routing Audio
+                                micSource.connect(inputGain);
+                                inputGain.connect(analyser); // Analyser membaca input
+                                inputGain.connect(audioContext.destination);
+
+                                inputGain.connect(delayNode);
+                                delayNode.connect(feedbackGain);
+                                feedbackGain.connect(delayNode);
+
+                                delayNode.connect(echoGain);
+                                echoGain.connect(audioContext.destination);
+
+                                micBtn.textContent = "Matikan Mikrofon";
+                                echoBtn.textContent = "Gema OFF";
+                                isMicOn = true;
+
+                                // Reset gelombang visual
+                                waves = [];
+                                startWaveVisual();
+
+                            } catch (err) {
+                                alert("Mikrofon tidak dapat diakses. Pastikan kamu memberi izin (Allow) pada browser dan mengakses situs melalui HTTPS atau localhost.");
+                                console.error(err);
+                            }
+                        } else {
+                            micSource.disconnect();
+                            micStream.getTracks().forEach(t => t.stop());
+                            audioContext.close();
+
+                            micBtn.textContent = "Aktifkan Mikrofon";
+                            echoBtn.textContent = "Gema OFF";
+
+                            isMicOn = false;
+                            isEchoOn = false;
+
+                            stopWaveVisual();
+                        }
+                    });
+                }
+
+                if (echoBtn) {
+                    echoBtn.addEventListener("click", () => {
+                        if (!isMicOn) return;
+
+                        if (!isEchoOn) {
+                            echoGain.gain.value = 0.6;
+                            echoBtn.textContent = "Gema ON";
+                            isEchoOn = true;
+                        } else {
+                            echoGain.gain.value = 0;
+                            echoBtn.textContent = "Gema OFF";
+                            isEchoOn = false;
+                        }
+                    });
+                }
+
+
+                /* =========================
+                   VISUAL GELOMBANG MEMANTUL
+                ========================= */
+
+                const canvas = document.getElementById("waveCanvas");
+                const ctx = canvas ? canvas.getContext("2d") : null;
+
+                let analyser;
+                let dataArray;
+                let animationId;
+                let waves = [];
+                let lastSpawnTime = 0;
+
+                // Class/Objek Gelombang Suara
+                class SoundWave {
+                    constructor(x, y, speed, isEcho) {
+                        this.x = x;
+                        this.y = y;
+                        this.speed = speed;
+                        this.isEcho = isEcho; // true jika ini adalah gelombang pantul
+                        this.active = true;
+                        this.radius = 20;
+                    }
+
+                    update() {
+                        // Jika gema, bergerak ke kiri. Jika asli, bergerak ke kanan.
+                        if (this.isEcho) {
+                            this.x -= this.speed;
+                        } else {
+                            this.x += this.speed;
+                        }
+                    }
+
+                    draw(ctx) {
+                        ctx.beginPath();
+                        // Gelombang asli warna abu-abu gelap, pantulan warna merah
+                        ctx.strokeStyle = this.isEcho ? "#ef4444" : "#475569";
+                        ctx.lineWidth = 2;
+
+                        if (this.isEcho) {
+                            // Gambar lengkungan menghadap ke kiri '('
+                            ctx.arc(this.x, this.y, this.radius, Math.PI / 2, (3 * Math.PI) / 2, false);
+                            ctx.arc(this.x - 12, this.y, this.radius + 15, Math.PI / 2, (3 * Math.PI) / 2, false);
+                        } else {
+                            // Gambar lengkungan menghadap ke kanan ')'
+                            ctx.arc(this.x, this.y, this.radius, -Math.PI / 2, Math.PI / 2, false);
+                            ctx.arc(this.x - 12, this.y, this.radius + 15, -Math.PI / 2, Math.PI / 2, false);
+                        }
+                        ctx.stroke();
+                    }
+                }
+
+                function startWaveVisual() {
+                    if (!canvas) return;
+                    drawWave();
+                }
+
+                function stopWaveVisual() {
+                    if (!canvas) return;
+                    cancelAnimationFrame(animationId);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+
+                function drawWave() {
+                    animationId = requestAnimationFrame(drawWave);
+                    analyser.getByteTimeDomainData(dataArray);
+
+                    // Hitung volume suara saat ini
+                    let maxVolume = 0;
+                    for (let i = 0; i < dataArray.length; i++) {
+                        let vol = Math.abs(dataArray[i] - 128);
+                        if (vol > maxVolume) maxVolume = vol;
+                    }
+
+                    // Ubah angka 15 menjadi 5 agar mic lebih sensitif menangkap suara
+                    if (maxVolume > 5 && Date.now() - lastSpawnTime > 400) {
+                        // Spawn gelombang dari posisi orang bicara (x: 60)
+                        waves.push(new SoundWave(60, canvas.height / 2, 2.5, false));
+                        lastSpawnTime = Date.now();
+                    }
+
+                    // Bersihkan Kanvas setiap frame
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    // 1. Gambar Sumber Suara (Ikon Orang)
+                    ctx.fillStyle = "#1e293b";
+                    ctx.font = "35px Arial";
+                    ctx.fillText("🗣️", 10, canvas.height / 2 + 12);
+
+                    // 2. Gambar Bidang Pantul (Tebing)
+                    ctx.fillStyle = "#94a3b8"; // Warna abu tebing
+                    ctx.fillRect(canvas.width - 30, 0, 30, canvas.height);
+
+                    // Pattern bergerigi untuk tebing (Opsional untuk estetika)
+                    ctx.beginPath();
+                    ctx.moveTo(canvas.width - 30, 0);
+                    ctx.lineTo(canvas.width - 40, canvas.height / 4);
+                    ctx.lineTo(canvas.width - 25, canvas.height / 2);
+                    ctx.lineTo(canvas.width - 35, (canvas.height * 3) / 4);
+                    ctx.lineTo(canvas.width - 30, canvas.height);
+                    ctx.lineTo(canvas.width, canvas.height);
+                    ctx.lineTo(canvas.width, 0);
+                    ctx.fillStyle = "#cbd5e1";
+                    ctx.fill();
+
+                    // 3. Update & Gambar semua gelombang
+                    waves.forEach(w => {
+                        w.update();
+                        w.draw(ctx);
+
+                        // Jika gelombang asli menyentuh tebing (kanan)
+                        if (!w.isEcho && w.x >= canvas.width - 45) {
+                            w.active = false; // Matikan gelombang asli
+
+                            // Jika GEMA sedang menyala, ciptakan gelombang pantulan (merah)
+                            if (isEchoOn) {
+                                waves.push(new SoundWave(canvas.width - 45, canvas.height / 2, 2.5, true));
+                            }
+                        }
+
+                        // Jika gelombang pantul kembali ke telinga orang (kiri)
+                        if (w.isEcho && w.x <= 50) {
+                            w.active = false;
+                        }
+                    });
+
+                    // Hapus gelombang yang sudah tidak aktif dari array (Memori bersih)
+                    waves = waves.filter(w => w.active);
+                }
+
+
+                /* =========================
+                   CEK JAWABAN LKS
+                ========================= */
+
+                window.cekJawaban = function () {
+
+                    let benar = 0;
+
+                    if (document.getElementById("jawab1").value === "Tidak Menghasilkan Bunyi") {
+                        benar++;
+                    }
+
+                    if (document.getElementById("jawab2").value === "Bunyi Nyaring") {
+                        benar++;
+                    }
+
+                    if (document.getElementById("jawab3").value === "Bunyi Lemah") {
+                        benar++;
+                    }
+
+                    if (document.getElementById("jawab4").value === "Nada Lebih Rendah") {
+                        benar++;
+                    }
+
+                    if (document.getElementById("jawab5").value === "Bunyi Singkat") {
+                        benar++;
+                    }
+
+                    alert("Jawaban benar: " + benar + " dari 5");
+                }
+
+                /* =========================
+                PDF LKS (MODAL)
+                ========================= */
 
                 const btnDownloadLKS = document.getElementById("btn-download-lks");
 
@@ -1605,13 +1362,14 @@
                     });
 
                 });
+            });
 
 
-            </script>
+        </script>
 
-            <script>
-                window.addEventListener("beforeunload", function () {
-                    kirimProgress("fenomena_apk_bunyi", 10);
-                });
-            </script>
+        <script>
+            window.addEventListener("beforeunload", function () {
+                kirimProgress("fenomena_apk_bunyi", 10);
+            });
+        </script>
     @endsection

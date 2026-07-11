@@ -25,30 +25,52 @@ class GelombangSubmissionController extends Controller
         $request->validate([
             'file' => 'required|mimes:pdf|max:2048',
             'latihan_code' => 'required'
-        ], [
-            'file.required' => 'Silakan pilih file PDF terlebih dahulu.',
-            'file.mimes' => 'File harus berformat PDF.',
-            'file.max' => 'Ukuran file maksimal 2 MB.'
         ]);
 
         $file = $request->file('file');
 
         $fileName = $request->latihan_code . '_' . Auth::id() . '_' . time() . '.pdf';
 
-        $result = $file->move(
+        $file->move(
             public_path('submissions'),
             $fileName
         );
 
         $path = 'submissions/' . $fileName;
 
-        GelombangSubmission::create([
-            'user_id' => Auth::id(),
-            'latihan_code' => $request->latihan_code,
-            'file_path' => $path
-        ]);
+        // ===========================
+        // CEK DATA LAMA
+        // ===========================
+        $submission = GelombangSubmission::where('user_id', Auth::id())
+            ->where('latihan_code', $request->latihan_code)
+            ->first();
 
-        return back()->with('success', 'File berhasil dikumpulkan!');
+        if ($submission) {
+
+            if (
+                $submission->file_path &&
+                file_exists(public_path($submission->file_path))
+            ) {
+                unlink(public_path($submission->file_path));
+            }
+
+            $submission->update([
+                'file_path' => $path
+            ]);
+
+        } else {
+
+            GelombangSubmission::create([
+                'user_id' => Auth::id(),
+                'latihan_code' => $request->latihan_code,
+                'file_path' => $path
+            ]);
+
+        }
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 
     // =========================

@@ -8,8 +8,8 @@
 
 
     <!-- ====================
-                               KONTEN UTAMA
-                               ==================== -->
+                                                     KONTEN UTAMA
+                                                     ==================== -->
     <main class="content">
 
       <h2>Definisi dan Konsep Dasar: Getaran dan Gelombang</h2>
@@ -236,9 +236,6 @@
             <b>Cek Jawaban</b>.
           </p>
 
-          <!-- ========================
-                                    TAB LATIHAN (3 HALAMAN)
-                                    ======================== -->
           <div class="latihan-tabs-wrapper">
 
             <!-- HEADER TAB -->
@@ -257,190 +254,212 @@
             </div>
 
             <!-- ========================
-                                      HALAMAN LATIHAN 1
-                                      ======================== -->
+                                    HALAMAN LATIHAN 1
+                                    ======================== -->
             <div id="latihan-1" class="latihan-tab-page latihan-tab-page-active">
+              <div class="example-row">
 
-              <div class="box-diff" style="margin-top:12px;">
-                <p><b>Contoh Soal – Frekuensi dari Periode</b></p>
-                <p>
-                  Sebuah gelombang pada tali memiliki periode <b>T = 0,25 s</b>.
-                  Hitung <b>frekuensi (f)</b> gelombang tersebut.
-                </p>
+                <div class="box-diff" style="margin-top:12px;">
+                  <p><b>Contoh Soal – Frekuensi dari Periode</b></p>
+                  <p>
+                    Sebuah gelombang pada tali memiliki periode <b>T = 0,25 s</b>.
+                    Hitung <b>frekuensi (f)</b> gelombang tersebut.
+                  </p>
 
-                <p><b>Penyelesaian:</b></p>
-                <p>
-                  Diketahui: T = 0,25 s<br>
-                  Ditanyakan: f = ... ?
-                </p>
+                  <p><b>Penyelesaian:</b></p>
+                  <p>
+                    Diketahui: T = 0,25 s<br>
+                    Ditanyakan: f = ... ?
+                  </p>
 
-                <p>
-                  Kita gunakan rumus: <b>f = 1/T</b><br>
-                  f = 1 / 0,25 = 4 Hz
-                </p>
+                  <p>
+                    Kita gunakan rumus: <b>f = 1/T</b><br>
+                    f = 1 / 0,25 = 4 Hz
+                  </p>
 
-                <p>
-                  Jadi, frekuensi gelombang tersebut adalah <b>4 Hz</b>.
-                </p>
-              </div>
+                  <p>
+                    Jadi, frekuensi gelombang tersebut adalah <b>4 Hz</b>.
+                  </p>
+                </div>
 
-              <div class="box-diff" style="margin-top:12px;">
-                <p><b>Latihan 1 – Frekuensi dari Periode</b></p>
-                <p>
-                  Sebuah gelombang permukaan air memiliki periode <b>T = 0,5 s</b>.
-                  Hitung <b>frekuensi (f)</b> gelombang tersebut.
-                </p>
+                <div class="box-diff" style="margin-top:12px;">
+                  <p><b>Latihan 1 – Frekuensi dari Periode</b></p>
+                  <p>
+                    Sebuah gelombang permukaan air memiliki periode <b>T = 0,5 s</b>.
+                    Hitung <b>frekuensi (f)</b> gelombang tersebut.
+                  </p>
 
-                <p><b>Diketahui:</b></p>
-                <p>
-                  T =
-                  <input type="number" id="g-lat1-T" style="width:80px;" step="0.01"> s
-                </p>
+                  <p><b>Diketahui:</b></p>
+                  <p>
+                    T =
+                    <input type="number" id="g-lat1-T" style="width:80px;" step="0.01"> s
+                  </p>
 
-                <p><b>Ditanyakan:</b></p>
-                <p>f = ... ?</p>
+                  <p><b>Ditanyakan:</b></p>
+                  <p>f = ... ?</p>
 
-                <p><b>Jawaban:</b></p>
-                <p>
-                  f =
-                  <input type="number" id="g-lat1" style="width:80px;" step="0.01"> Hz
-                  <button type="button" class="next-btn" id="g-lat1-btn" style="margin-left:8px;">
-                    Cek Jawaban
-                  </button>
-                </p>
+                  <p><b>Jawaban:</b></p>
+                  <p>
+                    f =
+                    <input type="number" id="g-lat1" style="width:80px;" step="0.01"> Hz
+                    <button type="button" class="next-btn" id="g-lat1-btn" style="margin-left:8px;">
+                      Cek Jawaban
+                    </button>
+                  </p>
 
-                <p id="g-lat1-feedback" style="margin-top:6px;"></p>
+                  <p id="g-lat1-feedback" style="margin-top:6px;"></p>
 
+                </div>
               </div>
             </div>
 
             <!-- ========================
-                                      HALAMAN LATIHAN 2
-                                      ======================== -->
+                                                            HALAMAN LATIHAN 2
+                                                            ======================== -->
             <div id="latihan-2" class="latihan-tab-page">
+              <div class="example-row">
+                <div class="box-diff" style="margin-top:12px;">
+                  <p><b>Contoh Soal – Cepat Rambat Gelombang</b></p>
+                  <p>
+                    Suatu gelombang pada tali memiliki panjang gelombang <b>λ = 0,5 m</b>
+                    dan frekuensi <b>f = 10 Hz</b>.
+                    Hitung <b>cepat rambat</b> gelombang tersebut.
+                  </p>
 
-              <div class="box-diff" style="margin-top:12px;">
-                <p><b>Contoh Soal – Cepat Rambat Gelombang</b></p>
-                <p>
-                  Suatu gelombang pada tali memiliki panjang gelombang <b>λ = 0,5 m</b>
-                  dan frekuensi <b>f = 10 Hz</b>.
-                  Hitung <b>cepat rambat</b> gelombang tersebut.
-                </p>
+                  <p><b>Penyelesaian:</b></p>
+                  <p>
+                    Diketahui: λ = 0,5 m, f = 10 Hz<br>
+                    Ditanyakan: v = ... ?
+                  </p>
 
-                <p><b>Penyelesaian:</b></p>
-                <p>
-                  Diketahui: λ = 0,5 m, f = 10 Hz<br>
-                  Ditanyakan: v = ... ?
-                </p>
+                  <p>
+                    Gunakan rumus: <b>v = λ · f</b><br>
+                    v = 0,5 m × 10 Hz = 5 m/s
+                  </p>
 
-                <p>
-                  Gunakan rumus: <b>v = λ · f</b><br>
-                  v = 0,5 m × 10 Hz = 5 m/s
-                </p>
+                  <p>
+                    Jadi, cepat rambat gelombang tersebut adalah <b>5 m/s</b>.
+                  </p>
+                </div>
 
-                <p>
-                  Jadi, cepat rambat gelombang tersebut adalah <b>5 m/s</b>.
-                </p>
-              </div>
+                <div class="box-diff" style="margin-top:12px;">
+                  <p><b>Latihan 2 – Cepat Rambat Gelombang</b></p>
+                  <p>
+                    Suatu gelombang pada tali memiliki panjang gelombang <b>λ = 0,8 m</b>
+                    dan frekuensi <b>f = 5 Hz</b>.
+                    Hitung <b>cepat rambat</b> gelombang tersebut.
+                  </p>
 
-              <div class="box-diff" style="margin-top:12px;">
-                <p><b>Latihan 2 – Cepat Rambat Gelombang</b></p>
-                <p>
-                  Suatu gelombang pada tali memiliki panjang gelombang <b>λ = 0,8 m</b>
-                  dan frekuensi <b>f = 5 Hz</b>.
-                  Hitung <b>cepat rambat</b> gelombang tersebut.
-                </p>
+                  <p><b>Diketahui:</b></p>
+                  <p>
+                    λ =
+                    <input type="number" id="g-lat2-l" style="width:80px;" step="0.01"> m
+                  </p>
+                  <p>
+                    f =
+                    <input type="number" id="g-lat2-f" style="width:80px;" step="0.01"> Hz
+                  </p>
 
-                <p><b>Diketahui:</b></p>
-                <p>
-                  λ =
-                  <input type="number" id="g-lat2-l" style="width:80px;" step="0.01"> m
-                </p>
-                <p>
-                  f =
-                  <input type="number" id="g-lat2-f" style="width:80px;" step="0.01"> Hz
-                </p>
+                  <p><b>Ditanyakan:</b></p>
+                  <p>v = ... ?</p>
 
-                <p><b>Ditanyakan:</b></p>
-                <p>v = ... ?</p>
+                  <p><b>Jawaban:</b></p>
+                  <p>
+                    v =
+                    <input type="number" id="g-lat2" style="width:80px;" step="0.01"> m/s
+                    <button type="button" class="next-btn" id="g-lat2-btn" style="margin-left:8px;">
+                      Cek Jawaban
+                    </button>
+                  </p>
 
-                <p><b>Jawaban:</b></p>
-                <p>
-                  v =
-                  <input type="number" id="g-lat2" style="width:80px;" step="0.01"> m/s
-                  <button type="button" class="next-btn" id="g-lat2-btn" style="margin-left:8px;">
-                    Cek Jawaban
-                  </button>
-                </p>
+                  <p id="g-lat2-feedback" style="margin-top:6px;"></p>
 
-                <p id="g-lat2-feedback" style="margin-top:6px;"></p>
-
+                </div>
               </div>
             </div>
 
             <!-- ========================
-                                      HALAMAN LATIHAN 3
-                                      ======================== -->
+                                                            HALAMAN LATIHAN 3
+                                                            ======================== -->
             <div id="latihan-3" class="latihan-tab-page">
+              <div class="example-row">
+                <div class="box-diff" style="margin-top:12px;">
+                  <p><b>Contoh Soal – Mencari Panjang Gelombang</b></p>
+                  <p>
+                    Gelombang bunyi merambat di udara dengan cepat rambat
+                    <b>v = 300 m/s</b>.
+                    Jika frekuensinya <b>f = 150 Hz</b>,
+                    berapa <b>panjang gelombang (λ)</b> bunyi tersebut?
+                  </p>
 
-              <div class="box-diff" style="margin-top:12px;">
-                <p><b>Contoh Soal – Mencari Panjang Gelombang</b></p>
-                <p>
-                  Gelombang bunyi merambat di udara dengan cepat rambat
-                  <b>v = 300 m/s</b>.
-                  Jika frekuensinya <b>f = 150 Hz</b>,
-                  berapa <b>panjang gelombang (λ)</b> bunyi tersebut?
-                </p>
+                  <p><b>Penyelesaian:</b></p>
+                  <p>
+                    Diketahui: v = 300 m/s, f = 150 Hz<br>
+                    Ditanyakan: λ = ... ?
+                  </p>
 
-                <p><b>Penyelesaian:</b></p>
-                <p>
-                  Diketahui: v = 300 m/s, f = 150 Hz<br>
-                  Ditanyakan: λ = ... ?
-                </p>
+                  <p>
+                    Rumus: <b>v = λ f</b> → <b>λ = v / f</b><br>
+                    λ = 300 ÷ 150 = 2 m
+                  </p>
 
-                <p>
-                  Rumus: <b>v = λ f</b> → <b>λ = v / f</b><br>
-                  λ = 300 ÷ 150 = 2 m
-                </p>
+                  <p>
+                    Jadi, panjang gelombangnya adalah <b>2 m</b>.
+                  </p>
+                </div>
 
-                <p>
-                  Jadi, panjang gelombangnya adalah <b>2 m</b>.
-                </p>
-              </div>
+                <div class="box-diff" style="margin-top:12px;">
+                  <p><b>Latihan 3 – Mencari Panjang Gelombang</b></p>
+                  <p>
+                    Gelombang bunyi merambat di udara dengan cepat rambat
+                    <b>v = 340 m/s</b>.
+                    Jika frekuensinya <b>f = 170 Hz</b>,
+                    berapa <b>panjang gelombang (λ)</b> bunyi tersebut?
+                  </p>
 
-              <div class="box-diff" style="margin-top:12px;">
-                <p><b>Latihan 3 – Mencari Panjang Gelombang</b></p>
-                <p>
-                  Gelombang bunyi merambat di udara dengan cepat rambat
-                  <b>v = 340 m/s</b>.
-                  Jika frekuensinya <b>f = 170 Hz</b>,
-                  berapa <b>panjang gelombang (λ)</b> bunyi tersebut?
-                </p>
+                  <p><b>Diketahui:</b></p>
 
-                <p><b>Diketahui:</b></p>
+                  <p>v =<input type="number" id="g-lat3-v" style="width:80px;"> m/s</p>
+                  <p>f =<input type="number" id="g-lat3-f" style="width:80px;"> Hz</p>
+                  <p><b>Ditanyakan:</b></p>
+                  <p>λ = ... ?</p>
 
-                <p>v =<input type="number" id="g-lat3-v" style="width:80px;"> m/s</p>
-                <p>f =<input type="number" id="g-lat3-f" style="width:80px;"> Hz</p>
-                <p><b>Ditanyakan:</b></p>
-                <p>λ = ... ?</p>
+                  <p><b>Jawaban:</b></p>
+                  <p style="margin-top:6px;">
+                    λ =
+                    <input type="number" id="g-lat3" style="width:80px;" step="0.01"> m
 
-                <p><b>Jawaban:</b></p>
-                <p style="margin-top:6px;">
-                  λ =
-                  <input type="number" id="g-lat3" style="width:80px;" step="0.01"> m
+                    <button type="button" class="next-btn" id="g-lat3-btn" style="margin-left:8px;">
+                      Cek Jawaban
+                    </button>
+                  </p>
 
-                  <button type="button" class="next-btn" id="g-lat3-btn" style="margin-left:8px;">
-                    Cek Jawaban
-                  </button>
-                </p>
+                  <p id="g-lat3-feedback" style="margin-top:6px;"></p>
 
-                <p id="g-lat3-feedback" style="margin-top:6px;"></p>
-
+                </div>
               </div>
             </div>
 
           </div>
 
+          <div id="hasil-latihan"
+            style="display:none;margin:20px 0;padding:15px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;">
+            <h4>Hasil Latihan</h4>
+
+            <p>Jawaban Benar :
+              <span id="jumlah-benar">0</span>/3
+            </p>
+
+            <p>Jawaban Salah :
+              <span id="jumlah-salah">0</span>/3
+            </p>
+
+            <p>
+              <b>Nilai :
+                <span id="nilai-akhir">0</span>
+              </b>
+            </p>
+          </div>
           <div style="margin-top:20px; text-align:center;">
 
             <button id="download-pdf-btn" class="next-btn" style="display:none;">
@@ -448,24 +467,6 @@
             </button>
 
             <br>
-            <p style="margin-top:10px; font-size:14px; color:#64748b;">
-              Setelah mendownload file, klik tombol Kumpulkan PDF untuk mengupload tugas.
-            </p>
-            <br>
-
-            <button id="kumpulkan-btn" class="next-btn" style="display:none;">
-              📤 Kumpulkan PDF
-            </button>
-            <form action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data">
-              @csrf
-
-              <input type="hidden" name="latihan_code" value="L11">
-
-              <input type="file" name="file" accept="application/pdf" required>
-
-              <button type="submit">Upload Jawaban</button>
-            </form>
-
           </div>
 
         </section>
@@ -512,42 +513,54 @@
         latihan3: null
       };
 
+      const status = {
+        latihan1: false,
+        latihan2: false,
+        latihan3: false
+      };
+      console.log(status);
+
       const downloadBtn = document.getElementById("download-pdf-btn");
-      const kumpulkanBtn = document.getElementById("kumpulkan-btn");
 
-      const uploadForm = document.getElementById("upload-form");
+      function tampilkanNilai() {
 
-      kumpulkanBtn?.addEventListener("click", () => {
-        uploadForm.style.display = "block";
-      });
+        let benar = 0;
 
-      function cekSelesai() {
-        if (hasil.latihan1 && hasil.latihan2 && hasil.latihan3) {
-          downloadBtn.style.display = "inline-block";
-          kumpulkanBtn.style.display = "inline-block";
-        }
+        if (status.latihan1) benar++;
+        if (status.latihan2) benar++;
+        if (status.latihan3) benar++;
+
+        const salah = 3 - benar;
+        const nilai = Math.round((benar / 3) * 100);
+
+        document.getElementById("jumlah-benar").textContent = benar;
+        document.getElementById("jumlah-salah").textContent = salah;
+        document.getElementById("nilai-akhir").textContent = nilai;
+
+        document.getElementById("hasil-latihan").style.display = "block";
       }
 
-      /* =============================
-         TANGKAP HASIL LATIHAN 1
-         ============================= */
-      document.getElementById("g-lat1-btn")?.addEventListener("click", () => {
-        const T = document.getElementById("g-lat1-T").value;
-        const f = document.getElementById("g-lat1").value;
+      function cekSelesai() {
 
-        if (T && f) {
-          hasil.latihan1 = {
-            judul: "Latihan 1 – Frekuensi dari Periode",
-            soal: "Sebuah gelombang permukaan air memiliki periode T = 0,5 s. Hitung frekuensi (f) gelombang tersebut.",
-            diketahui: "T = 0,5 s",
-            ditanyakan: "f = ... ?",
-            jawabanSiswa: f + " Hz",
-            jawabanBenar: "2 Hz"
-          };
+        if (
+          status.latihan1 &&
+          status.latihan2 &&
+          status.latihan3
+        ) {
 
-          cekSelesai();
+          tampilkanNilai();
+
+          downloadBtn.style.display = "inline-block";
+
+        } else {
+
+          downloadBtn.style.display = "none";
+
+          document.getElementById("hasil-latihan").style.display = "none";
+
         }
-      });
+
+      }
 
       /* =============================
          TANGKAP HASIL LATIHAN 2
@@ -593,10 +606,8 @@
         }
       });
 
-      /* =============================
-         GENERATE PDF
-         ============================= */
-      downloadBtn?.addEventListener("click", () => {
+      /* ================= GENERATE PDF ================= */
+      downloadBtn?.addEventListener("click", async () => {
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF();
 
@@ -608,6 +619,19 @@
 
         pdf.setFontSize(11);
         pdf.text("Materi: Getaran dan Gelombang", 14, y);
+        y += 10;
+        let benar = 0;
+
+        if (status.latihan1) benar++;
+        if (status.latihan2) benar++;
+        if (status.latihan3) benar++;
+
+        const nilai = Math.round((benar / 3) * 100);
+
+        pdf.text("Jawaban Benar : " + benar + "/3", 14, y);
+        y += 7;
+
+        pdf.text("Nilai Akhir : " + nilai, 14, y);
         y += 10;
 
         Object.values(hasil).forEach((item, index) => {
@@ -648,7 +672,256 @@
           }
         });
 
-        pdf.save("hasil_latihan_gelombang.pdf");
+        const blob = pdf.output("blob");
+        const formData = new FormData();
+
+        formData.append(
+          "file",
+          blob,
+          "hasil_latihan_gelombang.pdf"
+        );
+
+        formData.append(
+          "latihan_code",
+          "L11"
+        );
+
+        const response = await fetch("/pengumpulan-gelombang", {
+
+          method: "POST",
+
+          headers: {
+            "X-CSRF-TOKEN":
+              document.querySelector('meta[name="csrf-token"]').content
+          },
+
+          body: formData
+
+        });
+
+        if (response.ok) {
+
+          pdf.save("hasil_latihan_gelombang.pdf");
+
+        } else {
+
+          alert("PDF gagal disimpan ke server.");
+
+        }
+      });
+
+      const tabBtns = document.querySelectorAll(".latihan-tab-btn");
+      const tabPages = document.querySelectorAll(".latihan-tab-page");
+
+      function showLatihanPage(targetId) {
+        tabPages.forEach(page => {
+          page.classList.toggle(
+            "latihan-tab-page-active",
+            page.id === targetId
+          );
+        });
+
+        tabBtns.forEach(btn => {
+          btn.classList.toggle(
+            "latihan-tab-active",
+            btn.getAttribute("data-target") === targetId
+          );
+        });
+      }
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          showLatihanPage(btn.getAttribute("data-target"));
+        });
+      });
+
+      // default tab
+      showLatihanPage("latihan-1");
+
+      /* =============================
+         FUNGSI FEEDBACK
+         ============================= */
+      function setFeedback(id, benar, pesan) {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        el.textContent = pesan;
+        el.style.fontWeight = "600";
+        el.style.color = benar ? "#059669" : "#b91c1c";
+      }
+
+      /* =============================
+         LATIHAN 1
+         T = 0.5 → f = 2 Hz
+         ============================= */
+      document.getElementById("g-lat1-btn")?.addEventListener("click", () => {
+
+        const T = parseFloat(document.getElementById("g-lat1-T")?.value);
+        const f = parseFloat(document.getElementById("g-lat1")?.value);
+
+        if (isNaN(T) || isNaN(f)) {
+          setFeedback("g-lat1-feedback", false,
+            "Lengkapi nilai T dan f terlebih dahulu.");
+          return;
+        }
+
+        if (T !== 0.5) {
+          setFeedback("g-lat1-feedback", false,
+            "Periksa kembali nilai periode (T).");
+          return;
+        }
+
+        const kunci = 1 / T;
+
+        if (Math.abs(f - kunci) < 0.01) {
+
+          status.latihan1 = true;
+
+          hasil.latihan1 = {
+            judul: "Latihan 1 – Frekuensi dari Periode",
+            soal: "Sebuah gelombang permukaan air memiliki periode T = 0,5 s. Hitung frekuensi (f) gelombang tersebut.",
+            diketahui: "T = 0,5 s",
+            ditanyakan: "f = ... ?",
+            jawabanSiswa: f + " Hz",
+            jawabanBenar: "2 Hz"
+          };
+
+          setFeedback(
+            "g-lat1-feedback",
+            true,
+            "Benar! f = 1 / T = 1 / 0,5 = 2 Hz."
+          );
+
+        } else {
+
+          status.latihan1 = false;
+
+          setFeedback(
+            "g-lat1-feedback",
+            false,
+            "Gunakan rumus f = 1 / T."
+          );
+
+        }
+
+        console.log(status);
+        cekSelesai();
+      });
+
+      /* =============================
+         LATIHAN 2
+         λ = 0.8, f = 5 → v = 4
+         ============================= */
+      document.getElementById("g-lat2-btn")?.addEventListener("click", () => {
+
+        const l = parseFloat(document.getElementById("g-lat2-l")?.value);
+        const f = parseFloat(document.getElementById("g-lat2-f")?.value);
+        const v = parseFloat(document.getElementById("g-lat2")?.value);
+
+        if (isNaN(l) || isNaN(f) || isNaN(v)) {
+          setFeedback("g-lat2-feedback", false,
+            "Lengkapi nilai λ, f, dan v terlebih dahulu.");
+          return;
+        }
+
+        if (l !== 0.8 || f !== 5) {
+          setFeedback("g-lat2-feedback", false,
+            "Periksa kembali nilai yang diketahui.");
+          return;
+        }
+
+        const kunci = l * f;
+
+        if (Math.abs(v - kunci) < 0.01) {
+
+          status.latihan2 = true;
+
+          hasil.latihan2 = {
+            judul: "Latihan 2 – Cepat Rambat Gelombang",
+            soal: "Gelombang pada tali memiliki panjang gelombang λ = 0,8 m dan frekuensi f = 5 Hz. Hitung cepat rambat gelombang.",
+            diketahui: "λ = 0,8 m, f = 5 Hz",
+            ditanyakan: "v = ... ?",
+            jawabanSiswa: v + " m/s",
+            jawabanBenar: "4 m/s"
+          };
+
+          setFeedback(
+            "g-lat2-feedback",
+            true,
+            "Tepat! v = λ × f = 0,8 × 5 = 4 m/s."
+          );
+
+        } else {
+
+          status.latihan2 = false;
+
+          setFeedback(
+            "g-lat2-feedback",
+            false,
+            "Gunakan rumus v = λ × f."
+          );
+
+        }
+
+        cekSelesai();
+      });
+
+      /* =============================
+         LATIHAN 3
+         v = 340, f = 170 → λ = 2
+         ============================= */
+      document.getElementById("g-lat3-btn")?.addEventListener("click", () => {
+
+        const v = parseFloat(document.getElementById("g-lat3-v")?.value);
+        const f = parseFloat(document.getElementById("g-lat3-f")?.value);
+        const lambda = parseFloat(document.getElementById("g-lat3")?.value);
+
+        if (isNaN(v) || isNaN(f) || isNaN(lambda)) {
+          setFeedback("g-lat3-feedback", false,
+            "Lengkapi nilai v, f, dan λ terlebih dahulu.");
+          return;
+        }
+
+        if (v !== 340 || f !== 170) {
+          setFeedback("g-lat3-feedback", false,
+            "Periksa kembali nilai yang diketahui.");
+          return;
+        }
+
+        const kunci = v / f;
+
+        if (Math.abs(lambda - kunci) < 0.01) {
+
+          status.latihan3 = true;
+
+          hasil.latihan3 = {
+            judul: "Latihan 3 – Panjang Gelombang",
+            soal: "Gelombang bunyi merambat di udara dengan cepat rambat v = 340 m/s dan frekuensi f = 170 Hz. Hitung panjang gelombang.",
+            diketahui: "v = 340 m/s, f = 170 Hz",
+            ditanyakan: "λ = ... ?",
+            jawabanSiswa: lambda + " m",
+            jawabanBenar: "2 m"
+          };
+
+          setFeedback(
+            "g-lat3-feedback",
+            true,
+            "Benar! λ = v / f = 340 / 170 = 2 m."
+          );
+
+        } else {
+
+          status.latihan3 = false;
+
+          setFeedback(
+            "g-lat3-feedback",
+            false,
+            "Hasil λ belum tepat. Gunakan λ = v / f."
+          );
+
+        }
+
+        cekSelesai();
       });
 
     });
@@ -956,21 +1229,21 @@
       //     spawnStone(x);
       //   }
       // });
-cv.addEventListener('pointerdown', (e) => {
+      cv.addEventListener('pointerdown', (e) => {
 
-    const rect = cv.getBoundingClientRect();
+        const rect = cv.getBoundingClientRect();
 
-    const scaleX = cv.width / rect.width;
-    const scaleY = cv.height / rect.height;
+        const scaleX = cv.width / rect.width;
+        const scaleY = cv.height / rect.height;
 
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
+        const x = (e.clientX - rect.left) * scaleX;
+        const y = (e.clientY - rect.top) * scaleY;
 
-    if (y >= waterY - 10) {
-        spawnStone(x);
-    }
+        if (y >= waterY - 10) {
+          spawnStone(x);
+        }
 
-});
+      });
 
       requestAnimationFrame(loop);
     })();
@@ -1050,150 +1323,6 @@ cv.addEventListener('pointerdown', (e) => {
 
     });
   </script>
-
-
-  <script>
-    /* =============================
-       TAB LATIHAN (1–3)
-       ============================= */
-    document.addEventListener("DOMContentLoaded", () => {
-
-      const tabBtns = document.querySelectorAll(".latihan-tab-btn");
-      const tabPages = document.querySelectorAll(".latihan-tab-page");
-
-      function showLatihanPage(targetId) {
-        tabPages.forEach(page => {
-          page.classList.toggle(
-            "latihan-tab-page-active",
-            page.id === targetId
-          );
-        });
-
-        tabBtns.forEach(btn => {
-          btn.classList.toggle(
-            "latihan-tab-active",
-            btn.getAttribute("data-target") === targetId
-          );
-        });
-      }
-
-      tabBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-          showLatihanPage(btn.getAttribute("data-target"));
-        });
-      });
-
-      // default tab
-      showLatihanPage("latihan-1");
-
-      /* =============================
-         FUNGSI FEEDBACK
-         ============================= */
-      function setFeedback(id, benar, pesan) {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        el.textContent = pesan;
-        el.style.fontWeight = "600";
-        el.style.color = benar ? "#059669" : "#b91c1c";
-      }
-
-      /* =============================
-         LATIHAN 1
-         T = 0.5 → f = 2 Hz
-         ============================= */
-      document.getElementById("g-lat1-btn")?.addEventListener("click", () => {
-
-        const T = parseFloat(document.getElementById("g-lat1-T")?.value);
-        const f = parseFloat(document.getElementById("g-lat1")?.value);
-
-        if (isNaN(T) || isNaN(f)) {
-          setFeedback("g-lat1-feedback", false,
-            "Lengkapi nilai T dan f terlebih dahulu.");
-          return;
-        }
-
-        if (T !== 0.5) {
-          setFeedback("g-lat1-feedback", false,
-            "Periksa kembali nilai periode (T).");
-          return;
-        }
-
-        const kunci = 1 / T;
-
-        Math.abs(f - kunci) < 0.01
-          ? setFeedback("g-lat1-feedback", true,
-            "Benar! f = 1 / T = 1 / 0,5 = 2 Hz.")
-          : setFeedback("g-lat1-feedback", false,
-            "Gunakan rumus f = 1 / T.");
-      });
-
-      /* =============================
-         LATIHAN 2
-         λ = 0.8, f = 5 → v = 4
-         ============================= */
-      document.getElementById("g-lat2-btn")?.addEventListener("click", () => {
-
-        const l = parseFloat(document.getElementById("g-lat2-l")?.value);
-        const f = parseFloat(document.getElementById("g-lat2-f")?.value);
-        const v = parseFloat(document.getElementById("g-lat2")?.value);
-
-        if (isNaN(l) || isNaN(f) || isNaN(v)) {
-          setFeedback("g-lat2-feedback", false,
-            "Lengkapi nilai λ, f, dan v terlebih dahulu.");
-          return;
-        }
-
-        if (l !== 0.8 || f !== 5) {
-          setFeedback("g-lat2-feedback", false,
-            "Periksa kembali nilai yang diketahui.");
-          return;
-        }
-
-        const kunci = l * f;
-
-        Math.abs(v - kunci) < 0.01
-          ? setFeedback("g-lat2-feedback", true,
-            "Tepat! v = λ × f = 0,8 × 5 = 4 m/s.")
-          : setFeedback("g-lat2-feedback", false,
-            "Gunakan rumus v = λ × f.");
-      });
-
-      /* =============================
-         LATIHAN 3
-         v = 340, f = 170 → λ = 2
-         ============================= */
-      document.getElementById("g-lat3-btn")?.addEventListener("click", () => {
-
-        const v = parseFloat(document.getElementById("g-lat3-v")?.value);
-        const f = parseFloat(document.getElementById("g-lat3-f")?.value);
-        const lambda = parseFloat(document.getElementById("g-lat3")?.value);
-
-        if (isNaN(v) || isNaN(f) || isNaN(lambda)) {
-          setFeedback("g-lat3-feedback", false,
-            "Lengkapi nilai v, f, dan λ terlebih dahulu.");
-          return;
-        }
-
-        if (v !== 340 || f !== 170) {
-          setFeedback("g-lat3-feedback", false,
-            "Periksa kembali nilai yang diketahui.");
-          return;
-        }
-
-        const kunci = v / f;
-
-        Math.abs(lambda - kunci) < 0.01
-          ? setFeedback("g-lat3-feedback", true,
-            "Benar! λ = v / f = 340 / 170 = 2 m.")
-          : setFeedback("g-lat3-feedback", false,
-            "Hasil λ belum tepat. Gunakan λ = v / f.");
-      });
-
-
-    });
-  </script>
-
 
   <script>
     window.addEventListener("beforeunload", function () {

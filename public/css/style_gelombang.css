@@ -540,10 +540,11 @@
     justify-content: center;
     padding: 20px;
     /* biar tidak mentok atas */
-    z-index: 999;
+    z-index: 30000;
   }
 
   .modal {
+    /* position: relative; */
     background: #ffffff;
     border-radius: 16px;
     padding: 24px 28px;
@@ -552,10 +553,8 @@
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.4);
     text-align: center;
     max-height: 90vh;
-    /* 🔥 BATAS TINGGI */
     overflow-y: auto;
-    /* 🔥 AKTIFKAN SCROLL */
-    /* margin: auto; */
+
   }
 
   /* =========================================================
@@ -1026,6 +1025,11 @@
     display: flex;
     gap: 30px;
     align-items: flex-start;
+  }
+
+  .example-row>.box-diff {
+    flex: 1;
+    margin-top: 12px;
   }
 
   /* Responsive */
@@ -1956,35 +1960,35 @@
     animation: fadeIn 0.2s ease;
   }
 
-  .topbar-right{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 
-.public-nav{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
+  .public-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 
-.public-nav a{
-    color:white;
-    text-decoration:none;
-    font-size:15px;
-    font-weight:500;
-    transition:.3s;
-}
+  .public-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .3s;
+  }
 
-.public-nav a:hover{
-    opacity:.8;
-}
+  .public-nav a:hover {
+    opacity: .8;
+  }
 
-.login-btn{
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-}
+  .login-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
 
   @keyframes fadeIn {
     from {

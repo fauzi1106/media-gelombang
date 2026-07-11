@@ -43,7 +43,50 @@
         .next-btn:hover {
             opacity: 0.9;
         }
+
+        .refraction-simulation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .simulation-stage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+        }
+
+        #opticsSvg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .control-panel {
+            width: 250px;
+        }
+
+        .simulation-info {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            background: #f3f4f6;
+        }
+
+        #pencilTop,
+        #pencilBottom,
+        #waterRect,
+        #surfaceLine {
+            transition: all .35s ease-in-out;
+        }
     </style>
+
 @endsection
 
 @section('siswa-content')
@@ -78,8 +121,8 @@
                     </div>
 
                     <!-- ====================
-                                                                                        CONTOH DALAM KEHIDUPAN SEHARI-HARI
-                                                                                        ==================== -->
+                                                                                                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
+                                                                                                            ==================== -->
                     <div class="example-row">
 
                         <!-- KIRI: TEKS -->
@@ -105,8 +148,8 @@
                     </div>
 
                     <!-- ====================
-                                                                                        PENJELASAN BAYANGAN
-                                                                                        ==================== -->
+                                                                                                            PENJELASAN BAYANGAN
+                                                                                                            ==================== -->
                     <p style="margin-top:12px;">
                         Karena cahaya merambat lurus, benda yang tidak dapat ditembus cahaya akan menghalangi rambatan
                         cahaya tersebut. Akibatnya, terbentuk daerah gelap di belakang benda yang disebut <b>bayangan</b>.
@@ -143,8 +186,8 @@
                     </div>
 
                     <!-- ====================
-                                                                                        JENIS PEMANTULAN
-                                                                                        ==================== -->
+                                                                                                            JENIS PEMANTULAN
+                                                                                                            ==================== -->
                     <p style="margin-top:12px;">
                         Berdasarkan keadaan permukaannya, pemantulan cahaya dibedakan menjadi dua jenis, yaitu pemantulan
                         teratur dan pemantulan baur.
@@ -182,8 +225,8 @@
                     </div>
 
                     <!-- ====================
-                                                                                        CONTOH DALAM KEHIDUPAN SEHARI-HARI
-                                                                                        ==================== -->
+                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
+                            ==================== -->
                     <div class="box-diff" style="margin-top:12px;">
                         <p><b>Contoh pemantulan cahaya dalam kehidupan sehari-hari:</b></p>
                         <ul>
@@ -217,40 +260,122 @@
                     <div class="note-box">
                         <b>Inti konsep:</b><br>
                         Pembiasan cahaya terjadi akibat perubahan kecepatan cahaya saat berpindah medium.
+                    </div><br>
+
+                    <div class="box-diff" style="margin-bottom:20px;">
+
+                        <h4>Skenario Pengamatan</h4>
+
+                        <p>
+                            Perhatikan gambar pensil di dalam gelas. Geser <b>slider volume air</b>
+                            secara perlahan dari 0% hingga 100%.
+                        </p>
+
+                        <ol>
+                            <li>Amati perubahan posisi pensil saat volume air berubah.</li>
+                            <li>Perhatikan bagian pensil yang berada di dalam air.</li>
+                            <li>Bacalah penjelasan yang muncul pada setiap perubahan.</li>
+                            <li>Tarik kesimpulan mengapa pensil tampak bengkok.</li>
+                        </ol>
+
                     </div>
 
-                    <!-- ====================
-                                                                                        CONTOH DALAM KEHIDUPAN SEHARI-HARI
-                                                                                        ==================== -->
-                    <div class="example-row">
+                    <div class="refraction-simulation">
 
-                        <!-- KIRI: TEKS -->
-                        <div class="example-text">
-                            <p><b>Contoh peristiwa pembiasan cahaya:</b></p>
-                            <ul>
-                                <li>Pensil di dalam air tampak bengkok atau patah.</li>
-                                <li>Dasar kolam renang terlihat lebih dangkal dari kedalaman sebenarnya.</li>
-                                <li>Terbentuknya pelangi akibat pembiasan dan dispersi cahaya Matahari.</li>
-                            </ul>
+                        <div class="simulation-stage">
+
+                            <svg id="opticsSvg" viewBox="0 0 700 420" width="700" height="420">
+
+                                <!-- BACKGROUND -->
+                                <rect x="0" y="0" width="700" height="420" fill="#ffffff" />
+
+                                <!-- BATAS AIR -->
+                                <line id="surfaceLine" x1="0" y1="210" x2="700" y2="210" stroke="#2da8ff"
+                                    stroke-width="3" />
+
+                                <!-- GELAS -->
+
+                                <rect x="210" y="80" width="160" height="250" rx="10" fill="none" stroke="#666"
+                                    stroke-width="4" />
+
+                                <!-- AIR -->
+
+                                <rect id="waterRect" x="214" y="210" width="152" height="120" fill="#8dd8ff" opacity=".6" />
+
+                                <!-- BAGIAN ATAS PENSIL -->
+
+                                <line id="pencilTop" x1="300" y1="40" x2="260" y2="210" stroke="#d28b36" stroke-width="12"
+                                    stroke-linecap="round" />
+
+                                <!-- BAGIAN BAWAH PENSIL -->
+
+                                <line id="pencilBottom" x1="260" y1="210" x2="220" y2="330" stroke="#d28b36"
+                                    stroke-width="12" stroke-linecap="round" />
+
+                            </svg>
+
                         </div>
 
-                        <!-- KANAN: VISUAL -->
-                        <div class="example-image">
-                            <!-- Ganti src sesuai aset kamu -->
-                            <img src="{{ asset('images/pembiasan_cahaya.png') }}"
-                                alt="Pembiasan cahaya pada batas dua medium"
-                                style="max-width:480px; width:100%; height:auto;">
-                            <p class="image-caption">
-                                Pembiasan cahaya pada batas dua medium yang berbeda.
+                        <div class="control-panel">
+
+                            <h4>Volume Air</h4>
+
+                            <input type="range" id="waterSlider" min="0" max="100" value="50">
+
+                            <p>
+
+                                Volume :
+                                <span id="waterValue">
+                                    50
+                                </span> %
+
                             </p>
+
+                            <div class="simulation-info">
+
+                                <h5>Hasil Pengamatan</h5>
+
+                                <p id="observationText">
+
+                                    Geser slider untuk mulai melakukan pengamatan.
+
+                                </p>
+
+                            </div>
+
+                            <div class="simulation-info" style="margin-top:15px;">
+
+                                <h5>Penjelasan Konsep</h5>
+
+                                <p id="conceptText">
+
+                                    Penjelasan mengenai pembiasan cahaya akan muncul di sini.
+
+                                </p>
+
+                            </div>
+
                         </div>
 
                     </div>
+                    <br>
+                    <div class="box-diff" style="margin-bottom:20px;">
 
-                    <!-- ====================
-                                                                                        ARAH PEMBIASAN
-                                                                                        ==================== -->
-                    <p style="margin-top:12px;">
+                        <h4>Kesimpulan Pengamatan</h4>
+
+                        <p>
+
+                            Meskipun pensil sebenarnya tetap lurus,
+                            bagian pensil yang berada di dalam air tampak bergeser.
+
+                            Hal ini terjadi karena cahaya dari pensil
+                            mengalami pembiasan ketika berpindah dari
+                            air menuju udara sebelum mencapai mata.
+
+                        </p>
+
+                    </div>
+                    {{-- <p style="margin-top:12px;">
                         Arah pembiasan cahaya bergantung pada medium yang dimasukinya. Jika cahaya masuk ke medium yang
                         lebih rapat secara optik, cahaya akan dibiaskan mendekati garis normal. Sebaliknya, jika cahaya
                         masuk ke medium yang lebih renggang, cahaya akan dibiaskan menjauhi garis normal.
@@ -260,7 +385,7 @@
                         <b>Kesimpulan:</b><br>
                         Pembiasan cahaya menyebabkan benda tampak tidak pada posisi sebenarnya dan menjadi dasar berbagai
                         fenomena optik.
-                    </div>
+                    </div> --}}
                 </section>
 
                 {{-- PAGE 4 --}}
@@ -284,8 +409,8 @@
                     </div>
 
                     <!-- ====================
-                                                                                        SPEKTRUM WARNA CAHAYA
-                                                                                        ==================== -->
+                                                                                                            SPEKTRUM WARNA CAHAYA
+                                                                                                            ==================== -->
                     <div class="box-diff" style="margin-top:12px; text-align:center;">
                         <p><b>Spektrum cahaya tampak terdiri atas tujuh warna, yaitu:</b></p>
 
@@ -302,8 +427,8 @@
 
 
                     <!-- ====================
-                                                                                        CONTOH DALAM KEHIDUPAN SEHARI-HARI
-                                                                                        ==================== -->
+                                                                                                            CONTOH DALAM KEHIDUPAN SEHARI-HARI
+                                                                                                            ==================== -->
                     <div class="example-row">
 
                         <!-- KIRI: TEKS -->
@@ -329,8 +454,8 @@
                     </div>
 
                     <!-- ====================
-                                                                                        KETERKAITAN DENGAN PEMBIASAN
-                                                                                        ==================== -->
+                            KETERKAITAN DENGAN PEMBIASAN
+                            ==================== -->
                     <p style="margin-top:12px;">
                         Dispersi cahaya merupakan akibat dari pembiasan cahaya. Karena setiap warna memiliki panjang
                         gelombang yang berbeda, maka sudut pembiasannya pun berbeda. Hal inilah yang menyebabkan cahaya
@@ -344,83 +469,6 @@
                 </section>
 
 
-                {{-- PAGE 5 --}}
-                <section id="page-latihan" class="subpage" style="display:none;">
-                    <h3>Latihan 3.1 – Sifat Cahaya</h3>
-
-                    <p><b>Petunjuk:</b> Pilih jawaban yang sesuai untuk setiap peristiwa!</p>
-
-                    <div class="latihan-box">
-
-                        <div class="soal-card">
-                            <p>1. Bayangan terbentuk di belakang benda</p>
-                            <select name="q1">
-                                <option value="">Pilih jawaban</option>
-                                <option value="pemantulan">Pemantulan</option>
-                                <option value="pembiasan">Pembiasan</option>
-                                <option value="dispersi">Dispersi</option>
-                                <option value="lurus">Merambat lurus</option>
-                            </select>
-                        </div>
-
-                        <div class="soal-card">
-                            <p>2. Cahaya mengenai cermin dan kembali</p>
-                            <select name="q2">
-                                <option value="">Pilih jawaban</option>
-                                <option value="pemantulan">Pemantulan</option>
-                                <option value="pembiasan">Pembiasan</option>
-                                <option value="dispersi">Dispersi</option>
-                                <option value="lurus">Merambat lurus</option>
-                            </select>
-                        </div>
-
-                        <div class="soal-card">
-                            <p>3. Pensil terlihat bengkok di dalam air</p>
-                            <select name="q3">
-                                <option value="">Pilih jawaban</option>
-                                <option value="pemantulan">Pemantulan</option>
-                                <option value="pembiasan">Pembiasan</option>
-                                <option value="dispersi">Dispersi</option>
-                                <option value="lurus">Merambat lurus</option>
-                            </select>
-                        </div>
-
-                        <div class="soal-card">
-                            <p>4. Pelangi muncul setelah hujan</p>
-                            <select name="q4">
-                                <option value="">Pilih jawaban</option>
-                                <option value="pemantulan">Pemantulan</option>
-                                <option value="pembiasan">Pembiasan</option>
-                                <option value="dispersi">Dispersi</option>
-                                <option value="lurus">Merambat lurus</option>
-                            </select>
-                        </div>
-
-                        <button onclick="cekJawaban()" class="next-btn" style="margin-top:15px;">
-                            Cek Jawaban
-                        </button>
-
-                        <div id="feedback" style="margin-top:15px; font-weight:bold;"></div>
-
-                    </div>
-                    <div style="margin-top:25px;">
-                        <button id="download-pdf-btn" class="next-btn" style="display:none;">
-                            📄 Download PDF
-                        </button>
-                        <form action="{{ url('/pengumpulan-gelombang') }}" method="POST" enctype="multipart/form-data"
-                            style="margin-top:15px;">
-                            @csrf
-
-                            <input type="hidden" name="latihan_code" value="L31">
-
-                            <input type="file" name="file" accept="application/pdf" required>
-
-                            <button type="submit" class="next-btn" style="margin-top:10px;">
-                                📤 Upload Jawaban
-                            </button>
-                        </form>
-                    </div>
-                </section>
             </div>
 
             {{-- NAV --}}
@@ -430,7 +478,6 @@
                 <button class="next-btn inner-nav-btn" data-target="page-pantul">2</button>
                 <button class="next-btn inner-nav-btn" data-target="page-bias">3</button>
                 <button class="next-btn inner-nav-btn" data-target="page-dispersi">4</button>
-                <button class="next-btn inner-nav-btn" data-target="page-latihan">5</button>
                 <button id="inner-next" class="next-btn">Next</button>
             </div>
 
@@ -443,7 +490,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const pages = document.querySelectorAll(".subpage");
@@ -451,7 +498,7 @@
             const prev = document.getElementById("inner-prev");
             const next = document.getElementById("inner-next");
 
-            const order = ["page-lurus", "page-pantul", "page-bias", "page-dispersi", "page-latihan"];
+            const order = ["page-lurus", "page-pantul", "page-bias", "page-dispersi"];
             let idx = 0;
 
             function show(id) {
@@ -487,101 +534,142 @@
     </script>
 
     <script>
-        function cekJawaban() {
-            const kunci = {
-                q1: "lurus",
-                q2: "pemantulan",
-                q3: "pembiasan",
-                q4: "dispersi"
-            };
 
-            window.skor = 0;
-            window.total = 4;
+        const slider = document.getElementById("waterSlider");
 
-            for (let i = 1; i <= total; i++) {
-                const select = document.querySelector(`[name="q${i}"]`);
-                const user = select.value;
+        const value = document.getElementById("waterValue");
 
-                if (user === "") {
-                    alert("Semua soal harus dijawab dulu ya!");
-                    return;
-                }
+        const info = document.getElementById("simulationInfo");
 
-                if (user === kunci[`q${i}`]) {
-                    skor++;
-                    select.style.border = "2px solid green";
-                } else {
-                    select.style.border = "2px solid red";
-                }
+        const waterRect = document.getElementById("waterRect");
+        const pencilTop = document.getElementById("pencilTop");
+        const pencilBottom = document.getElementById("pencilBottom");
+
+        const surfaceLine = document.getElementById("surfaceLine");
+        const observation = document.getElementById("observationText");
+        const concept = document.getElementById("conceptText");
+        slider.addEventListener("input", function () {
+            const volume = Number(this.value);
+            if (volume === 0) {
+
+                observation.innerHTML = `
+    Tidak ada air di dalam gelas.
+    Pensil terlihat lurus karena cahaya hanya merambat melalui udara.
+    `;
+
+                concept.innerHTML = `
+    Belum terjadi pembiasan karena cahaya tidak berpindah medium.
+    Akibatnya cahaya tetap merambat lurus menuju mata.
+    `;
+
             }
 
-            const feedback = document.getElementById("feedback");
+            else if (volume <= 25) {
 
-            feedback.innerHTML = `Skor kamu: ${skor} / ${total}`;
+                observation.innerHTML = `
+    Bagian bawah pensil mulai terendam air.
+    Pensil mulai tampak sedikit bergeser pada batas permukaan air.
+    `;
 
-            if (skor === total) {
-                feedback.style.color = "green";
-                feedback.innerHTML = `🎉 Skor kamu: ${skor}/${total}<br>Hebat! Semua benar!`;
-            } else {
-                feedback.style.color = "orange";
-                feedback.innerHTML = `Skor kamu: ${skor}/${total}<br>Masih bisa diperbaiki ya 💪`;
+                concept.innerHTML = `
+    Cahaya dari bagian pensil yang berada di dalam air mengalami
+    pembiasan ketika keluar menuju udara.
+    Akibatnya posisi pensil tampak sedikit berubah.
+    `;
+
             }
 
-            document.getElementById("download-pdf-btn").style.display = "inline-block";
-            document.getElementById("download-pdf-btn").addEventListener("click", () => {
+            else if (volume <= 50) {
 
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF();
+                observation.innerHTML = `
+    Semakin banyak bagian pensil berada di dalam air.
+    Bagian pensil yang tampak bergeser menjadi semakin panjang.
+    `;
 
-                let y = 20;
+                concept.innerHTML = `
+    Semakin tinggi permukaan air,
+    semakin panjang bagian pensil yang berada di dalam air.
+    Akibatnya semakin banyak cahaya yang mengalami pembiasan
+    sehingga bagian pensil yang tampak bergeser menjadi lebih jelas.
+    `;
 
-                // ===== JUDUL =====
-                pdf.setFontSize(16);
-                pdf.text("HASIL LATIHAN SIFAT CAHAYA", 105, y, { align: "center" });
-                y += 10;
+            }
 
-                pdf.setLineWidth(0.5);
-                pdf.line(20, y, 190, y);
-                y += 10;
+            else if (volume <= 75) {
 
-                // ===== DATA SISWA =====
-                pdf.setFontSize(11);
-                pdf.text(`Nama  : ${namaSiswa}`, 20, y);
-                y += 7;
-                pdf.text(`NISN  : ${nisnSiswa}`, 20, y);
-                y += 7;
-                pdf.text(`Skor  : ${window.skor} / ${window.total}`, 20, y);
-                y += 10;
+                observation.innerHTML = `
+    Sebagian besar pensil berada di dalam air.
+    Perbedaan posisi antara bagian atas dan bawah pensil semakin jelas terlihat.
+    `;
 
-                pdf.line(20, y, 190, y);
-                y += 10;
+                concept.innerHTML = `
+    Cahaya dari bagian pensil di dalam air
+    tetap mengalami pembiasan ketika keluar menuju udara.
+    Mata menganggap cahaya merambat lurus,
+    sehingga pensil tampak bengkok meskipun sebenarnya tetap lurus.
+    `;
 
-                // ===== JAWABAN =====
-                for (let i = 1; i <= 4; i++) {
-                    const select = document.querySelector(`[name="q${i}"]`);
-                    const jawaban = select.value || "-";
+            }
 
-                    pdf.text(`${i}. Jawaban: ${jawaban}`, 20, y);
-                    y += 8;
-                }
+            else {
 
-                y += 5;
+                observation.innerHTML = `
+    Hampir seluruh pensil berada di dalam air.
+    Pensil tampak paling bengkok dibandingkan kondisi sebelumnya.
+    `;
 
-                pdf.line(20, y, 190, y);
-                y += 10;
+                concept.innerHTML = `
+    Pembiasan tidak menjadi lebih besar karena jumlah air bertambah.
+    Namun semakin tinggi permukaan air,
+    semakin panjang bagian pensil yang mengalami pembiasan,
+    sehingga efek visualnya terlihat semakin jelas.
+    `;
 
-                // ===== FOOTER =====
-                pdf.setFontSize(10);
-                pdf.text("Generated by FisiTera", 105, y, { align: "center" });
+            }
+            value.textContent = volume;
 
-                pdf.save("hasil_latihan_sifat_cahaya.pdf");
-            });
-            document.querySelector("form").style.display = "block";
-        }
-        document.querySelectorAll("select").forEach(s => {
-            s.addEventListener("change", () => {
-                s.style.border = "1px solid #ccc";
-            });
+            /*
+                Tinggi air:
+                0% = 0 px
+                100% = 250 px
+            */
+            const waterHeight = volume * 2.5;
+            const topWater = 330 - waterHeight;
+
+            waterRect.setAttribute("y", topWater);
+            waterRect.setAttribute("height", waterHeight);
+            surfaceLine.setAttribute("y1", topWater);
+            surfaceLine.setAttribute("y2", topWater);
+
+            /*
+            =========================
+            PENSIL (PERBAIKAN PEMBIASAN)
+            =========================
+            */
+            // Titik pangkal atas pensil tetap di (300, 40)
+            // Titik ujung bawah (jika tidak ada air/lurus) ada di (220, 330)
+
+            // 1. Cari X titik potong pensil dengan permukaan air (topWater)
+            // Rumus gradien (dx / dy) -> (220 - 300) / (330 - 40) = -80 / 290
+            const slope = -80 / 290;
+            const intersectX = 300 + (topWater - 40) * slope;
+
+            // 2. Set bagian atas pensil (berhenti tepat di permukaan air)
+            pencilTop.setAttribute("x2", intersectX);
+            pencilTop.setAttribute("y2", topWater);
+
+            // 3. Set bagian bawah pensil (mulai persis dari titik potong permukaan air)
+            pencilBottom.setAttribute("x1", intersectX);
+            pencilBottom.setAttribute("y1", topWater);
+
+            // 4. Efek bias: ujung bawah pensil terlihat bergeser menjauhi garis normal
+            // Semakin banyak volume air, efek pembiasannya semakin besar
+            const offsetBias = (volume / 100) * 18; // Angka 18 bisa diubah untuk mengatur seberapa bengkok pensilnya
+            pencilBottom.setAttribute("x2", 220 + offsetBias);
+            // y2 tetap 330 karena pensil menyentuh dasar gelas
         });
+
     </script>
+
+
 @endsection

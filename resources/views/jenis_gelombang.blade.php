@@ -55,7 +55,7 @@
 
               <ul>
                 <li>Memiliki <b>Bukit</b> dan <b>lembah</b>.</li>
-                <li>Contoh: gelombang pada tali dan gelombang cahaya.</li>
+                <li>Contoh: gelombang pada tali dan <b>gelombang cahaya</b>.</li>
               </ul>
 
               <p><i>Tegak lurus artinya arah getar membentuk sudut 90° terhadap arah rambat.</i></p>
